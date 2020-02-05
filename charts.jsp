@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,70 +59,71 @@
           
         </div >
         <!-- Nav Item - Charts -->
-        <li class="nav-item">
-          <a class="nav-link" href="charts.html">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>유입관리</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="asset.html">
-            <i class="fas fa-fw fa-dollar-sign"></i>
-            <span>회계관리</span></a>
-        </li>
-         
-        <!-- Divider -->
-        <hr class="sidebar-divider">
-  
-        <!-- Heading -->
-        <div class="sidebar-heading">
-         
+      <li class="nav-item">
+        <a class="nav-link" href="charts.jsp">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>유입관리</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="asset.jsp">
+          <i class="fas fa-fw fa-dollar-sign"></i>
+          <span>회계관리</span></a>
+      </li>
+     
+       
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+
+      <!-- Heading -->
+      <div class="sidebar-heading">
+       
+      </div>
+
+
+      
+
+       <!-- Nav Item - Pages Collapse Menu -->
+       <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-user"></i>
+          <span>회원관리</span>
+        </a>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="user.jsp">회원 정보</a>
+            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
+          </div>
         </div>
-  
-  
-        
-  
-         <!-- Nav Item - Pages Collapse Menu -->
-         <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <i class="fas fa-fw fa-user"></i>
-            <span>회원관리</span>
-          </a>
-          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="user.html">회원 정보</a>
-              <a class="collapse-item" href="portfolio.html">포트폴리오</a>
-            </div>
+      </li>
+
+      <!-- Nav Item - Utilities Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-briefcase"></i>
+          <span>기업관리</span>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="company.jsp">기업 정보</a>
+            <a class="collapse-item" href="project.jsp">프로젝트</a>
+            
           </div>
-        </li>
-  
-        <!-- Nav Item - Utilities Collapse Menu -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-briefcase"></i>
-            <span>기업관리</span>
-          </a>
-          <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-              <a class="collapse-item" href="company.html">기업 정보</a>
-              <a class="collapse-item" href="project.html">프로젝트</a>
-              
-            </div>
-          </div>
-        </li>
-  
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-          <a class="nav-link" href="notice.html">
-            <i class="fas fa-fw fa-tags"></i>
-            <span>고객센터</span></a>
-        </li>
-        <!-- Nav Item - Tables -->
-        <li class="nav-item">
-          <a class="nav-link" href="alarm.html">
-            <i class="fas fa-fw fa-eye"></i>
-            <span>감시</span></a>
-        </li>
-        <hr class="sidebar-divider my-0">
+        </div>
+      </li>
+
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="notice.jsp">
+          <i class="fas fa-fw fa-tags"></i>
+          <span>고객센터</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="alarm.jsp">
+          <i class="fas fa-fw fa-eye"></i>
+          <span>감시</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
   <!-- Nav Item - Tables -->
   <li class="nav-item">
     <a class="nav-link" href="#">

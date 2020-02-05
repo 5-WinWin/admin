@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,7 +11,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>portfolio</title>
+  <title>company</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -58,15 +60,16 @@
       </div >
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.jsp">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.html">
+        <a class="nav-link" href="asset.jsp">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
+     
        
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -87,8 +90,8 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="user.html">회원 정보</a>
-            <a class="collapse-item" href="portfolio.html">포트폴리오</a>
+            <a class="collapse-item" href="user.jsp">회원 정보</a>
+            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
           </div>
         </div>
       </li>
@@ -101,8 +104,8 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="company.html">기업 정보</a>
-            <a class="collapse-item" href="project.html">프로젝트</a>
+            <a class="collapse-item" href="company.jsp">기업 정보</a>
+            <a class="collapse-item" href="project.jsp">프로젝트</a>
             
           </div>
         </div>
@@ -110,13 +113,13 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="notice.html">
+        <a class="nav-link" href="notice.jsp">
           <i class="fas fa-fw fa-tags"></i>
           <span>고객센터</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="alarm.html">
+        <a class="nav-link" href="alarm.jsp">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>
@@ -331,9 +334,8 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">포트폴리오</h1>
-          
-
+          <h1 class="h3 mb-2 text-gray-800">기업 정보</h1>
+        
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
