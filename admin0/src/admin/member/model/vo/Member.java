@@ -15,7 +15,7 @@ public class Member implements Serializable {
 	private String uId;
 	private String uPwd;
 	private String uIntro;
-	private String uprofile;
+	private String uProfile;
 	private String uEmail;
 	private String uPhone;
 	private Date uRegDate;
@@ -25,7 +25,7 @@ public class Member implements Serializable {
 	public Member() {
 	}
 
-	public Member(int uNo, String uName, String uId, String uPwd, String uIntro, String uprofile, String uEmail,
+	public Member(int uNo, String uName, String uId, String uPwd, String uIntro, String uProfile, String uEmail,
 			String uPhone, Date uRegDate, Date uModifyDate, String uModifyWriter) {
 		super();
 		this.uNo = uNo;
@@ -33,7 +33,7 @@ public class Member implements Serializable {
 		this.uId = uId;
 		this.uPwd = uPwd;
 		this.uIntro = uIntro;
-		this.uprofile = uprofile;
+		this.uProfile = uProfile;
 		this.uEmail = uEmail;
 		this.uPhone = uPhone;
 		this.uRegDate = uRegDate;
@@ -81,12 +81,12 @@ public class Member implements Serializable {
 		this.uIntro = uIntro;
 	}
 
-	public String getUprofile() {
-		return uprofile;
+	public String getuProfile() {
+		return uProfile;
 	}
 
-	public void setUprofile(String uprofile) {
-		this.uprofile = uprofile;
+	public void setuProfile(String uProfile) {
+		this.uProfile = uProfile;
 	}
 
 	public String getuEmail() {
@@ -133,7 +133,7 @@ public class Member implements Serializable {
 	@Override
 	public String toString() {
 		return "Member [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uIntro=" + uIntro
-				+ ", uprofile=" + uprofile + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uRegDate=" + uRegDate
+				+ ", uProfile=" + uProfile + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uRegDate=" + uRegDate
 				+ ", uModifyDate=" + uModifyDate + ", uModifyWriter=" + uModifyWriter + "]";
 	}
 	

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="admin.member.model.vo.Member,java.util.ArrayList" %>
+    
+   <% 
+	ArrayList<Member> mlist = (ArrayList<Member>)request.getAttribute("mlist"); 
+%> 
+  
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +32,6 @@
 </head>
 
 <body id="page-top">
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -376,22 +381,25 @@
                     </tr>
                   </tfoot>
                   <tbody>
-        <%--  <% for(Member m : list){ %>
+       <%--   <% for(Member m : mlist){ %>--%>
+       <%Member m = new Member(); %>
          <tr>
-            <input type="hidden" value="<%= m.getBno() %>"/>
-            <td><%= m.getBno() %></td>
-            <td><%= m.getBtitle() %></td>
-            <td><%= m.getBwriter() %></td>
-            <td><%= m.getBdate() %></td>
-            <td><%= m.getBcount() %></td>
-            <% if( m.getBoardfile() != null) { %>
-            <td> ◎ </td>
-            <%} else { %>
-            <td> X </td>
-            <% } %>
+            
+            <td><%= m.getuNo() %></td>
+            <td><%= m.getuName() %></td>
+            <td><%= m.getuId() %></td>
+            <td><%= m.getuPwd() %></td>
+            <td><%= m.getuIntro() %></td>
+            <td><%= m.getuProfile() %></td>
+            <td><%= m.getuEmail() %></td>
+            <td><%= m.getuPhone() %></td>
+            <td><%= m.getuRegDate() %></td>
+            <td><%= m.getuModifyDate() %></td>
+            <td><%= m.getuModifyWriter() %></td>
+            
          </tr>
-         <% } %> --%>
-                    <tr>
+        <%--  <% } %>   --%> 
+                     <tr>
                       <td>Garrett Winters</td>
                       <td>Accountant</td>
                       <td>Tokyo</td>
@@ -399,7 +407,7 @@
                       <td>2011/07/25</td>
                       <td>$170,750</td>
                     </tr>
-                    <tr>
+                 <!--   <tr>
                       <td>Ashton Cox</td>
                       <td>Junior Technical Author</td>
                       <td>San Francisco</td>
@@ -830,7 +838,7 @@
                       <td>29</td>
                       <td>2011/06/27</td>
                       <td>$183,000</td>
-                    </tr>
+                    </tr> 
                     <tr>
                       <td>Donna Snider</td>
                       <td>Customer Support</td>
@@ -838,7 +846,7 @@
                       <td>27</td>
                       <td>2011/01/25</td>
                       <td>$112,000</td>
-                    </tr>
+                    </tr> -->
                   </tbody>
                 </table>
               </div>
