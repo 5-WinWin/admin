@@ -33,8 +33,8 @@ public class MemberReadServlet extends HttpServlet {
 		ArrayList<Member> mlist = new ArrayList<Member>();
 		MemberService ms = new MemberService();
 		
-		mlist = ms.readMember();
 		
+		mlist = ms.readMember();
 		String page = null;
 		
 		if(mlist!=null) {

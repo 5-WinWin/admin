@@ -90,7 +90,7 @@
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="user.jsp">회원 정보</a>
+            <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
             <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
           </div>
         </div>
