@@ -340,40 +340,57 @@
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+              <h6 class="m-0 font-weight-bold text-primary">회원 정보 테이블</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                      <th>회원 번호</th>
+                      <th>회원 이름</th>
+                      <th>아이디</th>
+                      <th>패스워드</th>
+                      <th>자기소개</th>
+                      <th>프로필사진</th>
+                      <th>이메일</th>
+                      <th>핸드폰</th>
+                      <th>가입 날짜</th>
+                      <th>수정일</th>
+                      <th>수정 날짜</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
-                      <th>Name</th>
-                      <th>Position</th>
-                      <th>Office</th>
-                      <th>Age</th>
-                      <th>Start date</th>
-                      <th>Salary</th>
+                    <th>회원 번호</th>
+                      <th>회원 이름</th>
+                      <th>아이디</th>
+                      <th>패스워드</th>
+                      <th>자기소개</th>
+                      <th>프로필사진</th>
+                      <th>이메일</th>
+                      <th>핸드폰</th>
+                      <th>가입 날짜</th>
+                      <th>수정일</th>
+                      <th>수정 날짜</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td>Tiger Nixon</td>
-                      <td>System Architect</td>
-                      <td>Edinburgh</td>
-                      <td>61</td>
-                      <td>2011/04/25</td>
-                      <td>$320,800</td>
-                    </tr>
+        <%--  <% for(Member m : list){ %>
+         <tr>
+            <input type="hidden" value="<%= m.getBno() %>"/>
+            <td><%= m.getBno() %></td>
+            <td><%= m.getBtitle() %></td>
+            <td><%= m.getBwriter() %></td>
+            <td><%= m.getBdate() %></td>
+            <td><%= m.getBcount() %></td>
+            <% if( m.getBoardfile() != null) { %>
+            <td> ◎ </td>
+            <%} else { %>
+            <td> X </td>
+            <% } %>
+         </tr>
+         <% } %> --%>
                     <tr>
                       <td>Garrett Winters</td>
                       <td>Accountant</td>
