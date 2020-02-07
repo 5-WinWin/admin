@@ -34,7 +34,7 @@
       <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-wrench"></i>
           </div>
@@ -104,7 +104,7 @@
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="company.jsp">기업 정보</a>
+            <a class="collapse-item" href="/admin0/companyRead.do">기업 정보</a>
             <a class="collapse-item" href="project.jsp">프로젝트</a>
             
           </div>
