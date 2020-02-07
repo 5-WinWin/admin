@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.company.model.vo.Company,java.util.ArrayList" %>
+    pageEncoding="UTF-8" import="admin.company.model.vo.Company,java.util.ArrayList"%>
     
    <% 
 	ArrayList<Company> clist = (ArrayList<Company>)request.getAttribute("clist"); 
@@ -110,7 +110,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/companyRead.do">기업 정보</a>
-            <a class="collapse-item" href="project.jsp">프로젝트</a>
+            <a class="collapse-item" href="/admin0/projectRead.do">프로젝트</a>
             
           </div>
         </div>

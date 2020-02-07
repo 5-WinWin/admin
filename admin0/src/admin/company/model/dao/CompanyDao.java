@@ -11,7 +11,6 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import admin.company.model.vo.Company;
-import admin.member.model.vo.Member;
 
 public class CompanyDao {
 

@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" isErrorPage="true"%>
 <%
+	
 	String msg = (String)request.getAttribute("msg");
 	Exception e = (Exception)request.getAttribute("exception");
-	// 일반적으로 jsp에 사용되는 exception 내장 객체는 jspException 클래스를 활용한다.
-	// 따라서 사용자 정의 예외를 구현할 때에는 Exception 객체를 직접 선언하여 사용하여야 한다.
 %>
 <!DOCTYPE html>
 <html>
