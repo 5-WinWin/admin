@@ -55,6 +55,7 @@ public class MemberDao {
 				m.setuRegDate(rset.getDate("U_REG_DATE"));
 				m.setuModifyDate(rset.getDate("U_MODIFY_DATE"));
 				m.setuModifyWriter(rset.getString("U_MODIFY_WRITER"));
+				m.setuYn(rset.getString("U_YN"));
 				
 				mlist.add(m);
 			}

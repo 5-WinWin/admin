@@ -363,6 +363,8 @@
                       <th>가입 날짜</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th>계정활동여부</th>
+                      
                     </tr>
                   </thead>
                   <tfoot style="font-size:13px;">
@@ -378,6 +380,8 @@
                       <th>가입 날짜</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th>계정활동여부</th>
+                      
                     </tr>
                   </tfoot>
                   <tbody>
@@ -396,6 +400,9 @@
             <td><%= m.getuRegDate() %></td>
             <td><%= m.getuModifyDate() %></td>
             <td><%= m.getuModifyWriter() %></td>
+            <td><%= m.getuYn() %></td>
+            <td><button class="btn btn-primary" id=alter<%= m.getuNo() %>
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
             
          </tr>
          <% } %>  

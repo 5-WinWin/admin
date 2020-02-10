@@ -21,12 +21,24 @@ public class Member implements Serializable {
 	private Date uRegDate;
 	private Date uModifyDate;
 	private String uModifyWriter;
+	private String uYn;
 	
 	public Member() {
 	}
 
+	
+	public String getuYn() {
+		return uYn;
+	}
+
+
+	public void setuYn(String uYn) {
+		this.uYn = uYn;
+	}
+
+
 	public Member(int uNo, String uName, String uId, String uPwd, String uIntro, String uProfile, String uEmail,
-			String uPhone, Date uRegDate, Date uModifyDate, String uModifyWriter) {
+			String uPhone, Date uRegDate, Date uModifyDate, String uModifyWriter, String uYn) {
 		super();
 		this.uNo = uNo;
 		this.uName = uName;
@@ -39,7 +51,9 @@ public class Member implements Serializable {
 		this.uRegDate = uRegDate;
 		this.uModifyDate = uModifyDate;
 		this.uModifyWriter = uModifyWriter;
+		this.uYn = uYn;
 	}
+
 
 	public int getuNo() {
 		return uNo;
@@ -130,11 +144,5 @@ public class Member implements Serializable {
 	}
 	
 	
-	@Override
-	public String toString() {
-		return "Member [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uIntro=" + uIntro
-				+ ", uProfile=" + uProfile + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uRegDate=" + uRegDate
-				+ ", uModifyDate=" + uModifyDate + ", uModifyWriter=" + uModifyWriter + "]";
-	}
 	
 }
