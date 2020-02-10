@@ -15,14 +15,14 @@ import admin.member.model.vo.Member;
 /**
  * Servlet implementation class MemberReadServlet
  */
-@WebServlet("/memberRead.do")
-public class MemberReadServlet extends HttpServlet {
+@WebServlet("/mUpdate.do")
+public class MemberUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberReadServlet() {
+    public MemberUpdateServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -30,24 +30,26 @@ public class MemberReadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Member> mlist = new ArrayList<Member>();
-		MemberService ms = new MemberService();
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		int mNo = Integer.parseInt(request.getParameter("mNo"));
 		
+		Member m = new Member();
 		
-		mlist = ms.readMember();
-		String page = null;
+		n.setNno(nno);
+		n.setNcontent(content);
+		n.setNtitle(title);
 		
+		int result = new MemberService().updateMember(m);
 		
-		if(mlist!=null) {
-			page= "user.jsp";
-			request.setAttribute("mlist", mlist);
-			
-		}else {
-			page = "errorPage.jsp";
-			request.setAttribute("msg", "회원 목록 불러오기 에러!");
+		String page="";
+		
+		if(result > 0) {//수정하기 페이지 데이터 불러오기 성공
+			response.sendRedirect("selectOne.no?nno="+Mno);
+		}else {//수정하기 페이지 데이터 불러오기 실패
+			request.setAttribute("msg","공지 글 수정 페이지 연결 실패");
+			request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 		}
-		
-		request.getRequestDispatcher(page).forward(request, response);
 	}
 
 	/**

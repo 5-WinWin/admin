@@ -57,6 +57,7 @@ public class MemberDao {
 				m.setuModifyWriter(rset.getString("U_MODIFY_WRITER"));
 				m.setuYn(rset.getString("U_YN"));
 				
+	
 				mlist.add(m);
 			}
 			
@@ -68,5 +69,83 @@ public class MemberDao {
 		}
 		return mlist;
 	}
+	public Member selectOne(Connection con, int uNo) {
+		Member m  = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("selectOne");
+	      try {
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setInt(1, uNo);
+	         
+	         
+	         // INSERT, UPDATE, DELETE : executeUpdate();
+	         // SELECT : executeQuery();
+	         rset = pstmt.executeQuery();
+	                  
+	         // if, while
+	         if(rset.next()) {
+	        	 m = new Member();
+	        	 
+					m.setuNo(rset.getInt(uNo));
+					m.setuName(rset.getString("UNAME"));
+					m.setuId(rset.getString("U_ID"));
+					m.setuPwd(rset.getString("U_PWD"));
+					m.setuIntro(rset.getString("U_INTRO"));
+					m.setuProfile(rset.getString("U_PROFILE"));
+					m.setuEmail(rset.getString("U_EMAIL"));
+					m.setuPhone(rset.getString("U_PHONE"));
+					m.setuRegDate(rset.getDate("U_REG_DATE"));
+					m.setuModifyDate(rset.getDate("U_MODIFY_DATE"));
+					m.setuModifyWriter(rset.getString("U_MODIFY_WRITER"));
+					m.setuYn(rset.getString("U_YN"));
+					
+					
+
+	         }
+	         
+	         System.out.println("Member 확인 : "+ m);
+	         
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      System.out.println(uNo);
+	      return m;
+	   }
+	/**
+	 * 회원정보 수정
+	 * @param con
+	 * @param n
+	 * @return
+	 */
+	public int updateMember(Connection con, Member m) {
+	int result = 0;
+	
+	PreparedStatement pstmt = null;
+	
+	String sql = prop.getProperty("updateMember");
+	
+	try {
+		
+		pstmt = con.prepareStatement(sql);
+		
+		/*pstmt.setString(1, m.getNtitle());
+		pstmt.setString(2, m.getNontent());
+		pstmt.setInt(3, m.getNno());*/
+		
+		result = pstmt.executeUpdate();
+	} catch (Exception e) {
+		e.printStackTrace();
+	}finally {
+		close(pstmt);
+	}
+		return result;
+		
+}
 
 }
