@@ -128,18 +128,26 @@ public class MemberDao {
 	
 	PreparedStatement pstmt = null;
 	
-	String sql = prop.getProperty("updateMember");
 	
 	try {
+		String sql = prop.getProperty("updateMember");
 		
 		pstmt = con.prepareStatement(sql);
 		
-		/*pstmt.setString(1, m.getNtitle());
-		pstmt.setString(2, m.getNontent());
-		pstmt.setInt(3, m.getNno());*/
+		pstmt.setString(1, m.getuName());
+		pstmt.setString(2, m.getuId());
+		pstmt.setString(3, m.getuPwd());
+		pstmt.setString(4, m.getuIntro());
+		pstmt.setString(5, m.getuProfile());
+		pstmt.setString(6, m.getuEmail());
+		pstmt.setString(7, m.getuPhone());
+		pstmt.setDate(8, m.getuModifyDate());
+		pstmt.setString(9, m.getuModifyWriter());
+		pstmt.setString(10, m.getuYn());
+		pstmt.setInt(11, m.getuNo());
 		
 		result = pstmt.executeUpdate();
-	} catch (Exception e) {
+	} catch (SQLException e) {
 		e.printStackTrace();
 	}finally {
 		close(pstmt);

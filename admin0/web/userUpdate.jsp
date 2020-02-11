@@ -361,9 +361,9 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>계정활동여부</th>
                       <th>수정일</th>
                       <th>수정자</th>
-                      <th>계정활동여부</th>
                       
                     </tr>
                   </thead>
@@ -378,36 +378,36 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>계정활동여부</th>
                       <th>수정일</th>
                       <th>수정자</th>
-                      <th>계정활동여부</th>
                       
                     </tr>
                   </tfoot>
                   <tbody>
          
-   
+   	<form id="updateForm" action="/admin0/mUpdate.do" method="post">
          <tr style="font-size:13px;">
             
-            <td><%= m.getuNo() %></td>
+            <td><input style="width:30px;Background:none;" type=text value='<%=m.getuNo()%>' name="uNo" readonly></td>
             <td><input style="width:60px"type="text" value="<%= m.getuName() %>" name="uName"></td>
             <td><input style="width:60px"type="text" value="<%= m.getuId() %>" name="uId"></td>
             <td><input style="width:80px"type="password" value="<%= m.getuPwd() %>" name="uPwd"></td>
-            <td><input style="width:100px"type="text" value="<%= m.getuIntro() %>" readonly></td>
+            <td><input style="width:100px"type="text" value="<%= m.getuIntro() %>" name="uIntro"></td>
             <td><input style="width:50px"type="text" value="<%= m.getuProfile() %>" name="uProfile"></td>
-            <td><input style="width:70px"type="email" value="<%= m.getuEmail() %>" name="uName"></td>
+            <td><input style="width:70px"type="email" value="<%= m.getuEmail() %>" name="uEmail"></td>
             <td><input style="width:80px"type="text" value="<%= m.getuPhone() %>" name="uPhone"></td>
-            <td><input style="width:100px"type="date" value="<%= m.getuRegDate() %>" name="uRegDate"></td>
+            <td><%= m.getuRegDate() %></td>
+           <td><input style="width:30px"type="text" value="<%= m.getuYn() %>" name="uYn"></td> 
             <td><input style="width:100px"type="date" value="<%= m.getuModifyDate() %>" name="uModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= m.getuModifyWriter() %>" name="uModifyWriter"></td>
-           <td><input style="width:30px"type="text" value="<%= m.getuYn() %>" name="uYn"></td> 
            
-            
+            <td>
             <button class="btn btn-primary" id=alter<%= m.getuNo() %> onclick="Submit()"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
             
          </tr>
-          
+        </form>  
          
          
                   </tbody>
@@ -420,7 +420,8 @@
         
         <script>
         
-        function Update(){
+        function Submit(){
+        	$("#updateForm").submit();
         	location.href="user.jsp"
         }
         

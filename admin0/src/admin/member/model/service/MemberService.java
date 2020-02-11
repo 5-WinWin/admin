@@ -1,7 +1,9 @@
 package admin.member.model.service;
 
 import static admin.member.common.JDBCTemplate.*;
+import static admin.member.common.JDBCTemplate.commit;
 import static admin.member.common.JDBCTemplate.getConnection;
+import static admin.member.common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
 import java.util.ArrayList;
@@ -24,14 +26,14 @@ public class MemberService {
 	
 	public int updateMember(Member m) {
 		Connection con = getConnection();
-		
+
+		con = getConnection();
 		int result = mDao.updateMember(con,m);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
 		
 		close(con);
-		
 		return result;
 	}
 	

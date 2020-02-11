@@ -361,9 +361,9 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>계정활동</th>
                       <th>수정일</th>
                       <th>수정자</th>
-                      <th>계정활동여부</th>
                       
                     </tr>
                   </thead>
@@ -378,9 +378,9 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>계정활동</th>
                       <th>수정일</th>
                       <th>수정자</th>
-                      <th>계정활동여부</th>
                       
                     </tr>
                   </tfoot>
@@ -398,9 +398,9 @@
             <td><%= m.getuEmail() %></td>
             <td><%= m.getuPhone() %></td>
             <td><%= m.getuRegDate() %></td>
+           <td><%= m.getuYn() %></td> 
             <td><%= m.getuModifyDate() %></td>
             <td><%= m.getuModifyWriter() %></td>
-           <td><%= m.getuYn() %></td> 
            
             <td><button class="btn btn-primary" id=<%= m.getuNo() %> onclick="Update(this.id)"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
