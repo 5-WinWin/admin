@@ -364,6 +364,7 @@
                       <th>계정활동여부</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th></th>
                       
                     </tr>
                   </thead>
@@ -381,6 +382,7 @@
                       <th>계정활동여부</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th></th>	
                       
                     </tr>
                   </tfoot>
@@ -389,7 +391,7 @@
    	<form id="updateForm" action="/admin0/mUpdate.do" method="post">
          <tr style="font-size:13px;">
             
-            <td><input style="width:30px;Background:none;" type=text value='<%=m.getuNo()%>' name="uNo" readonly></td>
+            <td><input style="width:30px;Background:none;border:none;" type=text value='<%=m.getuNo()%>' name="uNo" readonly></td>
             <td><input style="width:60px"type="text" value="<%= m.getuName() %>" name="uName"></td>
             <td><input style="width:60px"type="text" value="<%= m.getuId() %>" name="uId"></td>
             <td><input style="width:80px"type="password" value="<%= m.getuPwd() %>" name="uPwd"></td>

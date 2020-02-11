@@ -364,26 +364,10 @@
                       <th>계정활동</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th></th>
                       
                     </tr>
                   </thead>
-                  <tfoot style="font-size:13px;">
-                    <tr>
-                    <th>회원 번호</th>
-                      <th>회원 이름</th>
-                      <th>아이디</th>
-                      <th>패스워드</th>
-                      <th>자기소개</th>
-                      <th>프로필사진</th>
-                      <th>이메일</th>
-                      <th>핸드폰</th>
-                      <th>가입 날짜</th>
-                      <th>계정활동</th>
-                      <th>수정일</th>
-                      <th>수정자</th>
-                      
-                    </tr>
-                  </tfoot>
                   <tbody>
          <% for(Member m : mlist){ %>
      
@@ -408,6 +392,24 @@
          </tr>
          <% } %>  
                   </tbody>
+                  <tfoot style="font-size:13px;">
+                    <tr>
+                    <th>회원 번호</th>
+                      <th>회원 이름</th>
+                      <th>아이디</th>
+                      <th>패스워드</th>
+                      <th>자기소개</th>
+                      <th>프로필사진</th>
+                      <th>이메일</th>
+                      <th>핸드폰</th>
+                      <th>가입 날짜</th>
+                      <th>계정활동</th>
+                      <th>수정일</th>
+                      <th>수정자</th>
+                      <th></th>
+                      
+                    </tr>
+                  </tfoot>
                 </table>
               </div>
             </div>
