@@ -27,14 +27,9 @@ public class Member implements Serializable {
 	}
 
 	
-	public String getuYn() {
-		return uYn;
-	}
 
 
-	public void setuYn(String uYn) {
-		this.uYn = uYn;
-	}
+	
 
 
 	public Member(int uNo, String uName, String uId, String uPwd, String uIntro, String uProfile, String uEmail,
@@ -53,6 +48,41 @@ public class Member implements Serializable {
 		this.uModifyWriter = uModifyWriter;
 		this.uYn = uYn;
 	}
+
+
+
+
+
+
+
+	public String getuYn() {
+		return uYn;
+	}
+
+
+
+
+	public void setuYn(String uYn) {
+		this.uYn = uYn;
+	}
+
+
+
+
+
+
+
+	@Override
+	public String toString() {
+		return "Member [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uIntro=" + uIntro
+				+ ", uProfile=" + uProfile + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uRegDate=" + uRegDate
+				+ ", uModifyDate=" + uModifyDate + ", uModifyWriter=" + uModifyWriter + ", uYn=" + uYn + "]";
+	}
+
+
+
+
+
 
 
 	public int getuNo() {
@@ -142,7 +172,6 @@ public class Member implements Serializable {
 	public void setuModifyWriter(String uModifyWriter) {
 		this.uModifyWriter = uModifyWriter;
 	}
-	
 	
 	
 }

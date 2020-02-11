@@ -89,7 +89,7 @@ public class MemberDao {
 	         if(rset.next()) {
 	        	 m = new Member();
 	        	 
-					m.setuNo(rset.getInt(uNo));
+					m.setuNo(uNo);
 					m.setuName(rset.getString("UNAME"));
 					m.setuId(rset.getString("U_ID"));
 					m.setuPwd(rset.getString("U_PWD"));

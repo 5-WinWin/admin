@@ -32,7 +32,7 @@ public class MemberSelectOneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//내가 클릭한 게시물을 호출하기위해서 필요한 값을 받아서 변수에 담는다.
 				int uNo = Integer.parseInt(request.getParameter("uNo"));
-				
+				System.out.println(uNo);
 				// 받은 값을 NoticeService로 보내기위해서 객체를 새롭게 하나 만든다.
 				MemberService ms = new MemberService();
 				

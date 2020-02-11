@@ -2,7 +2,7 @@
     pageEncoding="UTF-8" import="admin.member.model.vo.Member,java.util.ArrayList" %>
     
    <% 
-	ArrayList<Member> mlist = (ArrayList<Member>)request.getAttribute("mlist"); 
+   ArrayList<Member> mlist = (ArrayList<Member>)request.getAttribute("mlist"); 
 %> 
   
     
@@ -388,7 +388,7 @@
          <% for(Member m : mlist){ %>
      
          <tr style="font-size:13px;">
-            
+            <input type="hidden" id="uNo<%= m.getuNo() %>" value="<%= m.getuNo() %>"/>
             <td><%= m.getuNo() %></td>
             <td><%= m.getuName() %></td>
             <td><%= m.getuId() %></td>
@@ -400,8 +400,9 @@
             <td><%= m.getuRegDate() %></td>
             <td><%= m.getuModifyDate() %></td>
             <td><%= m.getuModifyWriter() %></td>
-            <td><%= m.getuYn() %></td>
-            <td><button class="btn btn-primary" id=alter<%= m.getuNo() %>
+           <td><%= m.getuYn() %></td> 
+           
+            <td><button class="btn btn-primary" id=<%= m.getuNo() %> onclick="Update(this.id)"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
             
          </tr>
@@ -413,6 +414,17 @@
           </div>
 
         </div>
+        
+        <script>
+        
+        function Update(aguments){
+        	<% Member m = new Member(); %>
+        	var uNo = aguments;
+			location.href="/admin0/mSelectOne.do?uNo=" + uNo;
+        	
+        }
+        
+        </script>
         <!-- /.container-fluid -->
 
       </div>
