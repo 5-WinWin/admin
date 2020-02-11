@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.company.model.vo.Company,java.util.ArrayList"%>
+    pageEncoding="UTF-8" import="admin.portfolio.model.vo.Portfolio,java.util.ArrayList" %>
     
    <% 
-	ArrayList<Company> clist = (ArrayList<Company>)request.getAttribute("clist"); 
+  Portfolio f = (Portfolio)request.getAttribute("portfolio"); 
 %> 
   
+    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>company</title>
+  <title>portfolio</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,12 +32,11 @@
 </head>
 
 <body id="page-top">
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
@@ -96,7 +96,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
-            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
+            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
           </div>
         </div>
       </li>
@@ -339,70 +339,61 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">기업 정보</h1>
-        
-        <!-- DataTales Example -->
+          <h1 class="h3 mb-2 text-gray-800">포트폴리오 정보</h1>
+          
+
+          <!-- DataTales Example -->
           <div class="card shadow mb-4"style="font-size:13px;">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">기업 정보 테이블</h6>
+              <h6 class="m-0 font-weight-bold text-primary">포트폴리오 정보 테이블</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead style="font-size:11.5px;">
                     <tr>
-                      <th>기업 번호</th>
-                      <th>기업 이름</th>
-                      <th>아이디</th>
-                      <th>패스워드</th>
-                      <th>사업자 번호</th>
-                      <th>기업 소개</th>
-                      <th>이메일</th>
-                      <th>핸드폰</th>
-                      <th>가입 날짜</th>
+                      <th>pf 번호</th>
+                      <th>pf</th>
+                      <th>회원 번호(fk)</th>
                       <th>수정일</th>
-                      <th>수정자</th>
+                      <th>수정자/내용</th>
                       <th></th>
+                      
+                      
                     </tr>
                   </thead>
                   <tfoot style="font-size:11.5px;">
                     <tr>
-                    <th>기업 번호</th>
-                      <th>기업 이름</th>
-                      <th>아이디</th>
-                      <th>패스워드</th>
-                      <th>사업자 번호</th>
-                      <th>기업 소개</th>
-                      <th>이메일</th>
-                      <th>핸드폰</th>
-                      <th>가입 날짜</th>
+                    <th>pf 번호</th>
+                      <th>pf</th>
+                      <th>회원 번호(fk)</th>
                       <th>수정일</th>
-                      <th>수정자</th>
+                      <th>수정자/내용</th>
                       <th></th>
+                      
+                      
                     </tr>
                   </tfoot>
                   <tbody>
-         <% for(Company c : clist){ %>
-     
-         <tr style="font-size:11.5px;">
-              <input type="hidden" id="cNo<%= c.getcNo() %>" value="<%= c.getcNo() %>"/>
-            <td><%= c.getcNo() %></td>
-            <td><%= c.getcName() %></td>
-            <td><%= c.getcId() %></td>
-            <td><%= c.getcPwd() %></td>
-            <td><%= c.getcBus() %></td>
-            <td><%= c.getcIntro() %></td>
-            <td><%= c.getcEmail() %></td>
-            <td><%= c.getcPhone() %></td>
-            <td><%= c.getcRegDate() %></td>
-            <td><%= c.getcModifyDate() %></td>
-            <td><%= c.getcModifyWriter() %></td>
+         
+   	<form id="updateForm" action="/admin0/fUpdate.do" method="post">
+         <tr style="font-size:13px;">
             
-            <td><button class="btn btn-primary" id=<%= c.getcNo() %> onclick="Update(this.id)"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+            <td><input style="width:30px;Background:none;border:none;" type=text value='<%=f.getPortNo()%>' name="portNo" readonly></td>
+            <td><input style="width:100px"type="text" value="<%= f.getPort() %>" name="Port"></td>
+            <td><input style="width:30px"type="text" value="<%= f.getuNo() %>" name="uNo"></td>
+            <td><input style="width:80px"type="date" value="<%= f.getPoModifyDate() %>" name="PoModifyDate"></td>
+            <td><input style="width:50px"type="text" value="<%= f.getPoModifyWriter() %>" name="PoModifyWriter"></td>
+           
+           
+            <td>
+            <button class="btn btn-primary" id=alter<%= f.getPortNo() %> onclick="Submit2()"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
             
          </tr>
-         <% } %>  
+        </form>  
+         
+         
                   </tbody>
                 </table>
               </div>
@@ -410,13 +401,13 @@
           </div>
 
         </div>
+        
         <script>
         
-        function Update(aguments){
-        	<% Company c = new Company(); %>
-        	var cNo = aguments;
-			location.href="/admin0/cSelectOne.do?cNo=" + cNo;
-        	
+        function Submit2(){
+        	document.getElementById("updateForm").submit();
+     //   	$("#updateForm").submit();
+     //   	location.href="portfolio.jsp"
         }
         
         </script>

@@ -96,7 +96,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
-            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
+            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
           </div>
         </div>
       </li>
@@ -350,7 +350,7 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
-                  <thead style="font-size:13px;">
+                  <thead style="font-size:11.5px;">
                     <tr>
                       <th>pj 번호</th>
                       <th>등록날</th>
@@ -370,7 +370,7 @@
                       
                     </tr>
                   </thead>
-                  <tfoot style="font-size:13px;">
+                  <tfoot style="font-size:11.5px;">
                     <tr>
                     <th>pj 번호</th>
                       <th>등록날</th>
@@ -405,7 +405,7 @@
             <td><input style="width:80px"type="text" value="<%= p.getpCost() %>" name="pCost"></td>
             <td><input style="width:80px"type="date" value="<%= p.getpStart() %>" name="pStart"></td>
             <td><input style="width:80px"type="date" value="<%= p.getpEnd() %>" name="pEnd"></td>
-            <td><input style="width:80px"type="date" value="<%= p.getpGo() %>" name="pGo"></td>
+            <td><input style="width:80px"type="text" value="<%= p.getpGo() %>" name="pGo"></td>
            <td><input style="width:30px"type="text" value="<%= p.getcNo() %>" name="cNo"></td> 
             <td><input style="width:100px"type="date" value="<%= p.getpModifyDate() %>" name="pModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= p.getpModifyWriter() %>" name="pModifyWriter"></td>

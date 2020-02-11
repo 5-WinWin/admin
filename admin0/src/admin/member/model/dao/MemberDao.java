@@ -106,7 +106,6 @@ public class MemberDao {
 
 	         }
 	         
-	         System.out.println("Member 확인 : "+ m);
 	         
 	      }catch(SQLException e) {
 	         e.printStackTrace();

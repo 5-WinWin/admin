@@ -55,65 +55,58 @@ public class ProjectUpdateServlet extends HttpServlet {
 				Date enroDate = null;
 				Date startDate = null;
 				Date endDate = null;
-				Date goDate = null;
+				
 				Date writeDate = null;
 				
 				if(enro != ""&& enro != null) {
-					String[] dateArr = modifydate.split("-");
-					int[] intArr = new int[dateArr.length];
-					for(int i = 0; i<dateArr.length;i++) {
-						intArr[i] = Integer.parseInt(dateArr[i]);
+					String[] dateArr1 = modifydate.split("-");
+					int[] intArr1 = new int[dateArr1.length];
+					for(int i = 0; i<dateArr1.length;i++) {
+						intArr1[i] = Integer.parseInt(dateArr1[i]);
 					}
 					enroDate = new Date(new GregorianCalendar(
-							intArr[0],intArr[1]-1,intArr[2]
+							intArr1[0],intArr1[1]-1,intArr1[2]
 							).getTimeInMillis());
 				}else {
 					enroDate = new Date(new GregorianCalendar().getTimeInMillis());
 				}
+				
+				
 				if(start != ""&& start != null) {
-					String[] dateArr = modifydate.split("-");
-					int[] intArr = new int[dateArr.length];
-					for(int i = 0; i<dateArr.length;i++) {
-						intArr[i] = Integer.parseInt(dateArr[i]);
+					String[] dateArr2 = modifydate.split("-");
+					int[] intArr2 = new int[dateArr2.length];
+					for(int i = 0; i<dateArr2.length;i++) {
+						intArr2[i] = Integer.parseInt(dateArr2[i]);
 					}
 					startDate = new Date(new GregorianCalendar(
-							intArr[0],intArr[1]-1,intArr[2]
+							intArr2[0],intArr2[1]-1,intArr2[2]
 							).getTimeInMillis());
 				}else {
 					startDate = new Date(new GregorianCalendar().getTimeInMillis());
 				}
+				
+				
 				if(end != ""&& end != null) {
-					String[] dateArr = modifydate.split("-");
-					int[] intArr = new int[dateArr.length];
-					for(int i = 0; i<dateArr.length;i++) {
-						intArr[i] = Integer.parseInt(dateArr[i]);
+					String[] dateArr3 = modifydate.split("-");
+					int[] intArr3 = new int[dateArr3.length];
+					for(int i = 0; i<dateArr3.length;i++) {
+						intArr3[i] = Integer.parseInt(dateArr3[i]);
 					}
 					endDate = new Date(new GregorianCalendar(
-							intArr[0],intArr[1]-1,intArr[2]
+							intArr3[0],intArr3[1]-1,intArr3[2]
 							).getTimeInMillis());
 				}else {
 					endDate = new Date(new GregorianCalendar().getTimeInMillis());
 				}
-				if(go != ""&& go != null) {
-					String[] dateArr = modifydate.split("-");
-					int[] intArr = new int[dateArr.length];
-					for(int i = 0; i<dateArr.length;i++) {
-						intArr[i] = Integer.parseInt(dateArr[i]);
-					}
-					goDate = new Date(new GregorianCalendar(
-							intArr[0],intArr[1]-1,intArr[2]
-							).getTimeInMillis());
-				}else {
-					goDate = new Date(new GregorianCalendar().getTimeInMillis());
-				}
+				
 				if(modifydate != ""&& modifydate != null) {
-					String[] dateArr = modifydate.split("-");
-					int[] intArr = new int[dateArr.length];
-					for(int i = 0; i<dateArr.length;i++) {
-						intArr[i] = Integer.parseInt(dateArr[i]);
+					String[] dateArr4 = modifydate.split("-");
+					int[] intArr4 = new int[dateArr4.length];
+					for(int i = 0; i<dateArr4.length;i++) {
+						intArr4[i] = Integer.parseInt(dateArr4[i]);
 					}
 					writeDate = new Date(new GregorianCalendar(
-							intArr[0],intArr[1]-1,intArr[2]
+							intArr4[0],intArr4[1]-1,intArr4[2]
 							).getTimeInMillis());
 				}else {
 					writeDate = new Date(new GregorianCalendar().getTimeInMillis());
@@ -134,7 +127,7 @@ public class ProjectUpdateServlet extends HttpServlet {
 				p.setpCost(cost);
 				p.setpStart(startDate);
 				p.setpEnd(endDate);
-				p.setpGo(goDate);
+				p.setpGo(go);
 				p.setpModifyDate(writeDate);
 				p.setpModifyWriter(modifywriter);
 				p.setcNo(cno);

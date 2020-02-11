@@ -1,4 +1,4 @@
-package admin.project.model.service;
+package admin.portfolio.model.service;
 
 import static admin.member.common.JDBCTemplate.close;
 import static admin.member.common.JDBCTemplate.commit;
@@ -8,42 +8,43 @@ import static admin.member.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-import admin.project.model.dao.ProjectDao;
-import admin.project.model.vo.Project;
+import admin.portfolio.model.dao.PortfolioDao;
+import admin.portfolio.model.vo.Portfolio;
 
-public class ProjectService {
+public class PortfolioService {
 
-	private ProjectDao pDao = new ProjectDao();
+	private PortfolioDao fDao = new PortfolioDao();
 	
-	public ArrayList<Project> readProject() {
+	public ArrayList<Portfolio> readPortfolio() {
 		Connection con = getConnection();
 		
-		ArrayList<Project> plist = pDao.selectList(con);
+		ArrayList<Portfolio> flist = fDao.selectList(con);
 		
 		close(con);
-		return plist;
+		return flist;
 	}
-
-	public int updateProject(Project p) {
+	
+	public int updatePortfolio(Portfolio f) {
 		Connection con = getConnection();
 
 		con = getConnection();
-		int result = pDao.updateProject(con,p);
+		int result = fDao.updatePortfolio(con,f);
 		
 		if(result > 0) commit(con);
 		else rollback(con);
-		
+		System.out.println("서비스업데이트 "+result);
+
 		close(con);
 		return result;
 	}
 	
-public Project selectOne(int pNo) {
+public Portfolio selectOne(int portNo) {
 		
 		Connection con = getConnection();
 		
-		Project p = pDao.selectOne(con,pNo);
+		Portfolio f = fDao.selectOne(con,portNo);
 		
-		if(p !=null) {
+		if(f !=null) {
 			
 			
 			commit(con);
@@ -51,6 +52,6 @@ public Project selectOne(int pNo) {
 		}else rollback(con);
 		
 		close(con);
-		return p;
+		return f;
 	}
 }

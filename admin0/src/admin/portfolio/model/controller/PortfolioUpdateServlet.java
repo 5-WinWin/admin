@@ -1,4 +1,4 @@
-package admin.member.model.controller;
+package admin.portfolio.model.controller;
 
 import java.io.IOException;
 import java.sql.Date;
@@ -11,21 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import admin.member.model.exception.MemberException;
-import admin.member.model.service.MemberService;
-import admin.member.model.vo.Member;
+import admin.portfolio.model.service.PortfolioService;
+import admin.portfolio.model.vo.Portfolio;
 
 /**
  * Servlet implementation class MemberReadServlet
  */
-@WebServlet("/mUpdate.do")
-public class MemberUpdateServlet extends HttpServlet {
+@WebServlet("/fUpdate.do")
+public class PortfolioUpdateServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public MemberUpdateServlet() {
+    public PortfolioUpdateServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -34,32 +33,26 @@ public class MemberUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원정보 수정용 데이터 꺼내오기
+				int no = Integer.parseInt(request.getParameter("portNo"));
 				int uno = Integer.parseInt(request.getParameter("uNo"));
-				String name = request.getParameter("uName");
-				String id = request.getParameter("uId");
-				String pwd = request.getParameter("uPwd");
-				String intro = request.getParameter("uIntro");
-				String profile = request.getParameter("uProfile");
-				String email = request.getParameter("uEmail");
-				String phone = request.getParameter("uPhone");
-				String modifydate = request.getParameter("uModifyDate");
-				String modifywriter = request.getParameter("uModifyWriter");
-				String yn = request.getParameter("uYn");
-				
-				
-				System.out.println(name+id+pwd+intro+profile+email+phone+modifydate+modifywriter+yn);
+				String port = request.getParameter("Port");
+				String modifydate = request.getParameter("poModifyDate");
+				String modifywriter = request.getParameter("poModifyWriter");
+			
+				System.out.println(no);
+				System.out.println(uno);
+				System.out.println(port);
+				System.out.println(modifywriter);
 				//해당 회원을 구분짓는 ID 받아오기
 				HttpSession session = request.getSession(false);
 				
-				//Member m = (Member)session.getAttribute("member");
 				
-				Member m = new Member();
+				Portfolio f = new Portfolio();
 				
 				Date writeDate = null;
 				
 				if(modifydate != ""&& modifydate != null) {
 					//날짜가 들어 왔을 때
-//				2020-01-30 ==> 2020, 1, 30
 
 					String[] dateArr = modifydate.split("-");
 					int[] intArr = new int[dateArr.length];
@@ -82,27 +75,23 @@ public class MemberUpdateServlet extends HttpServlet {
 				
 				//기존의 회원 정보를 새로운 값으로 변경하기
 			
-				m.setuNo(uno);
-				m.setuName(name);
-				m.setuId(id);
-				m.setuPwd(pwd);
-				m.setuIntro(intro);
-				m.setuProfile(profile);
-				m.setuEmail(email);
-				m.setuPhone(phone);
-				m.setuModifyDate(writeDate);
-				m.setuModifyWriter(modifywriter);
-				m.setuYn(yn);
+				f.setPortNo(no);
+				f.setuNo(uno);
+				f.setPort(port);
+				
+				f.setPoModifyDate(writeDate);
+				f.setPoModifyWriter(modifywriter);
+				
+				System.out.println("변경한 포폴 정보 확인 : "+f);
+				
+				PortfolioService fs = new PortfolioService();
 				
 				
-				MemberService ms = new MemberService();
-				
-				
-				int result = ms.updateMember(m);
+				int result = fs.updatePortfolio(f);
 				
 				if(result>0) {
 					
-					response.sendRedirect("/admin0/memberRead.do");
+				//	response.sendRedirect("/admin0/portfolioRead.do");
 				}else {
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

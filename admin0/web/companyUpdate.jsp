@@ -96,7 +96,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
-            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
+            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
           </div>
         </div>
       </li>
@@ -350,7 +350,7 @@
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
-                  <thead style="font-size:13px;">
+                  <thead style="font-size:11.5px;">
                     <tr>
                       <th>기업 번호</th>
                       <th>기업명</th>
@@ -368,7 +368,7 @@
                       
                     </tr>
                   </thead>
-                  <tfoot style="font-size:13px;">
+                  <tfoot style="font-size:11.5px;">
                     <tr>
                     <th>기업 번호</th>
                       <th>기업명</th>

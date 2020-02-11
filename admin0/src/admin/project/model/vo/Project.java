@@ -15,7 +15,7 @@ public class Project implements Serializable {
 	private int pCost;
 	private Date pStart;
 	private Date pEnd;
-	private Date pGo;
+	private String pGo;
 	private Date pModifyDate;
 	private String pModifyWriter;
 	private int cNo;
@@ -24,7 +24,7 @@ public class Project implements Serializable {
 	}
 
 	public Project(int pNo, Date pEnro, String pTitle, String pBang, String pType, String pDetail, String pCotx,
-			int pCost, Date pStart, Date pEnd, Date pGo, Date pModifyDate, String pModifyWriter, int cNo) {
+			int pCost, Date pStart, Date pEnd, String pGo, Date pModifyDate, String pModifyWriter, int cNo) {
 		super();
 		this.pNo = pNo;
 		this.pEnro = pEnro;
@@ -122,11 +122,11 @@ public class Project implements Serializable {
 		this.pEnd = pEnd;
 	}
 
-	public Date getpGo() {
+	public String getpGo() {
 		return pGo;
 	}
 
-	public void setpGo(Date pGo) {
+	public void setpGo(String pGo) {
 		this.pGo = pGo;
 	}
 

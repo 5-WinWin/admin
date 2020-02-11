@@ -55,10 +55,10 @@ public class ProjectDao {
 				p.setpCost(rset.getInt("P_COST"));
 				p.setpStart(rset.getDate("P_START"));
 				p.setpEnd(rset.getDate("P_END"));
-				p.setpGo(rset.getDate("P_GO"));
 				p.setpModifyDate(rset.getDate("P_MODIFY_DATE"));
 				p.setpModifyWriter(rset.getString("P_MODIFY_WRITER"));
 				p.setcNo(rset.getInt("CNO"));
+				p.setpGo(rset.getString("P_GO"));
 				
 				plist.add(p);
 			}
@@ -102,10 +102,10 @@ public class ProjectDao {
 					p.setpCost(rset.getInt("P_COST"));
 					p.setpStart(rset.getDate("P_START"));
 					p.setpEnd(rset.getDate("P_END"));
-					p.setpGo(rset.getDate("P_GO"));
 					p.setpModifyDate(rset.getDate("P_MODIFY_DATE"));
 					p.setpModifyWriter(rset.getString("P_MODIFY_WRITER"));
 					p.setcNo(rset.getInt("CNO"));
+					p.setpGo(rset.getString("P_GO"));
 					
 
 	         }
@@ -146,7 +146,7 @@ public class ProjectDao {
 		pstmt.setInt(7, p.getpCost());
 		pstmt.setDate(8, p.getpStart());
 		pstmt.setDate(9, p.getpEnd());
-		pstmt.setDate(10, p.getpGo());
+		pstmt.setString(10, p.getpGo());
 		pstmt.setDate(11, p.getpModifyDate());
 		pstmt.setString(12, p.getpModifyWriter());
 		pstmt.setInt(13, p.getcNo());
