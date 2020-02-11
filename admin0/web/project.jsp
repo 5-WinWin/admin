@@ -362,9 +362,9 @@
                       <th>예상 시작일</th>
                       <th>예상 마감일</th>
                       <th>진행기간(day)</th>
-                      <th>수정날짜</th>
-                      <th>수정자</th>
                       <th>기업번호(Fk)</th>
+                      <th>수정날짜</th>
+                      <th>수정자/내용</th>
                     </tr>
                   </thead>
                   <tfoot style="font-size:13px;">
@@ -380,16 +380,16 @@
                       <th>예상 시작일</th>
                       <th>예상 마감일</th>
                       <th>진행기간(day)</th>
-                      <th>수정날짜</th>
-                      <th>수정자</th>
                       <th>기업번호(Fk)</th>
+                      <th>수정날짜</th>
+                      <th>수정자/내용</th>
                     </tr>
                   </tfoot>
                   <tbody>
          <% for(Project p : plist){ %>
      
          <tr style="font-size:13px;">
-            
+            <input type="hidden" id="pNo<%= p.getpNo() %>" value="<%= p.getpNo() %>"/>
             <td><%= p.getpNo() %></td>
             <td><%= p.getpEnro() %></td>
             <td><%= p.getpTitle() %></td>
@@ -401,9 +401,11 @@
             <td><%= p.getpStart() %></td>
             <td><%= p.getpEnd() %></td>
             <td><%= p.getpGo() %></td>
+            <td><%= p.getcNo() %></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
-            <td><%= p.getcNo() %></td>
+             <td><button class="btn btn-primary" id=<%= p.getpNo() %> onclick="Update(this.id)"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
             
          </tr>
          <% } %>  
@@ -414,6 +416,16 @@
           </div>
 
         </div>
+        <script>
+        
+        function Update(aguments){
+        	<% Project p = new Project(); %>
+        	var pNo = aguments;
+			location.href="/admin0/pSelectOne.do?pNo=" + pNo;
+        	
+        }
+        
+        </script>
         <!-- /.container-fluid -->
 
       </div>

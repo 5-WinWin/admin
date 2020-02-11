@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import admin.company.model.vo.Company;
+import admin.member.model.vo.Member;
 
 public class CompanyDao {
 
@@ -67,5 +68,92 @@ public class CompanyDao {
 		}
 		return clist;
 	}
+	
+	public Company selectOne(Connection con, int cNo) {
+		Company c  = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("selectOne");
+	      try {
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setInt(1, cNo);
+	         
+	         
+	         // INSERT, UPDATE, DELETE : executeUpdate();
+	         // SELECT : executeQuery();
+	         rset = pstmt.executeQuery();
+	                  
+	         // if, while
+	         if(rset.next()) {
+	        	 c = new Company();
+	        	 
+					c.setcNo(cNo);
+					c.setcName(rset.getString("CNAME"));
+					c.setcId(rset.getString("C_ID"));
+					c.setcPwd(rset.getString("C_PWD"));
+					c.setcEmail(rset.getString("C_EMAIL"));
+					c.setcPhone(rset.getString("C_PHONE"));
+					c.setcIntro(rset.getString("C_INTRO"));
+					c.setcBus(rset.getString("C_BUS"));
+					c.setcRegDate(rset.getDate("C_REG_DATE"));
+					c.setcModifyDate(rset.getDate("C_MODIFY_DATE"));
+					c.setcModifyWriter(rset.getString("C_MODIFY_WRITER"));
+					c.setcYn(rset.getString("C_YN"));
+					
+					
+
+	         }
+	         
+	         System.out.println("Company 확인 : "+ c);
+	         
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      System.out.println(cNo);
+	      return c;
+	   }
+	/**
+	 * 회원정보 수정
+	 * @param con
+	 * @param n
+	 * @return
+	 */
+	public int updateCompany(Connection con, Company c) {
+	int result = 0;
+	
+	PreparedStatement pstmt = null;
+	
+	
+	try {
+		String sql = prop.getProperty("updateCompany");
+		
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setString(1, c.getcName());
+		pstmt.setString(2, c.getcId());
+		pstmt.setString(3, c.getcPwd());
+		pstmt.setString(6, c.getcEmail());
+		pstmt.setString(7, c.getcPhone());
+		pstmt.setString(4, c.getcIntro());
+		pstmt.setString(5, c.getcBus());
+		pstmt.setDate(8, c.getcModifyDate());
+		pstmt.setString(9, c.getcModifyWriter());
+		pstmt.setString(10, c.getcYn());
+		pstmt.setInt(11, c.getcNo());
+		
+		result = pstmt.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close(pstmt);
+	}
+		return result;
+		
+}
 
 }

@@ -13,7 +13,7 @@ import admin.company.model.service.CompanyService;
 import admin.company.model.vo.Company;
 
 /**
- * Servlet implementation class MemberReadServlet
+ * Servlet implementation class CompanyReadServlet
  */
 @WebServlet("/companyRead.do")
 public class CompanyReadServlet extends HttpServlet {

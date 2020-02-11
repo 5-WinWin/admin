@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Properties;
 
+import admin.member.model.vo.Member;
 import admin.project.model.vo.Project;
 
 public class ProjectDao {
@@ -70,5 +71,95 @@ public class ProjectDao {
 		}
 		return plist;
 	}
+	
+	public Project selectOne(Connection con, int pNo) {
+		Project p  = null;
+	      PreparedStatement pstmt = null;
+	      ResultSet rset = null;
+	      
+	      String sql = prop.getProperty("selectOne");
+	      try {
+	         pstmt = con.prepareStatement(sql);
+	         
+	         pstmt.setInt(1, pNo);
+	         
+	         
+	         // INSERT, UPDATE, DELETE : executeUpdate();
+	         // SELECT : executeQuery();
+	         rset = pstmt.executeQuery();
+	                  
+	         // if, while
+	         if(rset.next()) {
+	        	 p = new Project();
+	        	 
+					p.setpNo(pNo);
+					p.setpEnro(rset.getDate("P_ENRO"));
+					p.setpTitle(rset.getString("P_TITLE"));
+					p.setpBang(rset.getString("P_BANG"));
+					p.setpType(rset.getString("P_TYPE"));
+					p.setpDetail(rset.getString("P_DETAIL"));
+					p.setpCotx(rset.getString("P_COTX"));
+					p.setpCost(rset.getInt("P_COST"));
+					p.setpStart(rset.getDate("P_START"));
+					p.setpEnd(rset.getDate("P_END"));
+					p.setpGo(rset.getDate("P_GO"));
+					p.setpModifyDate(rset.getDate("P_MODIFY_DATE"));
+					p.setpModifyWriter(rset.getString("P_MODIFY_WRITER"));
+					p.setcNo(rset.getInt("CNO"));
+					
+
+	         }
+	         
+	         System.out.println("Project 확인 : "+ p);
+	         
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close(rset);
+	         close(pstmt);
+	      }
+	      return p;
+	   }
+	/**
+	 * 회원정보 수정
+	 * @param con
+	 * @param n
+	 * @return
+	 */
+	public int updateProject(Connection con, Project p) {
+	int result = 0;
+	
+	PreparedStatement pstmt = null;
+	
+	
+	try {
+		String sql = prop.getProperty("updateProject");
+		
+		pstmt = con.prepareStatement(sql);
+		
+		pstmt.setDate(1, p.getpEnro());
+		pstmt.setString(2, p.getpTitle());
+		pstmt.setString(3, p.getpBang());
+		pstmt.setString(4, p.getpType());
+		pstmt.setString(5, p.getpDetail());
+		pstmt.setString(6, p.getpCotx());
+		pstmt.setInt(7, p.getpCost());
+		pstmt.setDate(8, p.getpStart());
+		pstmt.setDate(9, p.getpEnd());
+		pstmt.setDate(10, p.getpGo());
+		pstmt.setDate(11, p.getpModifyDate());
+		pstmt.setString(12, p.getpModifyWriter());
+		pstmt.setInt(13, p.getcNo());
+		pstmt.setInt(14, p.getpNo());
+		
+		result = pstmt.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	}finally {
+		close(pstmt);
+	}
+		return result;
+		
+}
 
 }

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.member.model.vo.Member,java.util.ArrayList" %>
+    pageEncoding="UTF-8" import="admin.project.model.vo.Project,java.util.ArrayList" %>
     
    <% 
-   ArrayList<Member> mlist = (ArrayList<Member>)request.getAttribute("mlist"); 
+  Project p = (Project)request.getAttribute("project"); 
 %> 
   
     
@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>user</title>
+  <title>project</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -339,76 +339,85 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">회원 정보</h1>
+          <h1 class="h3 mb-2 text-gray-800">프로젝트 정보</h1>
           
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4"style="font-size:13px;">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">회원 정보 테이블</h6>
+              <h6 class="m-0 font-weight-bold text-primary">프로젝트 정보 테이블</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead style="font-size:13px;">
                     <tr>
-                      <th>회원 번호</th>
-                      <th>회원 이름</th>
-                      <th>아이디</th>
-                      <th>패스워드</th>
-                      <th>자기소개</th>
-                      <th>프로필사진</th>
-                      <th>이메일</th>
-                      <th>핸드폰</th>
-                      <th>가입 날짜</th>
-                      <th>계정활동</th>
-                      <th>수정일</th>
+                      <th>pj 번호</th>
+                      <th>등록날</th>
+                      <th>pj명</th>
+                      <th>외/상주</th>
+                      <th>구분</th>
+                      <th>상세분류</th>
+                      <th>내용</th>
+                      <th>예상비용</th>
+                      <th>예상시작일</th>
+                      <th>예상마감일</th>
+                      <th>진행기간</th>
+                      <th>기업번호</th>
+                      <th>수정날</th>
                       <th>수정자/내용</th>
-                      <th></th>
+                      
                       
                     </tr>
                   </thead>
                   <tfoot style="font-size:13px;">
                     <tr>
-                    <th>회원 번호</th>
-                      <th>회원 이름</th>
-                      <th>아이디</th>
-                      <th>패스워드</th>
-                      <th>자기소개</th>
-                      <th>프로필사진</th>
-                      <th>이메일</th>
-                      <th>핸드폰</th>
-                      <th>가입 날짜</th>
-                      <th>계정활동</th>
-                      <th>수정일</th>
+                    <th>pj 번호</th>
+                      <th>등록날</th>
+                      <th>pj명</th>
+                      <th>외/상주</th>
+                      <th>구분</th>
+                      <th>상세분류</th>
+                      <th>내용</th>
+                      <th>예상비용</th>
+                      <th>예상시작일</th>
+                      <th>예상마감일</th>
+                      <th>진행기간</th>
+                      <th>기업번호</th>
+                      <th>수정날</th>
                       <th>수정자/내용</th>
-                      <th></th>
+                      
                       
                     </tr>
                   </tfoot>
                   <tbody>
-         <% for(Member m : mlist){ %>
-     
+         
+   	<form id="updateForm" action="/admin0/pUpdate.do" method="post">
          <tr style="font-size:13px;">
-            <input type="hidden" id="uNo<%= m.getuNo() %>" value="<%= m.getuNo() %>"/>
-            <td><%= m.getuNo() %></td>
-            <td><%= m.getuName() %></td>
-            <td><%= m.getuId() %></td>
-            <td><%= m.getuPwd() %></td>
-            <td><%= m.getuIntro() %></td>
-            <td><%= m.getuProfile() %></td>
-            <td><%= m.getuEmail() %></td>
-            <td><%= m.getuPhone() %></td>
-            <td><%= m.getuRegDate() %></td>
-           <td><%= m.getuYn() %></td> 
-            <td><%= m.getuModifyDate() %></td>
-            <td><%= m.getuModifyWriter() %></td>
+            
+            <td><input style="width:30px;Background:none;border:none;" type=text value='<%=p.getpNo()%>' name="pNo" readonly></td>
+            <td><input style="width:60px"type="date" value="<%= p.getpEnro() %>" name="pEnro"></td>
+            <td><input style="width:60px"type="text" value="<%= p.getpTitle() %>" name="pTitle"></td>
+            <td><input style="width:80px"type="text" value="<%= p.getpBang() %>" name="pBang"></td>
+            <td><input style="width:100px"type="text" value="<%= p.getpType() %>" name="pType"></td>
+            <td><input style="width:50px"type="text" value="<%= p.getpDetail() %>" name="pDetail"></td>
+            <td><input style="width:70px"type="text" value="<%= p.getpCotx() %>" name="pCotx"></td>
+            <td><input style="width:80px"type="text" value="<%= p.getpCost() %>" name="pCost"></td>
+            <td><input style="width:80px"type="date" value="<%= p.getpStart() %>" name="pStart"></td>
+            <td><input style="width:80px"type="date" value="<%= p.getpEnd() %>" name="pEnd"></td>
+            <td><input style="width:80px"type="date" value="<%= p.getpGo() %>" name="pGo"></td>
+           <td><input style="width:30px"type="text" value="<%= p.getcNo() %>" name="cNo"></td> 
+            <td><input style="width:100px"type="date" value="<%= p.getpModifyDate() %>" name="pModifyDate"></td>
+            <td><input style="width:50px"type="text" value="<%= p.getpModifyWriter() %>" name="pModifyWriter"></td>
            
-            <td><button class="btn btn-primary" id=<%= m.getuNo() %> onclick="Update(this.id)"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+            <td>
+            <button class="btn btn-primary" id=alter<%= p.getpNo() %> onclick="Submit()"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
             
          </tr>
-         <% } %>  
+        </form>  
+         
+         
                   </tbody>
                 </table>
               </div>
@@ -419,11 +428,9 @@
         
         <script>
         
-        function Update(aguments){
-        	<% Member m = new Member(); %>
-        	var uNo = aguments;
-			location.href="/admin0/mSelectOne.do?uNo=" + uNo;
-        	
+        function Submit(){
+        	$("#updateForm").submit();
+        	location.href="project.jsp"
         }
         
         </script>

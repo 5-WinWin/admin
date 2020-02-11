@@ -1,0 +1,166 @@
+package admin.project.model.controller;
+
+import java.io.IOException;
+import java.sql.Date;
+import java.util.GregorianCalendar;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import admin.project.model.service.ProjectService;
+import admin.project.model.vo.Project;
+
+/**
+ * Servlet implementation class ProjectReadServlet
+ */
+@WebServlet("/pUpdate.do")
+public class ProjectUpdateServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+    /**
+     * Default constructor. 
+     */
+    public ProjectUpdateServlet() {
+        // TODO Auto-generated constructor stub
+    }
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//회원정보 수정용 데이터 꺼내오기
+				int pno = Integer.parseInt(request.getParameter("pNo"));
+				String enro = request.getParameter("pEnro");
+				String title = request.getParameter("pTitle");
+				String bang = request.getParameter("pBang");
+				String type = request.getParameter("pType");
+				String detail = request.getParameter("pDetail");
+				String cotx = request.getParameter("pCotx");
+				int cost = Integer.parseInt(request.getParameter("pCost"));
+				String start = request.getParameter("pStart");
+				String end = request.getParameter("pEnd");
+				String go = request.getParameter("pGo");
+				String modifydate = request.getParameter("pModifyDate");
+				String modifywriter = request.getParameter("pModifyWriter");
+				int cno = Integer.parseInt(request.getParameter("cNo"));
+				
+				HttpSession session = request.getSession(false);
+				
+				Project p = new Project();
+				
+				Date enroDate = null;
+				Date startDate = null;
+				Date endDate = null;
+				Date goDate = null;
+				Date writeDate = null;
+				
+				if(enro != ""&& enro != null) {
+					String[] dateArr = modifydate.split("-");
+					int[] intArr = new int[dateArr.length];
+					for(int i = 0; i<dateArr.length;i++) {
+						intArr[i] = Integer.parseInt(dateArr[i]);
+					}
+					enroDate = new Date(new GregorianCalendar(
+							intArr[0],intArr[1]-1,intArr[2]
+							).getTimeInMillis());
+				}else {
+					enroDate = new Date(new GregorianCalendar().getTimeInMillis());
+				}
+				if(start != ""&& start != null) {
+					String[] dateArr = modifydate.split("-");
+					int[] intArr = new int[dateArr.length];
+					for(int i = 0; i<dateArr.length;i++) {
+						intArr[i] = Integer.parseInt(dateArr[i]);
+					}
+					startDate = new Date(new GregorianCalendar(
+							intArr[0],intArr[1]-1,intArr[2]
+							).getTimeInMillis());
+				}else {
+					startDate = new Date(new GregorianCalendar().getTimeInMillis());
+				}
+				if(end != ""&& end != null) {
+					String[] dateArr = modifydate.split("-");
+					int[] intArr = new int[dateArr.length];
+					for(int i = 0; i<dateArr.length;i++) {
+						intArr[i] = Integer.parseInt(dateArr[i]);
+					}
+					endDate = new Date(new GregorianCalendar(
+							intArr[0],intArr[1]-1,intArr[2]
+							).getTimeInMillis());
+				}else {
+					endDate = new Date(new GregorianCalendar().getTimeInMillis());
+				}
+				if(go != ""&& go != null) {
+					String[] dateArr = modifydate.split("-");
+					int[] intArr = new int[dateArr.length];
+					for(int i = 0; i<dateArr.length;i++) {
+						intArr[i] = Integer.parseInt(dateArr[i]);
+					}
+					goDate = new Date(new GregorianCalendar(
+							intArr[0],intArr[1]-1,intArr[2]
+							).getTimeInMillis());
+				}else {
+					goDate = new Date(new GregorianCalendar().getTimeInMillis());
+				}
+				if(modifydate != ""&& modifydate != null) {
+					String[] dateArr = modifydate.split("-");
+					int[] intArr = new int[dateArr.length];
+					for(int i = 0; i<dateArr.length;i++) {
+						intArr[i] = Integer.parseInt(dateArr[i]);
+					}
+					writeDate = new Date(new GregorianCalendar(
+							intArr[0],intArr[1]-1,intArr[2]
+							).getTimeInMillis());
+				}else {
+					writeDate = new Date(new GregorianCalendar().getTimeInMillis());
+				}
+				
+				
+				
+				
+				//기존의 회원 정보를 새로운 값으로 변경하기
+			
+				p.setpNo(pno);
+				p.setpEnro(enroDate);
+				p.setpTitle(title);
+				p.setpBang(bang);
+				p.setpType(type);
+				p.setpDetail(detail);
+				p.setpCotx(cotx);
+				p.setpCost(cost);
+				p.setpStart(startDate);
+				p.setpEnd(endDate);
+				p.setpGo(goDate);
+				p.setpModifyDate(writeDate);
+				p.setpModifyWriter(modifywriter);
+				p.setcNo(cno);
+				
+				System.out.println("변경한 프로젝트 정보 확인 : "+p);
+				
+				ProjectService ps = new ProjectService();
+				
+				
+				int result = ps.updateProject(p);
+				
+				if(result>0) {
+					
+					response.sendRedirect("/admin0/projectRead.do");
+				}else {
+					
+					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
+				}
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

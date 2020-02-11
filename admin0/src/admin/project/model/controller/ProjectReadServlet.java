@@ -44,7 +44,7 @@ public class ProjectReadServlet extends HttpServlet {
 			request.setAttribute("plist", plist);
 		}else {
 			page = "errorPage.jsp";
-			request.setAttribute("msg", "기업회원 목록 불러오기 에러!");
+			request.setAttribute("msg", "프로젝트 목록 불러오기 에러!");
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);

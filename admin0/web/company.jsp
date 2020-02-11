@@ -362,6 +362,7 @@
                       <th>가입 날짜</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th></th>
                     </tr>
                   </thead>
                   <tfoot style="font-size:13px;">
@@ -377,13 +378,14 @@
                       <th>가입 날짜</th>
                       <th>수정일</th>
                       <th>수정자</th>
+                      <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
          <% for(Company c : clist){ %>
      
          <tr style="font-size:13px;">
-            
+              <input type="hidden" id="cNo<%= c.getcNo() %>" value="<%= c.getcNo() %>"/>
             <td><%= c.getcNo() %></td>
             <td><%= c.getcName() %></td>
             <td><%= c.getcId() %></td>
@@ -396,6 +398,9 @@
             <td><%= c.getcModifyDate() %></td>
             <td><%= c.getcModifyWriter() %></td>
             
+            <td><button class="btn btn-primary" id=<%= c.getcNo() %> onclick="Update(this.id)"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+            
          </tr>
          <% } %>  
                   </tbody>
@@ -405,6 +410,16 @@
           </div>
 
         </div>
+        <script>
+        
+        function Update(aguments){
+        	<% Company c = new Company(); %>
+        	var cNo = aguments;
+			location.href="/admin0/cSelectOne.do?cNo=" + cNo;
+        	
+        }
+        
+        </script>
         <!-- /.container-fluid -->
 
       </div>
