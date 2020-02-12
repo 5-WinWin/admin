@@ -36,12 +36,13 @@ public class PortfolioUpdateServlet extends HttpServlet {
 				int no = Integer.parseInt(request.getParameter("portNo"));
 				int uno = Integer.parseInt(request.getParameter("uNo"));
 				String port = request.getParameter("Port");
-				String modifydate = request.getParameter("poModifyDate");
-				String modifywriter = request.getParameter("poModifyWriter");
+				String modifydate = request.getParameter("PoModifyDate");
+				String modifywriter = request.getParameter("PoModifyWriter");
 			
 				System.out.println(no);
 				System.out.println(uno);
 				System.out.println(port);
+				System.out.println(modifydate);
 				System.out.println(modifywriter);
 				//해당 회원을 구분짓는 ID 받아오기
 				HttpSession session = request.getSession(false);
@@ -75,9 +76,9 @@ public class PortfolioUpdateServlet extends HttpServlet {
 				
 				//기존의 회원 정보를 새로운 값으로 변경하기
 			
-				f.setPortNo(no);
-				f.setuNo(uno);
-				f.setPort(port);
+			f.setPortNo(no);
+			f.setuNo(uno);
+			f.setPort(port);
 				
 				f.setPoModifyDate(writeDate);
 				f.setPoModifyWriter(modifywriter);
@@ -91,7 +92,7 @@ public class PortfolioUpdateServlet extends HttpServlet {
 				
 				if(result>0) {
 					
-				//	response.sendRedirect("/admin0/portfolioRead.do");
+					response.sendRedirect("/admin0/portfolioRead.do");
 				}else {
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);

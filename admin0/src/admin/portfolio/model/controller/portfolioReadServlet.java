@@ -33,7 +33,6 @@ public class portfolioReadServlet extends HttpServlet {
 		ArrayList<Portfolio> flist = new ArrayList<Portfolio>();
 		PortfolioService fs = new PortfolioService();
 		
-		System.out.println("서블렛리드부분 시작~");
 
 		flist = fs.readPortfolio();
 		String page = null;

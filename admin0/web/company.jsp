@@ -96,7 +96,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
-            <a class="collapse-item" href="portfolio.jsp">포트폴리오</a>
+            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
           </div>
         </div>
       </li>
@@ -360,6 +360,8 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>활동 여부</th>
+                      <th>사업자 증명</th>
                       <th>수정일</th>
                       <th>수정자</th>
                       <th></th>
@@ -376,6 +378,8 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
+                      <th>활동 여부</th>
+                      <th>사업자 증명</th>
                       <th>수정일</th>
                       <th>수정자</th>
                       <th></th>
@@ -395,6 +399,8 @@
             <td><%= c.getcEmail() %></td>
             <td><%= c.getcPhone() %></td>
             <td><%= c.getcRegDate() %></td>
+            <td><%= c.getcYn() %></td>
+            <td><%= c.getcProof() %></td>
             <td><%= c.getcModifyDate() %></td>
             <td><%= c.getcModifyWriter() %></td>
             

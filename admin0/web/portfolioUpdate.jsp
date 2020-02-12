@@ -349,6 +349,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
+              <form id="updateForm" action="/admin0/fUpdate.do" method="post">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead style="font-size:11.5px;">
                     <tr>
@@ -376,9 +377,9 @@
                   </tfoot>
                   <tbody>
          
-   	<form id="updateForm" action="/admin0/fUpdate.do" method="post">
+   	
          <tr style="font-size:13px;">
-            
+            	
             <td><input style="width:30px;Background:none;border:none;" type=text value='<%=f.getPortNo()%>' name="portNo" readonly></td>
             <td><input style="width:100px"type="text" value="<%= f.getPort() %>" name="Port"></td>
             <td><input style="width:30px"type="text" value="<%= f.getuNo() %>" name="uNo"></td>
@@ -387,15 +388,16 @@
            
            
             <td>
-            <button class="btn btn-primary" id=alter<%= f.getPortNo() %> onclick="Submit2()"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
+            <input type="submit" value="완료" class="btn btn-primary" id=alter<%= f.getPortNo() %>
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;></td>
             
          </tr>
-        </form>  
+     
          
          
                   </tbody>
                 </table>
+                   </form>  
               </div>
             </div>
           </div>
@@ -404,11 +406,15 @@
         
         <script>
         
-        function Submit2(){
-        	document.getElementById("updateForm").submit();
-     //   	$("#updateForm").submit();
-     //   	location.href="portfolio.jsp"
-        }
+    <%--     function Submit2(){
+        	console.log(<%= f.getPoModifyWriter() %>);
+        	console.log(<%= f.getPort() %>);
+        	console.log(<%= f.getuNo() %>);
+        	console.log(<%=f.getPortNo()%>);
+        	console.log(<%= f.getPoModifyDate() %>);
+        	$("#updateForm").submit();
+         	location.href="portfolio.jsp"
+       } --%>
         
         </script>
         <!-- /.container-fluid -->

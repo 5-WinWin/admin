@@ -54,8 +54,10 @@ public class CompanyDao {
 				c.setcIntro(rset.getString("C_INTRO"));
 				c.setcBus(rset.getString("C_BUS"));
 				c.setcRegDate(rset.getDate("C_REG_DATE"));
+				c.setcYn(rset.getString("C_YN"));
 				c.setcModifyDate(rset.getDate("C_MODIFY_DATE"));
 				c.setcModifyWriter(rset.getString("C_MODIFY_WRITER"));
+				c.setcProof(rset.getString("C_PROOF"));
 				
 				clist.add(c);
 			}
@@ -101,6 +103,7 @@ public class CompanyDao {
 					c.setcModifyDate(rset.getDate("C_MODIFY_DATE"));
 					c.setcModifyWriter(rset.getString("C_MODIFY_WRITER"));
 					c.setcYn(rset.getString("C_YN"));
+					c.setcProof(rset.getString("C_PROOF"));
 					
 					
 
@@ -144,7 +147,8 @@ public class CompanyDao {
 		pstmt.setDate(8, c.getcModifyDate());
 		pstmt.setString(9, c.getcModifyWriter());
 		pstmt.setString(10, c.getcYn());
-		pstmt.setInt(11, c.getcNo());
+		pstmt.setString(11, c.getcProof());
+		pstmt.setInt(12, c.getcNo());
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {

@@ -44,6 +44,7 @@ public class CompanyUpdateServlet extends HttpServlet {
 				String modifydate = request.getParameter("cModifyDate");
 				String modifywriter = request.getParameter("cModifyWriter");
 				String yn = request.getParameter("cYn");
+				String proof = request.getParameter("cProof");
 				
 				
 				//해당 회원을 구분짓는 ID 받아오기
@@ -87,6 +88,7 @@ public class CompanyUpdateServlet extends HttpServlet {
 				c.setcModifyDate(writeDate);
 				c.setcModifyWriter(modifywriter);
 				c.setcYn(yn);
+				c.setcProof(proof);
 				
 				System.out.println("변경한 회원 정보 확인 : "+c);
 				

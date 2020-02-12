@@ -361,7 +361,8 @@
                       <th>자기소개</th>
                       <th>사업자번호</th>
                       <th>가입 날짜</th>
-                      <th>계정활동여부</th>
+                      <th>활동 여부</th>
+                      <th>사업자 증명</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -379,7 +380,8 @@
                       <th>자기소개</th>
                       <th>사업자번호</th>
                       <th>가입 날짜</th>
-                      <th>계정활동여부</th>
+                      <th>활동 여부</th>
+                      <th>사업자 증명</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -401,6 +403,7 @@
             <td><input style="width:80px"type="text" value="<%= c.getcBus() %>" name="cBus"></td>
             <td><%= c.getcRegDate() %></td>
            <td><input style="width:30px"type="text" value="<%= c.getcYn() %>" name="cYn"></td> 
+           <td><input style="width:30px"type="text" value="<%= c.getcProof() %>" name="cProof"></td> 
             <td><input style="width:100px"type="date" value="<%= c.getcModifyDate() %>" name="cModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= c.getcModifyWriter() %>" name="cModifyWriter"></td>
            

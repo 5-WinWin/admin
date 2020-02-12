@@ -94,7 +94,6 @@ public class PortfolioDao {
 
 	         }
 	         
-	         System.out.println("Portfolio 확인 : "+ f);
 	         
 	      }catch(SQLException e) {
 	         e.printStackTrace();

@@ -339,12 +339,12 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">기업 정보</h1>
+          <h1 class="h3 mb-2 text-gray-800">포트폴리오</h1>
         
         <!-- DataTales Example -->
           <div class="card shadow mb-4"style="font-size:13px;">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">기업 정보 테이블</h6>
+              <h6 class="m-0 font-weight-bold text-primary">포트폴리오 테이블</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">

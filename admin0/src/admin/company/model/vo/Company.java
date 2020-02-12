@@ -22,12 +22,13 @@ public class Company implements Serializable {
 	private Date cModifyDate;
 	private String cModifyWriter;
 	private String cYn;
+	private String cProof;
 	
 	public Company() {
 	}
 
 	public Company(int cNo, String cName, String cId, String cPwd, String cEmail, String cPhone, String cIntro,
-			String cBus, Date cRegDate, Date cModifyDate, String cModifyWriter, String cYn) {
+			String cBus, Date cRegDate, Date cModifyDate, String cModifyWriter, String cYn, String cProof) {
 		super();
 		this.cNo = cNo;
 		this.cName = cName;
@@ -41,6 +42,14 @@ public class Company implements Serializable {
 		this.cModifyDate = cModifyDate;
 		this.cModifyWriter = cModifyWriter;
 		this.cYn = cYn;
+	}
+
+	public String getcProof() {
+		return cProof;
+	}
+
+	public void setcProof(String cProof) {
+		this.cProof = cProof;
 	}
 
 	public String getcYn() {
@@ -143,8 +152,10 @@ public class Company implements Serializable {
 	public String toString() {
 		return "Company [cNo=" + cNo + ", cName=" + cName + ", cId=" + cId + ", cPwd=" + cPwd + ", cEmail=" + cEmail
 				+ ", cPhone=" + cPhone + ", cIntro=" + cIntro + ", cBus=" + cBus + ", cRegDate=" + cRegDate
-				+ ", cModifyDate=" + cModifyDate + ", cModifyWriter=" + cModifyWriter + ", cYn=" + cYn + "]";
+				+ ", cModifyDate=" + cModifyDate + ", cModifyWriter=" + cModifyWriter + ", cYn=" + cYn + ", cProof="
+				+ cProof + "]";
 	}
+
 
 	
 	
