@@ -88,8 +88,8 @@ public class AdsDao {
 					a.setAdsStart(rset.getDate("ADS_START"));
 					a.setAdsEnd(rset.getDate("ADS_END"));
 					a.setAdsPrice(rset.getInt("ADS_PRICE"));
-					a.setAdsModifyDate(rset.getDate("C_MODIFY_DATE"));
-					a.setAdsModifyWriter(rset.getString("C_MODIFY_WRITER"));
+					a.setAdsModifyDate(rset.getDate("ADS_MODIFY_DATE"));
+					a.setAdsModifyWriter(rset.getString("ADS_MODIFY_WRITER"));
 					
 					
 

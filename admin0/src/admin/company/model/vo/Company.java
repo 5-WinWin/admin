@@ -23,12 +23,15 @@ public class Company implements Serializable {
 	private String cModifyWriter;
 	private String cYn;
 	private String cProof;
+	private int pNo;
 	
 	public Company() {
 	}
 
+	
+
 	public Company(int cNo, String cName, String cId, String cPwd, String cEmail, String cPhone, String cIntro,
-			String cBus, Date cRegDate, Date cModifyDate, String cModifyWriter, String cYn, String cProof) {
+			String cBus, Date cRegDate, Date cModifyDate, String cModifyWriter, String cYn, String cProof, int pNo) {
 		super();
 		this.cNo = cNo;
 		this.cName = cName;
@@ -42,7 +45,23 @@ public class Company implements Serializable {
 		this.cModifyDate = cModifyDate;
 		this.cModifyWriter = cModifyWriter;
 		this.cYn = cYn;
+		this.cProof = cProof;
+		this.pNo = pNo;
 	}
+
+
+
+	public int getpNo() {
+		return pNo;
+	}
+
+
+
+	public void setpNo(int pNo) {
+		this.pNo = pNo;
+	}
+
+
 
 	public String getcProof() {
 		return cProof;
@@ -148,14 +167,17 @@ public class Company implements Serializable {
 		this.cModifyWriter = cModifyWriter;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Company [cNo=" + cNo + ", cName=" + cName + ", cId=" + cId + ", cPwd=" + cPwd + ", cEmail=" + cEmail
 				+ ", cPhone=" + cPhone + ", cIntro=" + cIntro + ", cBus=" + cBus + ", cRegDate=" + cRegDate
 				+ ", cModifyDate=" + cModifyDate + ", cModifyWriter=" + cModifyWriter + ", cYn=" + cYn + ", cProof="
-				+ cProof + "]";
+				+ cProof + ", pNo=" + pNo + "]";
 	}
 
+	
 
 	
 	

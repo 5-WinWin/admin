@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -362,6 +362,7 @@
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
                       <th>계정활동</th>
+                      <th>포폴번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -380,6 +381,7 @@
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
                       <th>계정활동</th>
+                      <th>포폴번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -401,6 +403,7 @@
             <td><%= m.getuPhone() %></td>
             <td><%= m.getuRegDate() %></td>
            <td><%= m.getuYn() %></td> 
+           <td><a href="/admin0/fConnect.do?portNo=<%= m.getfNo() %>";><%=m.getfNo() %></a></td>
             <td><%= m.getuModifyDate() %></td>
             <td><%= m.getuModifyWriter() %></td>
            

@@ -4,13 +4,14 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Member implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7487643460817190566L;
-	
+
 	private int uNo;
+	private int fNo;
 	private String uName;
 	private String uId;
 	private String uPwd;
@@ -22,20 +23,23 @@ public class Member implements Serializable {
 	private Date uModifyDate;
 	private String uModifyWriter;
 	private String uYn;
-	
+
 	public Member() {
 	}
 
-	
+	public int getfNo() {
+		return fNo;
+	}
 
+	public void setfNo(int fNo) {
+		this.fNo = fNo;
+	}
 
-	
-
-
-	public Member(int uNo, String uName, String uId, String uPwd, String uIntro, String uProfile, String uEmail,
-			String uPhone, Date uRegDate, Date uModifyDate, String uModifyWriter, String uYn) {
+	public Member(int uNo, int fNo, String uName, String uId, String uPwd, String uIntro, String uProfile,
+			String uEmail, String uPhone, Date uRegDate, Date uModifyDate, String uModifyWriter, String uYn) {
 		super();
 		this.uNo = uNo;
+		this.fNo = fNo;
 		this.uName = uName;
 		this.uId = uId;
 		this.uPwd = uPwd;
@@ -49,41 +53,21 @@ public class Member implements Serializable {
 		this.uYn = uYn;
 	}
 
-
-
-
-
-
-
 	public String getuYn() {
 		return uYn;
 	}
-
-
-
 
 	public void setuYn(String uYn) {
 		this.uYn = uYn;
 	}
 
-
-
-
-
-
-
 	@Override
 	public String toString() {
-		return "Member [uNo=" + uNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd + ", uIntro=" + uIntro
-				+ ", uProfile=" + uProfile + ", uEmail=" + uEmail + ", uPhone=" + uPhone + ", uRegDate=" + uRegDate
-				+ ", uModifyDate=" + uModifyDate + ", uModifyWriter=" + uModifyWriter + ", uYn=" + uYn + "]";
+		return "Member [uNo=" + uNo + ", fNo=" + fNo + ", uName=" + uName + ", uId=" + uId + ", uPwd=" + uPwd
+				+ ", uIntro=" + uIntro + ", uProfile=" + uProfile + ", uEmail=" + uEmail + ", uPhone=" + uPhone
+				+ ", uRegDate=" + uRegDate + ", uModifyDate=" + uModifyDate + ", uModifyWriter=" + uModifyWriter
+				+ ", uYn=" + uYn + "]";
 	}
-
-
-
-
-
-
 
 	public int getuNo() {
 		return uNo;
@@ -172,6 +156,5 @@ public class Member implements Serializable {
 	public void setuModifyWriter(String uModifyWriter) {
 		this.uModifyWriter = uModifyWriter;
 	}
-	
-	
+
 }

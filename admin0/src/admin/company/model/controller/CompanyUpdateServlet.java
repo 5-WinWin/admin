@@ -34,6 +34,7 @@ public class CompanyUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원정보 수정용 데이터 꺼내오기
 				int uno = Integer.parseInt(request.getParameter("cNo"));
+				int pno = Integer.parseInt(request.getParameter("pNo"));
 				String name = request.getParameter("cName");
 				String id = request.getParameter("cId");
 				String pwd = request.getParameter("cPwd");
@@ -78,6 +79,7 @@ public class CompanyUpdateServlet extends HttpServlet {
 				//기존의 회원 정보를 새로운 값으로 변경하기
 			
 				c.setcNo(uno);
+				c.setpNo(pno);
 				c.setcName(name);
 				c.setcId(id);
 				c.setcPwd(pwd);

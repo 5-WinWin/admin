@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -124,7 +124,7 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="alarm.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>
@@ -376,7 +376,7 @@
               <input type="hidden" id="portNo<%= f.getPortNo() %>" value="<%= f.getPortNo() %>"/>
             <td><%= f.getPortNo() %></td>
             <td><%= f.getPort() %></td>
-            <td><%= f.getuNo() %></td>
+            <td><a href="/admin0/uConnect.do?uNo=<%= f.getuNo() %>";><%=f.getuNo() %></a></td>
             <td><%= f.getPoModifyDate() %></td>
             <td><%= f.getPoModifyWriter() %></td>
             

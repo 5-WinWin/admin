@@ -35,6 +35,7 @@ public class MemberUpdateServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원정보 수정용 데이터 꺼내오기
 				int uno = Integer.parseInt(request.getParameter("uNo"));
+				int fno = Integer.parseInt(request.getParameter("fNo"));
 				String name = request.getParameter("uName");
 				String id = request.getParameter("uId");
 				String pwd = request.getParameter("uPwd");
@@ -83,6 +84,7 @@ public class MemberUpdateServlet extends HttpServlet {
 				//기존의 회원 정보를 새로운 값으로 변경하기
 			
 				m.setuNo(uno);
+				m.setfNo(fno);
 				m.setuName(name);
 				m.setuId(id);
 				m.setuPwd(pwd);

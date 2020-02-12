@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>

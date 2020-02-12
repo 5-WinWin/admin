@@ -38,11 +38,11 @@ public class AdsReadServlet extends HttpServlet {
 		String page = null;
 		
 		if(alist!=null) {
-			page= "ads.jsp";
+			page= "asset.jsp";
 			request.setAttribute("alist", alist);
 		}else {
 			page = "errorPage.jsp";
-			request.setAttribute("msg", "기업회원 목록 불러오기 에러!");
+			request.setAttribute("msg", "회계정보 불러오기 에러!");
 		}
 		
 		request.getRequestDispatcher(page).forward(request, response);

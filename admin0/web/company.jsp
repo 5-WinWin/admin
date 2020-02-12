@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -362,6 +362,7 @@
                       <th>가입 날짜</th>
                       <th>활동 여부</th>
                       <th>사업자 증명</th>
+                      <th>프로젝트번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자</th>
                       <th></th>
@@ -380,6 +381,7 @@
                       <th>가입 날짜</th>
                       <th>활동 여부</th>
                       <th>사업자 증명</th>
+                      <th>프로젝트번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자</th>
                       <th></th>
@@ -401,6 +403,7 @@
             <td><%= c.getcRegDate() %></td>
             <td><%= c.getcYn() %></td>
             <td><%= c.getcProof() %></td>
+            <td><a href="/admin0/pConnect.do?pNo=<%= c.getpNo() %>";><%=c.getpNo() %></a></td>
             <td><%= c.getcModifyDate() %></td>
             <td><%= c.getcModifyWriter() %></td>
             

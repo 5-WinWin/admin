@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -361,7 +361,8 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
-                      <th>계정활동여부</th>
+                      <th>활동여부</th>
+                      <th>포폴번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -379,7 +380,8 @@
                       <th>이메일</th>
                       <th>핸드폰</th>
                       <th>가입 날짜</th>
-                      <th>계정활동여부</th>
+                      <th>활동여부</th>
+                      <th>포폴번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -401,6 +403,7 @@
             <td><input style="width:80px"type="text" value="<%= m.getuPhone() %>" name="uPhone"></td>
             <td><%= m.getuRegDate() %></td>
            <td><input style="width:30px"type="text" value="<%= m.getuYn() %>" name="uYn"></td> 
+           <td><input style="width:30px"type="text" value="<%= m.getfNo() %>" name="fNo"></td> 
             <td><input style="width:100px"type="date" value="<%= m.getuModifyDate() %>" name="uModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= m.getuModifyWriter() %>" name="uModifyWriter"></td>
            

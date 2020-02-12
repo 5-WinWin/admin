@@ -38,6 +38,7 @@ public class CompanyReadServlet extends HttpServlet {
 		String page = null;
 		
 		if(clist!=null) {
+			System.out.println("cReadServlet:" +clist);
 			page= "company.jsp";
 			request.setAttribute("clist", clist);
 		}else {

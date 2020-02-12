@@ -69,7 +69,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -403,7 +403,7 @@
             <td><%= p.getpStart() %></td>
             <td><%= p.getpEnd() %></td>
             <td><%= p.getpGo() %></td>
-            <td><%= p.getcNo() %></td>
+            <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
              <td><button class="btn btn-primary" id=<%= p.getpNo() %> onclick="Update(this.id)"

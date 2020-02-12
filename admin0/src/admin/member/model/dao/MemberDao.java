@@ -45,6 +45,7 @@ public class MemberDao {
 				Member m = new Member();
 				
 				m.setuNo(rset.getInt("UNO"));
+				m.setfNo(rset.getInt("FNO"));
 				m.setuName(rset.getString("UNAME"));
 				m.setuId(rset.getString("U_ID"));
 				m.setuPwd(rset.getString("U_PWD"));
@@ -90,6 +91,7 @@ public class MemberDao {
 	        	 m = new Member();
 	        	 
 					m.setuNo(uNo);
+					m.setfNo(rset.getInt("FNO"));
 					m.setuName(rset.getString("UNAME"));
 					m.setuId(rset.getString("U_ID"));
 					m.setuPwd(rset.getString("U_PWD"));
@@ -142,7 +144,8 @@ public class MemberDao {
 		pstmt.setDate(8, m.getuModifyDate());
 		pstmt.setString(9, m.getuModifyWriter());
 		pstmt.setString(10, m.getuYn());
-		pstmt.setInt(11, m.getuNo());
+		pstmt.setInt(11, m.getfNo());
+		pstmt.setInt(12, m.getuNo());
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {

@@ -62,11 +62,11 @@ public class AdsUpdateServlet extends HttpServlet {
 						intArr1[i] = Integer.parseInt(dateArr1[i]);
 					}
 					
-					writeDate = new Date(new GregorianCalendar(
+					startDate = new Date(new GregorianCalendar(
 							intArr1[0],intArr1[1]-1,intArr1[2]
 							).getTimeInMillis());
 				}else {
-					writeDate = new Date(new GregorianCalendar().getTimeInMillis());
+					startDate = new Date(new GregorianCalendar().getTimeInMillis());
 				}
 				
 				
@@ -79,11 +79,11 @@ public class AdsUpdateServlet extends HttpServlet {
 						intArr2[i] = Integer.parseInt(dateArr2[i]);
 					}
 					
-					writeDate = new Date(new GregorianCalendar(
+					endDate = new Date(new GregorianCalendar(
 							intArr2[0],intArr2[1]-1,intArr2[2]
 							).getTimeInMillis());
 				}else {
-					writeDate = new Date(new GregorianCalendar().getTimeInMillis());
+					endDate = new Date(new GregorianCalendar().getTimeInMillis());
 				}
 				
 				

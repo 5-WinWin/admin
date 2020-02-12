@@ -1,4 +1,4 @@
-package admin.ads.model.controller;
+package admin.company.model.controller;
 
 import java.io.IOException;
 
@@ -8,20 +8,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import admin.ads.model.service.AdsService;
-import admin.ads.model.vo.Ads;
+import admin.company.model.service.CompanyService;
+import admin.company.model.vo.Company;
+import admin.member.model.service.MemberService;
 
 /**
- * Servlet implementation class AdsSelectOneServlet
+ * Servlet implementation class CompanySelectOneServlet
  */
-@WebServlet("/aSelectOne.do")
-public class AdsSelectOneServlet extends HttpServlet {
+@WebServlet("/cConnect.do")
+public class CompanyConnectServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AdsSelectOneServlet() {
+    public CompanyConnectServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,14 +34,14 @@ public class AdsSelectOneServlet extends HttpServlet {
 		//내가 클릭한 게시물을 호출하기위해서 필요한 값을 받아서 변수에 담는다.
 				int cNo = Integer.parseInt(request.getParameter("cNo"));
 				System.out.println(cNo);
-				AdsService as = new AdsService();
-				Ads a = as.selectOne(cNo);
+				CompanyService cs = new CompanyService();
+				Company c = cs.selectOne(cNo);
 				
 				String page = ""; 
 				
-				if(a != null) {//공지글 상세페이지 데이터가져오는데 성공
-					page = "assetUpdate.jsp";
-					request.setAttribute("ads", a);
+				if(c != null) {//공지글 상세페이지 데이터가져오는데 성공
+					page = "companyConnect.jsp";
+					request.setAttribute("company", c);
 					//request.setAttribute("내가 전달할 객체(변수)의 명을 기입","내가 전달할 객체(변수)값을 기입");
 				}else {
 					page = "errorPage.jsp";

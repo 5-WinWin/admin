@@ -46,6 +46,7 @@ public class CompanyDao {
 				Company c = new Company();
 				
 				c.setcNo(rset.getInt("CNO"));
+				c.setpNo(rset.getInt("PNO"));
 				c.setcName(rset.getString("CNAME"));
 				c.setcId(rset.getString("C_ID"));
 				c.setcPwd(rset.getString("C_PWD"));
@@ -60,6 +61,8 @@ public class CompanyDao {
 				c.setcProof(rset.getString("C_PROOF"));
 				
 				clist.add(c);
+				
+				System.out.println("cDao:"+clist);
 			}
 			
 		} catch (SQLException e) {
@@ -92,6 +95,7 @@ public class CompanyDao {
 	        	 c = new Company();
 	        	 
 					c.setcNo(cNo);
+					c.setpNo(rset.getInt("PNO"));
 					c.setcName(rset.getString("CNAME"));
 					c.setcId(rset.getString("C_ID"));
 					c.setcPwd(rset.getString("C_PWD"));
@@ -148,7 +152,8 @@ public class CompanyDao {
 		pstmt.setString(9, c.getcModifyWriter());
 		pstmt.setString(10, c.getcYn());
 		pstmt.setString(11, c.getcProof());
-		pstmt.setInt(12, c.getcNo());
+		pstmt.setInt(12, c.getpNo());
+		pstmt.setInt(13, c.getcNo());
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {

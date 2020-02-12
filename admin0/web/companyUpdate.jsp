@@ -70,7 +70,7 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="asset.jsp">
+        <a class="nav-link" href="/admin0/adsRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
       </li>
@@ -363,6 +363,7 @@
                       <th>가입 날짜</th>
                       <th>활동 여부</th>
                       <th>사업자 증명</th>
+                      <th>프로젝트번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -382,6 +383,7 @@
                       <th>가입 날짜</th>
                       <th>활동 여부</th>
                       <th>사업자 증명</th>
+                      <th>프로젝트번호(fk)</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       
@@ -404,6 +406,7 @@
             <td><%= c.getcRegDate() %></td>
            <td><input style="width:30px"type="text" value="<%= c.getcYn() %>" name="cYn"></td> 
            <td><input style="width:30px"type="text" value="<%= c.getcProof() %>" name="cProof"></td> 
+           <td><input style="width:30px"type="text" value="<%= c.getpNo() %>" name="pNo"></td> 
             <td><input style="width:100px"type="date" value="<%= c.getcModifyDate() %>" name="cModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= c.getcModifyWriter() %>" name="cModifyWriter"></td>
            
