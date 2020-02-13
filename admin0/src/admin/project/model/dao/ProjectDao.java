@@ -47,6 +47,7 @@ public class ProjectDao {
 				
 				p.setpNo(rset.getInt("PNO"));
 				p.setpEnro(rset.getDate("P_ENRO"));
+				p.setStatus(rset.getString("STATUS"));
 				p.setpTitle(rset.getString("P_TITLE"));
 				p.setpBang(rset.getString("P_BANG"));
 				p.setpType(rset.getString("P_TYPE"));
@@ -95,6 +96,7 @@ public class ProjectDao {
 					p.setpNo(pNo);
 					p.setpEnro(rset.getDate("P_ENRO"));
 					p.setpTitle(rset.getString("P_TITLE"));
+					p.setStatus(rset.getString("STATUS"));
 					p.setpBang(rset.getString("P_BANG"));
 					p.setpType(rset.getString("P_TYPE"));
 					p.setpDetail(rset.getString("P_DETAIL"));
@@ -110,7 +112,6 @@ public class ProjectDao {
 
 	         }
 	         
-	         System.out.println("Project 확인 : "+ p);
 	         
 	      }catch(SQLException e) {
 	         e.printStackTrace();
@@ -130,6 +131,7 @@ public class ProjectDao {
 	int result = 0;
 	
 	PreparedStatement pstmt = null;
+	PreparedStatement pstmt2 = null;
 	
 	
 	try {
@@ -150,16 +152,27 @@ public class ProjectDao {
 		pstmt.setDate(11, p.getpModifyDate());
 		pstmt.setString(12, p.getpModifyWriter());
 		pstmt.setInt(13, p.getcNo());
-		pstmt.setInt(14, p.getpNo());
+		pstmt.setString(14, p.getStatus());
+		pstmt.setInt(15, p.getpNo());
+		
+		String sql2 = prop.getProperty("insertAs");
+		
+		pstmt2 = con.prepareStatement(sql2);
+		
+		pstmt2.setInt(1, p.getcNo());
+		pstmt2.setInt(2, p.getpNo());
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {
 		e.printStackTrace();
 	}finally {
 		close(pstmt);
+		close(pstmt2);
 	}
 		return result;
 		
+		
 }
+	
 
 }

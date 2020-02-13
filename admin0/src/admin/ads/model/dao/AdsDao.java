@@ -95,7 +95,6 @@ public class AdsDao {
 
 	         }
 	         
-	         System.out.println("Ads 확인 : "+ a);
 	         
 	      }catch(SQLException e) {
 	         e.printStackTrace();

@@ -1,10 +1,13 @@
+<%@page import="admin.ads.model.vo.Asset"%>
+<%@page import="admin.ads.model.vo.Ads"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.portfolio.model.vo.Portfolio,java.util.ArrayList"%>
+    pageEncoding="UTF-8"%>
     
-   <% 
-	ArrayList<Portfolio> flist = (ArrayList<Portfolio>)request.getAttribute("flist"); 
-%> 
-  
+     <% 
+   ArrayList<Ads> alist = (ArrayList<Ads>)request.getAttribute("alist"); 
+   ArrayList<Asset> aslist = (ArrayList<Asset>)request.getAttribute("aslist"); 
+%>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +19,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>company</title>
+  <title>user</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -31,12 +34,11 @@
 </head>
 
 <body id="page-top">
-
   <!-- Page Wrapper -->
   <div id="wrapper">
 
-    <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+     <!-- Sidebar -->
+     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.jsp">
@@ -69,7 +71,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
-      <li class="nav-item">
+   <li class="nav-item">
         <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
@@ -79,7 +81,6 @@
           <i class="fas fa-fw fa-tv"></i>
           <span>광고관리</span></a>
       </li>
-     
        
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -129,7 +130,7 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="/admin0/adsRead.do">
+        <a class="nav-link" href="alarm.jsp">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>
@@ -343,49 +344,59 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">포트폴리오</h1>
-        
+                
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">ADS</h1>
+         
+
         <!-- DataTales Example -->
-          <div class="card shadow mb-4"style="font-size:13px;">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">포트폴리오 테이블</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
-                  <thead style="font-size:11.5px;">
-                    <tr>
-                      <th>포트폴리오 번호</th>
-                      <th>포트폴리오</th>
-                      <th>회원 번호(fk)</th>
-                      <th>수정일</th>
-                      <th>수정자/내용</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tfoot style="font-size:11.5px;">
-                    <tr>
-                      <th>포트폴리오 번호</th>
-                      <th>포트폴리오</th>
-                      <th>회원 번호(fk)</th>
-                      <th>수정일</th>
-                      <th>수정자/내용</th>
-                      <th></th>
-                    </tr>
-                  </tfoot>
-                  <tbody>
-         <% for(Portfolio f : flist){ %>
+        <div class="card shadow mb-4"style="font-size:13px;">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">광고테이블</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr style="font-size:13px;">
+                    <th>기업번호(fk)</th>
+                    <th>프로젝트번호(fk)</th>
+                    <th>광고시작</th>
+                    <th>광고종료</th>
+                    <th>광고수익</th>
+                    <th>수정날짜</th>
+                    <th>수정자/내용</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tfoot>
+                 <tr style="font-size:13px;">
+                    <th>기업번호(fk)</th>
+                    <th>프로젝트번호(fk)</th>
+                    <th>광고시작</th>
+                    <th>광고종료</th>
+                    <th>광고수익</th>
+                    <th>수정날짜</th>
+                    <th>수정자/내용</th>
+                    <th></th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                
+              
+         <% for(Ads a : alist){ %>
      
-         <tr style="font-size:11.5px;">
-              <input type="hidden" id="portNo<%= f.getPortNo() %>" value="<%= f.getPortNo() %>"/>
-            <td><%= f.getPortNo() %></td>
-            <td><%= f.getPort() %></td>
-            <td><a href="/admin0/uConnect.do?uNo=<%= f.getuNo() %>";><%=f.getuNo() %></a></td>
-            <td><%= f.getPoModifyDate() %></td>
-            <td><%= f.getPoModifyWriter() %></td>
-            
-            <td><button class="btn btn-primary" id=<%= f.getPortNo() %> onclick="Update(this.id)"
+         <tr style="font-size:13px;">
+            <input type="hidden" id="aNo<%= a.getcNo() %>" value="<%= a.getcNo() %>"/>
+            <td><a href="/admin0/cConnect.do?cNo=<%= a.getcNo() %>";><%= a.getcNo() %></a></td>
+            <td><a href="/admin0/pConnect.do?pNo=<%= a.getpNo() %>";><%=a.getpNo() %></a></td>
+            <td><%= a.getAdsStart() %></td>
+            <td><%= a.getAdsEnd() %></td>
+            <td><%= a.getAdsPrice() %></td>
+            <td><%= a.getAdsModifyDate() %></td>
+            <td><%= a.getAdsModifyWriter() %></td>
+           
+            <td><button class="btn btn-primary" id=<%= a.getcNo() %> onclick="Update(this.id)"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
             
          </tr>
@@ -397,17 +408,18 @@
           </div>
 
         </div>
+        
         <script>
         
         function Update(aguments){
-        	<% Portfolio f = new Portfolio(); %>
-        	var portNo = aguments;
-			location.href="/admin0/fSelectOne.do?portNo=" + portNo;
+        	<% Ads a = new Ads(); %>
+        	var cNo = aguments;
+			location.href="/admin0/aSelectOne.do?cNo=" + cNo;
         	
         }
         
         </script>
-        <!-- /.container-fluid -->
+     <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->

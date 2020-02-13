@@ -69,10 +69,15 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin0/adsRead.do">
+     <li class="nav-item">
+        <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/adsRead.do">
+          <i class="fas fa-fw fa-tv"></i>
+          <span>광고관리</span></a>
       </li>
      
        

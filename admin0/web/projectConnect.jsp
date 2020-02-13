@@ -70,9 +70,14 @@
           <span>유입관리</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/admin0/adsRead.do">
+        <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/adsRead.do">
+          <i class="fas fa-fw fa-tv"></i>
+          <span>광고관리</span></a>
       </li>
      
        
@@ -364,6 +369,7 @@
                       <th>예상마감일</th>
                       <th>진행기간</th>
                       <th>기업번호</th>
+                      <td>검사</td>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -384,6 +390,7 @@
                       <th>예상마감일</th>
                       <th>진행기간</th>
                       <th>기업번호</th>
+                      <td>검사</td>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -407,6 +414,7 @@
             <td><%= p.getpEnd() %></td>
             <td><%= p.getpGo() %></td>
            <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td> 
+           <td><%= p.getStatus() %></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
            

@@ -62,7 +62,6 @@ public class CompanyDao {
 				
 				clist.add(c);
 				
-				System.out.println("cDao:"+clist);
 			}
 			
 		} catch (SQLException e) {
@@ -113,7 +112,6 @@ public class CompanyDao {
 
 	         }
 	         
-	         System.out.println("Company 확인 : "+ c);
 	         
 	      }catch(SQLException e) {
 	         e.printStackTrace();
@@ -121,7 +119,6 @@ public class CompanyDao {
 	         close(rset);
 	         close(pstmt);
 	      }
-	      System.out.println(cNo);
 	      return c;
 	   }
 	/**

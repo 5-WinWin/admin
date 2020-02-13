@@ -16,14 +16,14 @@ import admin.ads.model.vo.Asset;
 /**
  * Servlet implementation class AdsReadServlet
  */
-@WebServlet("/adsRead.do")
-public class AdsReadServlet extends HttpServlet {
+@WebServlet("/asRead.do")
+public class AsReadServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * Default constructor. 
      */
-    public AdsReadServlet() {
+    public AsReadServlet() {
         // TODO Auto-generated constructor stub
     }
 
@@ -31,16 +31,16 @@ public class AdsReadServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Ads> alist = new ArrayList<Ads>();
+		ArrayList<Asset> aslist = new ArrayList<Asset>();
 		AdsService as = new AdsService();
 		
 		
-		alist = as.readAds();
+		aslist = as.readAs();
 		String page = null;
 		
-		if(alist!=null) {
-			page= "ads.jsp";
-			request.setAttribute("alist", alist);
+		if(aslist!=null) {
+			page= "asset.jsp";
+			request.setAttribute("aslist", aslist);
 		}else {
 			page = "errorPage.jsp";
 			request.setAttribute("msg", "회계정보 불러오기 에러!");

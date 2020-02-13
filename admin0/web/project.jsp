@@ -68,10 +68,15 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin0/adsRead.do">
+     <li class="nav-item">
+        <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/adsRead.do">
+          <i class="fas fa-fw fa-tv"></i>
+          <span>광고관리</span></a>
       </li>
      
        
@@ -363,6 +368,7 @@
                       <th>예상 마감일</th>
                       <th>진행기간(day)</th>
                       <th>기업번호(Fk)</th>
+                      <th>검사</th>
                       <th>수정날짜</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -382,6 +388,7 @@
                       <th>예상 마감일</th>
                       <th>진행기간(day)</th>
                       <th>기업번호(Fk)</th>
+                      <th>검사</th>
                       <th>수정날짜</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -404,6 +411,7 @@
             <td><%= p.getpEnd() %></td>
             <td><%= p.getpGo() %></td>
             <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td>
+            <td><%= p.getStatus() %></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
              <td><button class="btn btn-primary" id=<%= p.getpNo() %> onclick="Update(this.id)"

@@ -5,6 +5,10 @@ import java.sql.Date;
 
 public class Project implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2338955191399187015L;
 	private int pNo;
 	private Date pEnro;
 	private String pTitle;
@@ -18,13 +22,17 @@ public class Project implements Serializable {
 	private String pGo;
 	private Date pModifyDate;
 	private String pModifyWriter;
+	private String status;
 	private int cNo;
 	
 	public Project() {
 	}
 
+	
+
 	public Project(int pNo, Date pEnro, String pTitle, String pBang, String pType, String pDetail, String pCotx,
-			int pCost, Date pStart, Date pEnd, String pGo, Date pModifyDate, String pModifyWriter, int cNo) {
+			int pCost, Date pStart, Date pEnd, String pGo, Date pModifyDate, String pModifyWriter, String status,
+			int cNo) {
 		super();
 		this.pNo = pNo;
 		this.pEnro = pEnro;
@@ -39,8 +47,23 @@ public class Project implements Serializable {
 		this.pGo = pGo;
 		this.pModifyDate = pModifyDate;
 		this.pModifyWriter = pModifyWriter;
+		this.status = status;
 		this.cNo = cNo;
 	}
+
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+
 
 	public int getpNo() {
 		return pNo;
@@ -154,13 +177,17 @@ public class Project implements Serializable {
 		this.cNo = cNo;
 	}
 
+
+
 	@Override
 	public String toString() {
 		return "Project [pNo=" + pNo + ", pEnro=" + pEnro + ", pTitle=" + pTitle + ", pBang=" + pBang + ", pType="
 				+ pType + ", pDetail=" + pDetail + ", pCotx=" + pCotx + ", pCost=" + pCost + ", pStart=" + pStart
 				+ ", pEnd=" + pEnd + ", pGo=" + pGo + ", pModifyDate=" + pModifyDate + ", pModifyWriter="
-				+ pModifyWriter + ", cNo=" + cNo + "]";
+				+ pModifyWriter + ", status=" + status + ", cNo=" + cNo + "]";
 	}
+
+
 	
 	
 	

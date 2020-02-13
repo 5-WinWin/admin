@@ -46,6 +46,7 @@ public class ProjectUpdateServlet extends HttpServlet {
 				String go = request.getParameter("pGo");
 				String modifydate = request.getParameter("pModifyDate");
 				String modifywriter = request.getParameter("pModifyWriter");
+				String status = request.getParameter("status");
 				int cno = Integer.parseInt(request.getParameter("cNo"));
 				
 				HttpSession session = request.getSession(false);
@@ -130,12 +131,12 @@ public class ProjectUpdateServlet extends HttpServlet {
 				p.setpGo(go);
 				p.setpModifyDate(writeDate);
 				p.setpModifyWriter(modifywriter);
+				p.setStatus(status);
 				p.setcNo(cno);
 				
 				System.out.println("변경한 프로젝트 정보 확인 : "+p);
 				
 				ProjectService ps = new ProjectService();
-				
 				
 				int result = ps.updateProject(p);
 				
@@ -146,6 +147,9 @@ public class ProjectUpdateServlet extends HttpServlet {
 					
 					request.getRequestDispatcher("views/common/errorPage.jsp").forward(request, response);
 				}
+				
+				
+				
 	}
 
 	/**
