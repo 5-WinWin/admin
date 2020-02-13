@@ -1,3 +1,4 @@
+<%@page import="admin.ads.model.vo.Asset"%>
 <%@page import="admin.ads.model.vo.Ads"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -5,6 +6,7 @@
     
      <% 
    ArrayList<Ads> alist = (ArrayList<Ads>)request.getAttribute("alist"); 
+   ArrayList<Asset> aslist = (ArrayList<Asset>)request.getAttribute("aslist"); 
 %> 
 <!DOCTYPE html>
 <html lang="en">
@@ -398,10 +400,69 @@
         
                 
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">ADS</h1>
+        <h1 class="h3 mb-2 text-gray-800">회계</h1>
          
 
         <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">회계테이블</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>기업번호(fk)</th>
+                    <th>기업명</th>
+                    <th>프로젝트번호(fk)</th>
+                    <th>프로젝트 비용</th>
+                    <th>모든 진행비용</th>
+                    <th>WIN수익</th>
+                    <th>광고수익</th>
+                    <th>업데이트날짜</th>
+                    
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>기업번호(fk)</th>
+                    <th>기업명</th>
+                    <th>프로젝트번호(fk)</th>
+                    <th>프로젝트 비용</th>
+                    <th>모든 진행비용</th>
+                    <th>WIN수익</th>
+                    <th>광고수익</th>
+                    <th>업데이트날짜</th>
+                    
+                  </tr>
+                </tfoot>
+                <tbody>
+         <% for(Asset as : aslist){ %>
+     
+         <tr style="font-size:13px;">
+            <input type="hidden" id="aNo<%= as.getcNo() %>" value="<%= as.getcNo() %>"/>
+            <td><a href="/admin0/cConnect.do?cNo=<%= as.getcNo() %>";><%= as.getcNo() %></a></td>
+            <td><%= as.getcName() %></td>
+            <td><a href="/admin0/pConnect.do?pNo=<%= as.getpNo() %>";><%=as.getpNo() %></a></td>
+            <td><%= as.getpCost() %></td>
+            <td><%= as.getAssetTotal() %></td>
+            <td><%= as.getAssetRevenue() %></td>
+            <td><%= as.getAssetAdsRevenue() %></td>
+            <td><%= as.getAssetUpdateDate() %></td>
+         
+         </tr>
+         <% } %>  
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        
+        
+        
         <div class="card shadow mb-4">
           <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">광고매출</h6>

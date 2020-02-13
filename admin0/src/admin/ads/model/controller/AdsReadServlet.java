@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import admin.ads.model.service.AdsService;
 import admin.ads.model.vo.Ads;
+import admin.ads.model.vo.Asset;
 
 /**
  * Servlet implementation class AdsReadServlet
@@ -31,15 +32,18 @@ public class AdsReadServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Ads> alist = new ArrayList<Ads>();
+		ArrayList<Asset> aslist = new ArrayList<Asset>();
 		AdsService as = new AdsService();
 		
 		
 		alist = as.readAds();
+		aslist = as.readAs();
 		String page = null;
 		
 		if(alist!=null) {
 			page= "asset.jsp";
 			request.setAttribute("alist", alist);
+			request.setAttribute("aslist", aslist);
 		}else {
 			page = "errorPage.jsp";
 			request.setAttribute("msg", "회계정보 불러오기 에러!");

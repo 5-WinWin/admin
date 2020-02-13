@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 import admin.ads.model.dao.AdsDao;
 import admin.ads.model.vo.Ads;
+import admin.ads.model.vo.Asset;
 
 public class AdsService {
 
@@ -53,4 +54,13 @@ public Ads selectOne(int cNo) {
 		close(con);
 		return a;
 	}
+
+public ArrayList<Asset> readAs() {
+	Connection con = getConnection();
+	
+	ArrayList<Asset> aslist = aDao.selectAs(con);
+	
+	close(con);
+	return aslist;
+}
 }

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Properties;
 
 import admin.ads.model.vo.Ads;
-import admin.company.model.vo.Company;
+import admin.ads.model.vo.Asset;
 
 public class AdsDao {
 
@@ -139,5 +139,45 @@ public class AdsDao {
 		return result;
 		
 }
+
+	public ArrayList<Asset> selectAs(Connection con) {
+		PreparedStatement pstmt = null;
+		ResultSet rset = null;
+		ArrayList<Asset> aslist = null;
+		int total=0;
+		int adsTotal=0;
+		
+		String sql = prop.getProperty("readAs");
+		try {
+			
+			pstmt = con.prepareStatement(sql);
+			rset=pstmt.executeQuery();
+			
+			aslist = new ArrayList<Asset>();
+			while(rset.next()) {
+				Asset as = new Asset();
+				
+				as.setcNo(rset.getInt("CNO"));
+				as.setcName(rset.getString("CNAME"));
+				as.setpNo(rset.getInt("PNO"));
+				as.setpCost(rset.getInt("P_COST"));
+				total+=(rset.getInt("P_COST"));
+				as.setAssetTotal(total);
+				as.setAssetRevenue((int)(total*0.05));
+				adsTotal+=(rset.getInt("ADS_PRICE"));
+				as.setAssetAdsRevenue(adsTotal);
+				as.setAssetUpdateDate(rset.getDate("ASSET_UPDATE_DATE"));
+				
+				aslist.add(as);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rset);
+			close(pstmt);
+		}
+		return aslist;
+		}
 
 }
