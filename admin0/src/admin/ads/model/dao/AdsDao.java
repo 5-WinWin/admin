@@ -176,6 +176,7 @@ public class AdsDao {
 			close(rset);
 			close(pstmt);
 		}
+		System.out.println("aslist");
 		return aslist;
 		}
 

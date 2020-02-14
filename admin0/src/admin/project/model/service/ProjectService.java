@@ -26,15 +26,37 @@ public class ProjectService {
 
 	public int updateProject(Project p) {
 		Connection con = getConnection();
-
-		con = getConnection();
-		int result = pDao.updateProject(con,p);
+		int result = 0;
 		
-		if(result > 0) commit(con);
-		else rollback(con);
+		con = getConnection();
+		result = pDao.updateProject(con,p);
+		System.out.println("result1실행");
+		
+		if(result > 0) {
+			commit(con);
+		}
+	else rollback(con);
 		
 		close(con);
 		return result;
+	}
+	
+	
+	public int insultAsset(Project p) {
+		Connection con = getConnection();
+		int result2 = 0;
+		
+		con = getConnection();
+		result2 = pDao.insultAsset(con,p);
+		if(result2 > 0) {
+			System.out.println("result2실행");
+			commit(con);
+		}
+		else rollback(con);
+		
+		
+		close(con);
+		return result2;
 	}
 	
 public Project selectOne(int pNo) {

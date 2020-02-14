@@ -138,9 +138,16 @@ public class ProjectUpdateServlet extends HttpServlet {
 				
 				ProjectService ps = new ProjectService();
 				
-				int result = ps.updateProject(p);
 				
-				if(result>0) {
+				
+				int result = ps.updateProject(p);
+				int result2 = ps.insultAsset(p);
+				
+				
+				
+				if(result>0 || result2>0) {
+				
+					
 					
 					response.sendRedirect("/admin0/projectRead.do");
 				}else {

@@ -370,6 +370,8 @@
                     
                   </tr>
                 </thead>
+                
+               
                 <tfoot>
                   <tr style="font-size:13px;">
                     <th>기업번호(fk)</th>
@@ -385,9 +387,7 @@
                 </tfoot>
                 <tbody>
          <% for(Asset as : aslist){ 
-         
-         int month=as.getAssetUpdateDate().getMonth()+1;
-         
+        
       
          %>
      
@@ -400,7 +400,6 @@
             <td><%= as.getAssetTotal() %></td>
             <td><%= as.getAssetRevenue() %></td>
             <td><%= as.getAssetAdsRevenue() %></td>
-            <input type="hidden" id="aNo<%= (as.getAssetUpdateDate().getMonth()+1) %>" value="<%= (as.getAssetUpdateDate().getMonth()+1) %>"/>
             <td><%= as.getAssetUpdateDate() %></td>
          
          </tr>
