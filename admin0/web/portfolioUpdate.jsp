@@ -361,6 +361,7 @@
                       <th>pf 번호</th>
                       <th>pf</th>
                       <th>회원 번호(fk)</th>
+                       <th>검사</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -373,6 +374,7 @@
                     <th>pf 번호</th>
                       <th>pf</th>
                       <th>회원 번호(fk)</th>
+                       <th>검사</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -388,6 +390,7 @@
             <td><input style="width:30px;Background:none;border:none;" type=text value='<%=f.getPortNo()%>' name="portNo" readonly></td>
             <td><input style="width:100px"type="text" value="<%= f.getPort() %>" name="Port"></td>
             <td><input style="width:30px"type="text" value="<%= f.getuNo() %>" name="uNo"></td>
+            <td><input style="width:30px"type="text" value="<%= f.getPoYn() %>" name="PoYn"></td>
             <td><input style="width:80px"type="date" value="<%= f.getPoModifyDate() %>" name="PoModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= f.getPoModifyWriter() %>" name="PoModifyWriter"></td>
            

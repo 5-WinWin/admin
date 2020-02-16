@@ -47,6 +47,7 @@ public class ProjectUpdateServlet extends HttpServlet {
 				String modifydate = request.getParameter("pModifyDate");
 				String modifywriter = request.getParameter("pModifyWriter");
 				String status = request.getParameter("status");
+				String pAdsYn = request.getParameter("pAdsYn");
 				int cno = Integer.parseInt(request.getParameter("cNo"));
 				
 				HttpSession session = request.getSession(false);
@@ -132,6 +133,7 @@ public class ProjectUpdateServlet extends HttpServlet {
 				p.setpModifyDate(writeDate);
 				p.setpModifyWriter(modifywriter);
 				p.setStatus(status);
+				p.setpAdsYn(pAdsYn);
 				p.setcNo(cno);
 				
 				System.out.println("변경한 프로젝트 정보 확인 : "+p);

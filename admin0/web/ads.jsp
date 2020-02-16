@@ -1,6 +1,7 @@
 <%@page import="admin.ads.model.vo.Asset"%>
 <%@page import="admin.ads.model.vo.Ads"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -378,13 +379,31 @@
                     <th>광고수익</th>
                     <th>수정날짜</th>
                     <th>수정자/내용</th>
-                    <th></th>
+                    <% int count=1;
+                    for(Ads a : alist){
+                    	 
+                    	 if(count==1){
+                    	 
+                    	%>
+                   
+                    
+                    <th><button class="btn btn-primary" onclick="Insert()"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>추가</button></th> <% }
+                    	 count++;} %> 
                   </tr>
                 </tfoot>
                 <tbody>
                 
               
-         <% for(Ads a : alist){ %>
+         <% 
+         
+         	Date today = new Date();
+         
+         for(Ads a : alist){
+         	int compare = a.getAdsEnd().compareTo(today);
+        	 
+        	 if(compare>0){
+        	 %>
      
          <tr style="font-size:13px;">
             <input type="hidden" id="aNo<%= a.getcNo() %>" value="<%= a.getcNo() %>"/>
@@ -397,10 +416,29 @@
             <td><%= a.getAdsModifyWriter() %></td>
            
             <td><button class="btn btn-primary" id=<%= a.getcNo() %> onclick="Update(this.id)"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button>
+            
             
          </tr>
-         <% } %>  
+         <% }else{%>
+        	 <tr style="font-size:13px; background:ivory;" >
+             <input type="hidden" id="aNo<%= a.getcNo() %>" value="<%= a.getcNo() %>"/>
+             <td><a href="/admin0/cConnect.do?cNo=<%= a.getcNo() %>";><%= a.getcNo() %></a></td>
+             <td><a href="/admin0/pConnect.do?pNo=<%= a.getpNo() %>";><%=a.getpNo() %></a></td>
+             <td><%= a.getAdsStart() %></td>
+             <td><%= a.getAdsEnd() %></td>
+             <td><%= a.getAdsPrice() %></td>
+             <td><%= a.getAdsModifyDate() %></td>
+             <td><%= a.getAdsModifyWriter() %></td>
+            
+             <td><button class="btn btn-primary" id=<%= a.getcNo() %> onclick="Update(this.id)"
+             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button>
+             
+             
+          </tr>
+        	 
+       <% }
+        	 }%>  
                   </tbody>
                 </table>
               </div>
@@ -417,6 +455,11 @@
 			location.href="/admin0/aSelectOne.do?cNo=" + cNo;
         	
         }
+        function Insert(){
+			location.href="/admin0/adsInsert.jsp"
+        	
+        }
+        
         
         </script>
      <!-- /.container-fluid -->

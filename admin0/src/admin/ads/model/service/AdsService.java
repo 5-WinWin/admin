@@ -37,6 +37,18 @@ public class AdsService {
 		close(con);
 		return result;
 	}
+	public int insertAds(Ads a) {
+		Connection con = getConnection();
+
+		con = getConnection();
+		int result = aDao.insertAds(con,a);
+		
+		if(result > 0) commit(con);
+		else rollback(con);
+		
+		close(con);
+		return result;
+	}
 	
 public Ads selectOne(int cNo) {
 		

@@ -14,9 +14,11 @@ import admin.ads.model.vo.Ads;
 import admin.ads.model.vo.Asset;
 
 public class AdsDao {
-
+	
 	private Properties prop;
 	
+	
+
 	public AdsDao() {
 		prop = new Properties();
 		
@@ -138,6 +140,33 @@ public class AdsDao {
 		return result;
 		
 }
+	public int insertAds(Connection con, Ads a) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		
+		try {
+			String sql = prop.getProperty("insertAds");
+			
+			pstmt = con.prepareStatement(sql);
+			
+			pstmt.setInt(1, a.getpNo());
+			pstmt.setDate(2, a.getAdsStart());
+			pstmt.setDate(3, a.getAdsEnd());
+			pstmt.setInt(4, a.getAdsPrice());
+			pstmt.setString(5, a.getAdsModifyWriter());
+			pstmt.setInt(6, a.getcNo());
+			
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close(pstmt);
+		}
+			return result;
+			
+	}
 
 	public ArrayList<Asset> selectAs(Connection con) {
 		PreparedStatement pstmt = null;
@@ -145,6 +174,7 @@ public class AdsDao {
 		ArrayList<Asset> aslist = null;
 		int total=0;
 		int adsTotal=0;
+		int RevenueTotal=0;
 		
 		String sql = prop.getProperty("readAs");
 		try {
@@ -156,20 +186,25 @@ public class AdsDao {
 			while(rset.next()) {
 				Asset as = new Asset();
 				
+				as.setCount(rset.getInt("COUNT"));
 				as.setcNo(rset.getInt("CNO"));
 				as.setcName(rset.getString("CNAME"));
 				as.setpNo(rset.getInt("PNO"));
 				as.setpCost(rset.getInt("P_COST"));
 				total+=(rset.getInt("P_COST"));
-				as.setAssetTotal(total);
-				as.setAssetRevenue((int)(total*0.05));
 				adsTotal+=(rset.getInt("ADS_PRICE"));
-				as.setAssetAdsRevenue(adsTotal);
+				RevenueTotal+=((int)(total*0.05));
+					as.setAssetTotal(total);
+					as.setAssetAdsTotal(adsTotal);
+					as.setAssetRevenueTotal(RevenueTotal);
+					as.setAssetRevenue((int)(total*0.05));
+					as.setAssetAdsRevenue(rset.getInt("ADS_PRICE"));
 				as.setAssetUpdateDate(rset.getDate("ASSET_UPDATE_DATE"));
 				
+				
 				aslist.add(as);
-			}
 			
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

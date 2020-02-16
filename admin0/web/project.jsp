@@ -369,6 +369,7 @@
                       <th>진행기간(day)</th>
                       <th>기업번호(Fk)</th>
                       <th>검사</th>
+                      <th>광고</th>
                       <th>수정날짜</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -389,13 +390,15 @@
                       <th>진행기간(day)</th>
                       <th>기업번호(Fk)</th>
                       <th>검사</th>
+                      <th>광고</th>
                       <th>수정날짜</th>
                       <th>수정자/내용</th>
                       <th></th>
                     </tr>
                   </tfoot>
                   <tbody>
-         <% for(Project p : plist){ %>
+         <% for(Project p : plist){
+        	  if(p.getStatus().equals("Y")){%>
      
          <tr style="font-size:11.5px;">
             <input type="hidden" id="pNo<%= p.getpNo() %>" value="<%= p.getpNo() %>"/>
@@ -412,13 +415,38 @@
             <td><%= p.getpGo() %></td>
             <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td>
             <td><%= p.getStatus() %></td>
+            <td><%= p.getpAdsYn() %></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
              <td><button class="btn btn-primary" id=<%= p.getpNo() %> onclick="Update(this.id)"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
             
          </tr>
-         <% } %>  
+         <% }else{ %>  
+         
+          <tr style="font-size:11.5px;background:ivory;">
+            <input type="hidden" id="pNo<%= p.getpNo() %>" value="<%= p.getpNo() %>"/>
+            <td><%= p.getpNo() %></td>
+            <td><%= p.getpEnro() %></td>
+            <td><%= p.getpTitle() %></td>
+            <td><%= p.getpBang() %></td>
+            <td><%= p.getpType() %></td>
+            <td><%= p.getpDetail() %></td>
+            <td><%= p.getpCotx() %></td>
+            <td><%= p.getpCost() %></td>
+            <td><%= p.getpStart() %></td>
+            <td><%= p.getpEnd() %></td>
+            <td><%= p.getpGo() %></td>
+            <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td>
+            <td><%= p.getStatus() %></td>
+            <td><%= p.getpAdsYn() %></td>
+            <td><%= p.getpModifyDate() %></td>
+            <td><%= p.getpModifyWriter() %></td>
+             <td><button class="btn btn-primary" id=<%= p.getpNo() %> onclick="Update(this.id)"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+            
+         </tr><%}
+        	  }%>
                   </tbody>
                 </table>
               </div>

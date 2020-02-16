@@ -48,6 +48,7 @@ public class PortfolioDao {
 				f.setPortNo(rset.getInt("PORTNO"));
 				f.setuNo(rset.getInt("UNO"));
 				f.setPort(rset.getString("PORT"));
+				f.setPoYn(rset.getString("PO_YN"));
 				f.setPoModifyDate(rset.getDate("PO_MODIFY_DATE"));
 				f.setPoModifyWriter(rset.getString("PO_MODIFY_WRITER"));
 				
@@ -86,6 +87,7 @@ public class PortfolioDao {
 	        	 f.setPortNo(rset.getInt("PORTNO"));
 					f.setuNo(rset.getInt("UNO"));
 					f.setPort(rset.getString("PORT"));
+					f.setPoYn(rset.getString("PO_YN"));
 					f.setPoModifyDate(rset.getDate("PO_MODIFY_DATE"));
 					f.setPoModifyWriter(rset.getString("PO_MODIFY_WRITER"));
 					
@@ -123,10 +125,11 @@ public class PortfolioDao {
 		
 		pstmt.setInt(1, f.getuNo());
 		pstmt.setString(2, f.getPort());
-		pstmt.setDate(3, f.getPoModifyDate());
-		pstmt.setString(4, f.getPoModifyWriter());
+		pstmt.setString(3, f.getPoYn().toUpperCase());
+		pstmt.setDate(4, f.getPoModifyDate());
+		pstmt.setString(5, f.getPoModifyWriter());
 		
-		pstmt.setInt(5, f.getPortNo());
+		pstmt.setInt(6, f.getPortNo());
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {

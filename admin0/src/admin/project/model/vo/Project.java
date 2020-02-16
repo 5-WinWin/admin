@@ -23,6 +23,7 @@ public class Project implements Serializable {
 	private Date pModifyDate;
 	private String pModifyWriter;
 	private String status;
+	private String pAdsYn;
 	private int cNo;
 	
 	public Project() {
@@ -32,7 +33,7 @@ public class Project implements Serializable {
 
 	public Project(int pNo, Date pEnro, String pTitle, String pBang, String pType, String pDetail, String pCotx,
 			int pCost, Date pStart, Date pEnd, String pGo, Date pModifyDate, String pModifyWriter, String status,
-			int cNo) {
+			int cNo,String pAdsYn) {
 		super();
 		this.pNo = pNo;
 		this.pEnro = pEnro;
@@ -48,7 +49,20 @@ public class Project implements Serializable {
 		this.pModifyDate = pModifyDate;
 		this.pModifyWriter = pModifyWriter;
 		this.status = status;
+		this.pAdsYn = pAdsYn;
 		this.cNo = cNo;
+	}
+
+
+
+	public String getpAdsYn() {
+		return pAdsYn;
+	}
+
+
+
+	public void setpAdsYn(String pAdsYn) {
+		this.pAdsYn = pAdsYn;
 	}
 
 

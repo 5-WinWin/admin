@@ -370,6 +370,7 @@
                       <th>진행기간</th>
                       <th>기업번호</th>
                       <th>검사</th>
+                      <th>광고</th>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -391,6 +392,7 @@
                       <th>진행기간</th>
                       <th>기업번호</th>
                       <th>검사</th>
+                      <th>광고</th>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -415,6 +417,7 @@
             <td><input style="width:80px"type="text" value="<%= p.getpGo() %>" name="pGo"></td>
            <td><input style="width:30px"type="text" value="<%= p.getcNo() %>" name="cNo"></td> 
            <td><input style="width:30px"type="text" value="<%= p.getStatus() %>" name="status"></td> 
+           <td><input style="width:30px"type="text" value="<%= p.getpAdsYn() %>" name="pAdsYn"></td> 
             <td><input style="width:100px"type="date" value="<%= p.getpModifyDate() %>" name="pModifyDate"></td>
             <td><input style="width:50px"type="text" value="<%= p.getpModifyWriter() %>" name="pModifyWriter"></td>
            

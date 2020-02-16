@@ -12,6 +12,7 @@ public class Ads {
 	private Date adsModifyDate;
 	private String adsModifyWriter;
 	
+	
 	public Ads() {
 	}
 

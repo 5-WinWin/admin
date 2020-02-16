@@ -1,3 +1,4 @@
+<%@page import="admin.ads.model.dao.AdsDao"%>
 <%@page import="admin.ads.model.vo.Asset"%>
 <%@page import="admin.ads.model.vo.Ads"%>
 <%@page import="java.util.ArrayList"%>
@@ -7,6 +8,8 @@
      <% 
    ArrayList<Ads> alist = (ArrayList<Ads>)request.getAttribute("alist"); 
    ArrayList<Asset> aslist = (ArrayList<Asset>)request.getAttribute("aslist"); 
+   Asset ass = new Asset();
+   AdsDao ad = new AdsDao();
 %>    
 <!DOCTYPE html>
 <html lang="en">
@@ -362,33 +365,18 @@
                     <th>기업번호(fk)</th>
                     <th>기업명</th>
                     <th>프로젝트번호(fk)</th>
-                    <th>프로젝트 비용</th>
-                    <th>모든 진행비용</th>
-                    <th>WIN수익</th>
-                    <th>총광고수익</th>
+                    <th>프로젝트 비용(원)</th>
+                    <th>모든 진행비용(원)</th>
+                    <th>WIN수익(원)</th>
+                    <th>총광고수익(원)</th>
                     <th>업데이트날짜</th>
                     
                   </tr>
                 </thead>
                 
                
-                <tfoot>
-                  <tr style="font-size:13px;">
-                    <th>기업번호(fk)</th>
-                    <th>기업명</th>
-                    <th>프로젝트번호(fk)</th>
-                    <th>프로젝트 비용</th>
-                    <th>모든 진행비용</th>
-                    <th>WIN수익</th>
-                    <th>총광고수익</th>
-                    <th>업데이트날짜</th>
-                    
-                  </tr>
-                </tfoot>
                 <tbody>
          <% for(Asset as : aslist){ 
-        
-      
          %>
      
          <tr style="font-size:13px;">
@@ -396,15 +384,33 @@
             <td><a href="/admin0/cConnect.do?cNo=<%= as.getcNo() %>";><%= as.getcNo() %></a></td>
             <td><%= as.getcName() %></td>
             <td><a href="/admin0/pConnect.do?pNo=<%= as.getpNo() %>";><%=as.getpNo() %></a></td>
-            <td><%= as.getpCost() %></td>
-            <td><%= as.getAssetTotal() %></td>
-            <td><%= as.getAssetRevenue() %></td>
-            <td><%= as.getAssetAdsRevenue() %></td>
+            <td><%= as.getpCost() %>원</td>
+            <td>-</td>
+            <td><%= as.getAssetRevenue() %>원</td>
+            <td><%= as.getAssetAdsRevenue() %>원</td>
             <td><%= as.getAssetUpdateDate() %></td>
          
          </tr>
          <% } %>  
                   </tbody>
+                <tfoot>
+                  <tr style="font-size:13px;">
+                    <th>기업번호(fk)</th>
+                    <th>기업명</th>
+                    <th>프로젝트번호(fk)</th>
+                    <th>프로젝트 비용</th>
+                           <% for(Asset as : aslist){
+                        	   if(as.getCount()==as.getpNo()){
+         %>
+                    <th><%= as.getAssetTotal() %>원</th>
+                    <td><%= as.getAssetRevenueTotal() %>원</td>
+            <td><%= as.getAssetAdsTotal() %>원</td>
+                   <% };
+                        	   } %>
+                    <th>업데이트날짜</th>
+                    
+                  </tr>
+                </tfoot>
                 </table>
               </div>
             </div>

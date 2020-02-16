@@ -143,7 +143,7 @@ public class MemberDao {
 		pstmt.setString(7, m.getuPhone());
 		pstmt.setDate(8, m.getuModifyDate());
 		pstmt.setString(9, m.getuModifyWriter());
-		pstmt.setString(10, m.getuYn());
+		pstmt.setString(10, m.getuYn().toUpperCase());
 		pstmt.setInt(11, m.getfNo());
 		pstmt.setInt(12, m.getuNo());
 		

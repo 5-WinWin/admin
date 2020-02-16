@@ -5,12 +5,20 @@ import java.sql.Date;
 
 public class Asset implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5721850060721284623L;
+	
 	private int cNo;
 	private String cName;
 	private int pNo;
+	private int count;
 	
 	private int pCost;
 	private int assetTotal;
+	private int assetAdsTotal;
+	private int assetRevenueTotal;
 	private int assetRevenue;
 	private int assetAdsRevenue;
 	private Date assetUpdateDate;
@@ -19,16 +27,43 @@ public class Asset implements Serializable{
 	}
 
 	public Asset(int cNo, String cName, int pNo, int pCost, int assetTotal, int assetRevenue,
-			int assetAdsRevenue, Date assetUpdateDate) {
+			int assetAdsRevenue, Date assetUpdateDate, int Count, int assetAdsTotal,int assetRevenueTotal) {
 		super();
 		this.cNo = cNo;
 		this.cName = cName;
 		this.pNo = pNo;
 		this.pCost = pCost;
 		this.assetTotal = assetTotal;
+		this.assetAdsTotal = assetAdsTotal;
 		this.assetRevenue = assetRevenue;
+		this.assetRevenueTotal = assetRevenueTotal;
 		this.assetAdsRevenue = assetAdsRevenue;
 		this.assetUpdateDate = assetUpdateDate;
+		this.count = Count;
+	}
+
+	public int getAssetRevenueTotal() {
+		return assetRevenueTotal;
+	}
+
+	public void setAssetRevenueTotal(int assetRevenueTotal) {
+		this.assetRevenueTotal = assetRevenueTotal;
+	}
+
+	public int getAssetAdsTotal() {
+		return assetAdsTotal;
+	}
+
+	public void setAssetAdsTotal(int assetAdsTotal) {
+		this.assetAdsTotal = assetAdsTotal;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 
 	public int getcNo() {

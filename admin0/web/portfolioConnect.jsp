@@ -361,6 +361,7 @@
                       <th>pf 번호</th>
                       <th>pf</th>
                       <th>회원 번호(fk)</th>
+                      <th>검사</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -373,6 +374,7 @@
                     <th>pf 번호</th>
                       <th>pf</th>
                       <th>회원 번호(fk)</th>
+                       <th>검사</th>
                       <th>수정일</th>
                       <th>수정자/내용</th>
                       <th></th>
@@ -388,6 +390,7 @@
             <td><%=f.getPortNo()%></td>
             <td><%= f.getPort() %></td>
             <td><a href="/admin0/uConnect.do?uNo=<%= f.getuNo() %>";><%=f.getuNo() %></a></td>
+            <td><%= f.getPoYn() %></td>
             <td><%= f.getPoModifyDate() %></td>
             <td><%= f.getPoModifyWriter() %></td>
            

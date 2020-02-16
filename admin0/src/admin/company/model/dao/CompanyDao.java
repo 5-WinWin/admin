@@ -147,8 +147,8 @@ public class CompanyDao {
 		pstmt.setString(5, c.getcBus());
 		pstmt.setDate(8, c.getcModifyDate());
 		pstmt.setString(9, c.getcModifyWriter());
-		pstmt.setString(10, c.getcYn());
-		pstmt.setString(11, c.getcProof());
+		pstmt.setString(10, c.getcYn().toUpperCase());
+		pstmt.setString(11, c.getcProof().toUpperCase());
 		pstmt.setInt(12, c.getpNo());
 		pstmt.setInt(13, c.getcNo());
 		

@@ -13,18 +13,28 @@ public class Portfolio implements Serializable {
 	private int uNo;
 	private String Port;
 	private Date poModifyDate;
+	private String poYn;
 	private String poModifyWriter;
 	
 	public Portfolio() {
 	}
 
-	public Portfolio(int portNo, int uNo, String port, Date poModifyDate, String poModifyWriter) {
+	public Portfolio(int portNo, int uNo, String port, Date poModifyDate, String poModifyWriter, String poYn) {
 		super();
 		this.portNo = portNo;
 		this.uNo = uNo;
 		Port = port;
+		this.poYn = poYn;
 		this.poModifyDate = poModifyDate;
 		this.poModifyWriter = poModifyWriter;
+	}
+
+	public String getPoYn() {
+		return poYn;
+	}
+
+	public void setPoYn(String poYn) {
+		this.poYn = poYn;
 	}
 
 	public int getPortNo() {

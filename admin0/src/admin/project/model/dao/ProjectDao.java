@@ -48,6 +48,7 @@ public class ProjectDao {
 				p.setpNo(rset.getInt("PNO"));
 				p.setpEnro(rset.getDate("P_ENRO"));
 				p.setStatus(rset.getString("STATUS"));
+				p.setpAdsYn(rset.getString("P_ADS_YN"));
 				p.setpTitle(rset.getString("P_TITLE"));
 				p.setpBang(rset.getString("P_BANG"));
 				p.setpType(rset.getString("P_TYPE"));
@@ -96,6 +97,7 @@ public class ProjectDao {
 				p.setpEnro(rset.getDate("P_ENRO"));
 				p.setpTitle(rset.getString("P_TITLE"));
 				p.setStatus(rset.getString("STATUS"));
+				p.setpAdsYn(rset.getString("P_ADS_YN"));
 				p.setpBang(rset.getString("P_BANG"));
 				p.setpType(rset.getString("P_TYPE"));
 				p.setpDetail(rset.getString("P_DETAIL"));
@@ -149,8 +151,9 @@ public class ProjectDao {
 			pstmt.setDate(11, p.getpModifyDate());
 			pstmt.setString(12, p.getpModifyWriter());
 			pstmt.setInt(13, p.getcNo());
-			pstmt.setString(14, p.getStatus());
-			pstmt.setInt(15, p.getpNo());
+			pstmt.setString(14, p.getStatus().toUpperCase());
+			pstmt.setString(15, p.getpAdsYn().toUpperCase());
+			pstmt.setInt(16, p.getpNo());
 
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {

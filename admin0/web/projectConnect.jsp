@@ -370,6 +370,7 @@
                       <th>진행기간</th>
                       <th>기업번호</th>
                       <td>검사</td>
+                      <th>광고</th>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -391,6 +392,7 @@
                       <th>진행기간</th>
                       <th>기업번호</th>
                       <td>검사</td>
+                      <th>광고</th>
                       <th>수정날</th>
                       <th>수정자/내용</th>
                       
@@ -415,6 +417,7 @@
             <td><%= p.getpGo() %></td>
            <td><a href="/admin0/cConnect.do?cNo=<%= p.getcNo() %>";><%=p.getcNo() %></a></td> 
            <td><%= p.getStatus() %></td>
+           <td><%= p.getpAdsYn() %></td>
             <td><%= p.getpModifyDate() %></td>
             <td><%= p.getpModifyWriter() %></td>
            
