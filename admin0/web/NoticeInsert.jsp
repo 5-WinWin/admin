@@ -1,11 +1,12 @@
+<%@page import="admin.notice.model.vo.Notice"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.Date"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.project.model.vo.Project,java.util.ArrayList" %>
+    pageEncoding="UTF-8"%>
     
-   <% 
-  Project p = (Project)request.getAttribute("project"); 
-%> 
-  
-    
+     <% 
+   ArrayList<Notice> nlist = (ArrayList<Notice>)request.getAttribute("nlist"); 
+%>    
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +18,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>project</title>
+  <title>user</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,7 +70,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
-      <li class="nav-item">
+   <li class="nav-item">
         <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
@@ -79,7 +80,6 @@
           <i class="fas fa-fw fa-tv"></i>
           <span>광고관리</span></a>
       </li>
-     
        
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -343,109 +343,77 @@
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">프로젝트 정보</h1>
-          
+                
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
+         
 
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4"style="font-size:13px;">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">프로젝트 정보 테이블</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
-                  <thead style="font-size:11.5px;">
-                    <tr>
-                      <th>pj 번호</th>
-                      <th>등록날</th>
-                      <th>pj명</th>
-                      <th>외/상주</th>
-                      <th>구분</th>
-                      <th>상세분류</th>
-                      <th>내용</th>
-                      <th>예상비용</th>
-                      <th>예상시작일</th>
-                      <th>예상마감일</th>
-                      <th>진행기간</th>
-                      <th>기업번호</th>
-                      <th>검사</th>
-                      <th>광고</th>
-                      <th>수정날</th>
-                      <th>수정자/내용</th>
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4"style="font-size:13px;">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">공지사항 작성</h6>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+            <form id="updateForm" action="/admin0/nInsert.do" method="post" >
+       
+                <div class="card-body"style="margin-left:460px;">
+                    <div class="card-body">
+                    </div>        
+                            <div class="card-body" >
+                                <div class="card-body">
+                                    <label class="dContent_label" for="tInput">제목</label>
+                                    <input class="title_input" id="title" name="nTitle" type="text" style="margin-left:15px;width:450px;">
+                                </div>
+
+                                <div class="card-body">
+                                    <label class="dContent_label" for="tInput">작성자</label>
+                                    <input class="title_input1" id="writer" name="nWriter" type="text" style="margin-left:2px;width:450px;">
+                                </div>
+                                
+                                <div class="card-body">
+                                    <table>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <label class="dContent_label" for="cInput">내용</label>
+                                                </td>
+                                                <td>
+                                                    <textarea class="dContent_textarea" name="nContent" rows="12" style="resize: none;margin-left:15px;width:450px;"></textarea>
+                                                </td>
+                                            </tr>
+
                       
-                      
-                    </tr>
-                  </thead>
-                  <tfoot style="font-size:11.5px;">
-                    <tr>
-                    <th>pj 번호</th>
-                      <th>등록날</th>
-                      <th>pj명</th>
-                      <th>외/상주</th>
-                      <th>구분</th>
-                      <th>상세분류</th>
-                      <th>내용</th>
-                      <th>예상비용</th>
-                      <th>예상시작일</th>
-                      <th>예상마감일</th>
-                      <th>진행기간</th>
-                      <th>기업번호</th>
-                      <th>검사</th>
-                      <th>광고</th>
-                      <th>수정날</th>
-                      <th>수정자/내용</th>
-                      
-                      
-                    </tr>
-                  </tfoot>
-                  <tbody>
-         
-   	<form id="updateForm" action="/admin0/pUpdate.do" method="post">
-         <tr style="font-size:13px;">
-            
-            <td><input style="width:30px;Background:none;border:none;" type=text value='<%=p.getpNo()%>' name="pNo" readonly></td>
-            <td><input style="width:60px"type="date" value="<%= p.getpEnro() %>" name="pEnro"></td>
-            <td><input style="width:60px"type="text" value="<%= p.getpTitle() %>" name="pTitle"></td>
-            <td><input style="width:80px"type="text" value="<%= p.getpBang() %>" name="pBang"></td>
-            <td><input style="width:100px"type="text" value="<%= p.getpType() %>" name="pType"></td>
-            <td><input style="width:50px"type="text" value="<%= p.getpDetail() %>" name="pDetail"></td>
-            <td><input style="width:70px"type="text" value="<%= p.getpCotx() %>" name="pCotx"></td>
-            <td><input style="width:80px"type="text" value="<%= p.getpCost() %>" name="pCost"></td>
-            <td><input style="width:80px"type="date" value="<%= p.getpStart() %>" name="pStart"></td>
-            <td><input style="width:80px"type="date" value="<%= p.getpEnd() %>" name="pEnd"></td>
-            <td><input style="width:80px"type="text" value="<%= p.getpGo() %>" name="pGo"></td>
-           <td><input style="width:30px"type="text" value="<%= p.getcNo() %>" name="cNo"></td> 
-           <td><input style="width:30px"type="text" value="<%= p.getStatus() %>" name="status"></td> 
-           <td><input style="width:30px"type="text" value="<%= p.getpAdsYn() %>" name="pAdsYn"></td> 
-            <td><input style="width:100px"type="date" value="<%= p.getpModifyDate() %>" name="pModifyDate"></td>
-            <td><input style="width:50px"type="text" value="<%= p.getpModifyWriter() %>" name="pModifyWriter"></td>
-           
-            <td>
-            <button class="btn btn-primary" id=alter<%= p.getpNo() %> onclick="Submit()"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
-            
-         </tr>
-        </form>  
-         
-         
-                  </tbody>
-                </table>
+                                        </tbody>
+                                    </table>
+                                </div>
+        
+                                <div class="sub_btn"style="margin-left:223px">
+                                    <button type="submit""cancel" class="btn btn-primary"  onclick="Submit()">완료</button>
+                                    <button type="reset" name="cancel" class="btn btn-primary" onclick="go()";>취소</button>
+                                </div>
+                            </div>
+        
+        
+                        </div>
+        
+                    </form>
+
+<script>
+	function go(){
+		location.href="/admin0/noticeRead.do"
+	}
+</script>
+
               </div>
             </div>
           </div>
 
         </div>
         
-        <script>
+       
         
-        function Submit(){
-        	$("#updateForm").submit();
-        	location.href="project.jsp"
-        }
-        
-        </script>
-        <!-- /.container-fluid -->
+     <!-- /.container-fluid -->
 
       </div>
       <!-- End of Main Content -->

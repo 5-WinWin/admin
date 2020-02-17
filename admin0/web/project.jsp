@@ -122,9 +122,9 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="notice.jsp">
+        <a class="nav-link" href="/admin0/noticeRead.do">
           <i class="fas fa-fw fa-tags"></i>
-          <span>고객센터</span></a>
+          <span>공지사항</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">

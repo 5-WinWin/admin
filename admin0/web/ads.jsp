@@ -125,9 +125,9 @@
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="notice.jsp">
+        <a class="nav-link" href="/admin0/noticeRead.do">
           <i class="fas fa-fw fa-tags"></i>
-          <span>고객센터</span></a>
+          <span>공지사항</span></a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
@@ -379,17 +379,12 @@
                     <th>광고수익</th>
                     <th>수정날짜</th>
                     <th>수정자/내용</th>
-                    <% int count=1;
-                    for(Ads a : alist){
-                    	 
-                    	 if(count==1){
-                    	 
-                    	%>
+                  
                    
                     
                     <th><button class="btn btn-primary" onclick="Insert()"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>추가</button></th> <% }
-                    	 count++;} %> 
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>추가</button></th> 
+                    	  
                   </tr>
                 </tfoot>
                 <tbody>

@@ -151,12 +151,12 @@ public class AdsDao {
 			
 			pstmt = con.prepareStatement(sql);
 			
-			pstmt.setInt(1, a.getpNo());
-			pstmt.setDate(2, a.getAdsStart());
-			pstmt.setDate(3, a.getAdsEnd());
-			pstmt.setInt(4, a.getAdsPrice());
-			pstmt.setString(5, a.getAdsModifyWriter());
-			pstmt.setInt(6, a.getcNo());
+			pstmt.setInt(1, a.getcNo());
+			pstmt.setInt(2, a.getpNo());
+			pstmt.setDate(3, a.getAdsStart());
+			pstmt.setDate(4, a.getAdsEnd());
+			pstmt.setInt(5, a.getAdsPrice());
+			pstmt.setString(6, a.getAdsModifyWriter());
 			
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -191,14 +191,14 @@ public class AdsDao {
 				as.setcName(rset.getString("CNAME"));
 				as.setpNo(rset.getInt("PNO"));
 				as.setpCost(rset.getInt("P_COST"));
+				as.setAssetRevenue((int)(rset.getInt("P_COST")*0.05));
+				as.setAssetAdsRevenue(rset.getInt("ADS_PRICE"));
 				total+=(rset.getInt("P_COST"));
-				adsTotal+=(rset.getInt("ADS_PRICE"));
 				RevenueTotal+=((int)(total*0.05));
+				adsTotal+=(rset.getInt("ADS_PRICE"));
 					as.setAssetTotal(total);
 					as.setAssetAdsTotal(adsTotal);
 					as.setAssetRevenueTotal(RevenueTotal);
-					as.setAssetRevenue((int)(total*0.05));
-					as.setAssetAdsRevenue(rset.getInt("ADS_PRICE"));
 				as.setAssetUpdateDate(rset.getDate("ASSET_UPDATE_DATE"));
 				
 				
