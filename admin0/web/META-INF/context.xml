@@ -49,8 +49,8 @@
     		  maxWaitMillis="10000"
     		  driverClassName="oracle.jdbc.driver.OracleDriver"
     		  url="jdbc:oracle:thin:@localhost:1521:xe"
-    		  username="WINWIN"
-    		  password="WINWIN"/>
+    		  username="WIN"
+    		  password="WIN"/>
     
     
     
