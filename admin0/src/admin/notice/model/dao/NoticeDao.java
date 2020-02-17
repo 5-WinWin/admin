@@ -47,6 +47,7 @@ public class NoticeDao {
 				Notice n = new Notice();
 				
 				n.setnNo(rset.getInt("N_NO"));
+				n.setnYn(rset.getString("N_YN"));
 				n.setnTitle(rset.getString("N_TITLE"));
 				n.setnWriter(rset.getString("N_WRITER"));
 				n.setnDate(rset.getDate("N_DATE"));
@@ -94,8 +95,8 @@ public class NoticeDao {
 			
 	}
 	
-	/*public Member selectOne(Connection con, int uNo) {
-		Member m  = null;
+	public Notice selectOne(Connection con, int nNo) {
+		Notice n  = null;
 	      PreparedStatement pstmt = null;
 	      ResultSet rset = null;
 	      
@@ -103,30 +104,24 @@ public class NoticeDao {
 	      try {
 	         pstmt = con.prepareStatement(sql);
 	         
-	         pstmt.setInt(1, uNo);
+	         pstmt.setInt(1, nNo);
 	         
 	         
-	         // INSERT, UPDATE, DELETE : executeUpdate();
-	         // SELECT : executeQuery();
 	         rset = pstmt.executeQuery();
 	                  
-	         // if, while
 	         if(rset.next()) {
-	        	 m = new Member();
+	        	 n = new Notice();
 	        	 
-					m.setuNo(uNo);
-					m.setfNo(rset.getInt("FNO"));
-					m.setuName(rset.getString("UNAME"));
-					m.setuId(rset.getString("U_ID"));
-					m.setuPwd(rset.getString("U_PWD"));
-					m.setuIntro(rset.getString("U_INTRO"));
-					m.setuProfile(rset.getString("U_PROFILE"));
-					m.setuEmail(rset.getString("U_EMAIL"));
-					m.setuPhone(rset.getString("U_PHONE"));
-					m.setuRegDate(rset.getDate("U_REG_DATE"));
-					m.setuModifyDate(rset.getDate("U_MODIFY_DATE"));
-					m.setuModifyWriter(rset.getString("U_MODIFY_WRITER"));
-					m.setuYn(rset.getString("U_YN"));
+					n.setnNo(nNo);
+					n.setnTitle(rset.getString("N_TITLE"));
+					n.setnWriter(rset.getString("N_WRITER"));
+					n.setnDate(rset.getDate("N_DATE"));
+					n.setnCount(rset.getInt("N_COUNT"));
+					n.setnContent(rset.getString("N_CONTENT"));
+					n.setnModifyDate(rset.getDate("N_MODIFY_DATE"));
+					n.setnModifyWriter(rset.getString("N_MODIFY_WRITER"));
+					n.setnYn(rset.getString("N_YN"));
+					
 					
 					
 
@@ -139,37 +134,35 @@ public class NoticeDao {
 	         close(rset);
 	         close(pstmt);
 	      }
-	      return m;
+	      return n;
 	   }
-	*//**
+	/**
 	 * 회원정보 수정
 	 * @param con
 	 * @param n
 	 * @return
-	 *//*
-	public int updateMember(Connection con, Member m) {
+	 */
+	public int updateNotice(Connection con, Notice n) {
 	int result = 0;
 	
 	PreparedStatement pstmt = null;
 	
 	
 	try {
-		String sql = prop.getProperty("updateMember");
+		String sql = prop.getProperty("updateNotice");
 		
 		pstmt = con.prepareStatement(sql);
 		
-		pstmt.setString(1, m.getuName());
-		pstmt.setString(2, m.getuId());
-		pstmt.setString(3, m.getuPwd());
-		pstmt.setString(4, m.getuIntro());
-		pstmt.setString(5, m.getuProfile());
-		pstmt.setString(6, m.getuEmail());
-		pstmt.setString(7, m.getuPhone());
-		pstmt.setDate(8, m.getuModifyDate());
-		pstmt.setString(9, m.getuModifyWriter());
-		pstmt.setString(10, m.getuYn().toUpperCase());
-		pstmt.setInt(11, m.getfNo());
-		pstmt.setInt(12, m.getuNo());
+		pstmt.setString(1, n.getnTitle());
+		pstmt.setString(2, n.getnWriter());
+		pstmt.setDate(3, n.getnDate());
+		pstmt.setInt(4, n.getnCount());
+		pstmt.setString(5, n.getnContent());
+		pstmt.setDate(6, n.getnModifyDate());
+		pstmt.setString(7, n.getnModifyWriter());
+		pstmt.setString(8, n.getnYn().toUpperCase());
+		pstmt.setInt(9, n.getnNo());
+		
 		
 		result = pstmt.executeUpdate();
 	} catch (SQLException e) {
@@ -180,5 +173,5 @@ public class NoticeDao {
 		return result;
 		
 }
-*/
+
 }

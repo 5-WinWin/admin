@@ -18,6 +18,7 @@ public class Notice implements Serializable{
 	private String nContent;
 	private Date nModifyDate;
 	private String nModifyWriter;
+	private String nYn;
 	
 	public Notice() {
 	}
@@ -49,7 +50,7 @@ public class Notice implements Serializable{
 
 
 	public Notice(int nNo, String nTitle, String nWriter, Date nDate, int nCount, String nContent, Date nModifyDate,
-			String nModifyWriter) {
+			String nModifyWriter,String nYn) {
 		super();
 		this.nNo = nNo;
 		this.nTitle = nTitle;
@@ -59,6 +60,19 @@ public class Notice implements Serializable{
 		this.nContent = nContent;
 		this.nModifyDate = nModifyDate;
 		this.nModifyWriter = nModifyWriter;
+		this.nYn = nYn;
+	}
+
+
+
+	public String getnYn() {
+		return nYn;
+	}
+
+
+
+	public void setnYn(String nYn) {
+		this.nYn = nYn;
 	}
 
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="admin.portfolio.model.vo.Portfolio,java.util.ArrayList" %>
+    pageEncoding="UTF-8" import="admin.qna.model.vo.Qna,java.util.ArrayList" %>
     
    <% 
-  Portfolio f = (Portfolio)request.getAttribute("portfolio"); 
+  Qna q = (Qna)request.getAttribute("qna"); 
 %> 
   
     
@@ -17,7 +17,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>portfolio</title>
+  <title>ads</title>
 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,7 +69,7 @@
           <i class="fas fa-fw fa-chart-area"></i>
           <span>유입관리</span></a>
       </li>
-      <li class="nav-item">
+     <li class="nav-item">
         <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span></a>
@@ -350,65 +350,76 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">포트폴리오 정보</h1>
+          <h1 class="h3 mb-2 text-gray-800">Q&A</h1>
           
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4"style="font-size:13px;">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">포트폴리오 정보 테이블</h6>
+              <h6 class="m-0 font-weight-bold text-primary">QnA 답변</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
-              <form id="updateForm" action="/admin0/fUpdate.do" method="post">
+              <form id="updateForm" action="/admin0/qUpdate.do" method="post">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0" >
                   <thead style="font-size:11.5px;">
-                    <tr>
-                      <th>pf 번호</th>
-                      <th>pf</th>
-                      <th>회원 번호(fk)</th>
-                      <th>검사</th>
-                      <th>수정일</th>
-                      <th>수정자/내용</th>
-                      <th></th>
-                      
-                      
-                    </tr>
-                  </thead>
-                  <tfoot style="font-size:11.5px;">
-                    <tr>
-                    <th>pf 번호</th>
-                      <th>pf</th>
-                      <th>회원 번호(fk)</th>
-                       <th>검사</th>
-                      <th>수정일</th>
-                      <th>수정자/내용</th>
-                      <th></th>
-                      
-                      
-                    </tr>
-                  </tfoot>
+                     <thead>
+                  <tr style="font-size:13px;">
+                    <th>공지번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                    <th>내용</th>
+                    <th>답변</th>
+                    <th>답변여부</th>
+                    <th>수정날짜</th>
+                    <th>수정자/내용</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tfoot>
+                 <tr style="font-size:13px;">
+                    <th>공지번호</th>
+                    <th>제목</th>
+                    <th>작성자</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                    <th>내용</th>
+                    <th>답변</th>
+                    <th>답변여부</th>
+                    <th>수정날짜</th>
+                    <th>수정자/내용</th>
+                    <th></th>  
+                    	  
+                  </tr>
+                </tfoot>
                   <tbody>
          
    	
          <tr style="font-size:13px;">
-            	
-            <td><%=f.getPortNo()%></td>
-            <td><%= f.getPort() %></td>
-            <td><a href="/admin0/uConnect.do?uNo=<%= f.getuNo() %>";><%=f.getuNo() %></a></td>
-            <td><%= f.getPoYn() %></td>
-            <td><%= f.getPoModifyDate() %></td>
-            <td><%= f.getPoModifyWriter() %></td>
+            
+            <td><input style="width:30px;Background:none;border:none;" type=text value='<%=q.getqNo()%>' name="qNo" readonly></td>
+            <td><input style="width:50px;" type=text value='<%=q.getqTitle()%>' name="qTitle"></td>
+            <td><input style="width:50px"type="text" value="<%= q.getqWriter() %>" name="qWriter"></td>
+            <td><input style="width:80px"type="date" value="<%= q.getqDate() %>" name="qDate"></td>
+            <td><input style="width:30px"type="text" value="<%= q.getqCount() %>" name="qCount"></td>
+            <td><input style="width:100px"type="text" value="<%= q.getqContent() %>" name="qContent"></td>
+            <td><input style="width:100px"type="text" value="<%= q.getqA() %>" name="qA"></td>
+            <td><input style="width:30px"type="text" value="<%= q.getqYn() %>" name="qYn"></td>
+            <td><input style="width:100px"type="date" value="<%= q.getqModifyDate() %>" name="qModifyDate"></td>
+            <td><input style="width:50px"type="text" value="<%= q.getqModifyWriter() %>" name="qModifyWriter"></td>
            
-           
-         
+            <td>
+            <button class="btn btn-primary" id=alter<%= q.getqNo() %> onclick="Submit()"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>완료</button></td>
+            
          </tr>
-     
          
          
                   </tbody>
                 </table>
-                   </form>  
+        </form>  
               </div>
             </div>
           </div>
@@ -417,16 +428,11 @@
         
         <script>
         
-    <%--     function Submit2(){
-        	console.log(<%= f.getPoModifyWriter() %>);
-        	console.log(<%= f.getPort() %>);
-        	console.log(<%= f.getuNo() %>);
-        	console.log(<%=f.getPortNo()%>);
-        	console.log(<%= f.getPoModifyDate() %>);
+        /* function Submit(){
         	$("#updateForm").submit();
-         	location.href="portfolio.jsp"
-       } --%>
-        
+        	location.href="notice.jsp"
+        }
+         */
         </script>
         <!-- /.container-fluid -->
 

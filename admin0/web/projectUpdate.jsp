@@ -129,7 +129,13 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="alarm.jsp">
+        <a class="nav-link" href="/admin0/qnaRead.do">
+          <i class="fas fa-fw fa-comment"></i>
+          <span>Q&A</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/eyeRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>

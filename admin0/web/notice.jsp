@@ -129,7 +129,13 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="alarm.jsp">
+        <a class="nav-link" href="/admin0/qnaRead.do">
+          <i class="fas fa-fw fa-comment"></i>
+          <span>Q&A</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/eyeRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>
@@ -364,6 +370,7 @@
                     <th>작성일</th>
                     <th>조회수</th>
                     <th>내용</th>
+                    <th>공개여부</th>
                     <th>수정날짜</th>
                     <th>수정자/내용</th>
                     <th></th>
@@ -377,25 +384,38 @@
                     <th>작성일</th>
                     <th>조회수</th>
                     <th>내용</th>
+                    <th>공개여부</th>
                     <th>수정날짜</th>
                     <th>수정자/내용</th>
-                   
-                   
-                    
-                    <th><button class="btn btn-primary" onclick="Insert()"
+                   <th><button class="btn btn-primary" onclick="Insert()"
             style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>글쓰기</button></th>  
-                    	  
                   </tr>
                 </tfoot>
                 <tbody>
                 
               
-         <% 
+         <% for(Notice n : nlist){ 
          
-         for(Notice n : nlist){
-         	
-        	 %>
+         if(n.getnYn().equals("N")){%>
      
+         <tr style="font-size:13px;background:ivory;">
+            <input type="hidden" id="nNo<%= n.getnNo() %>" value="<%= n.getnNo() %>"/>
+            <td><%= n.getnNo() %></td>
+            <td><%= n.getnTitle() %></td>
+            <td><%= n.getnWriter() %></td>
+            <td><%= n.getnDate() %></td>
+            <td><%= n.getnCount() %></td>
+            <td><%= n.getnContent() %></td>
+            <td><%= n.getnYn() %></td>
+            <td><%= n.getnModifyDate() %></td>
+            <td><%= n.getnModifyWriter() %></td>
+            <td><button class="btn btn-primary" id=<%= n.getnNo() %> onclick="Update(this.id)"
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
+         </tr>
+        
+       <%}else{ %>  
+       
+       
          <tr style="font-size:13px;">
             <input type="hidden" id="nNo<%= n.getnNo() %>" value="<%= n.getnNo() %>"/>
             <td><%= n.getnNo() %></td>
@@ -404,17 +424,15 @@
             <td><%= n.getnDate() %></td>
             <td><%= n.getnCount() %></td>
             <td><%= n.getnContent() %></td>
+            <td><%= n.getnYn() %></td>
             <td><%= n.getnModifyDate() %></td>
             <td><%= n.getnModifyWriter() %></td>
-           
             <td><button class="btn btn-primary" id=<%= n.getnNo() %> onclick="Update(this.id)"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button><td>
-            
-            
+            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button></td>
          </tr>
-        
-       <% 
-        	 }%>  
+         
+         <%}
+       }%>
                   </tbody>
                 </table>
               </div>

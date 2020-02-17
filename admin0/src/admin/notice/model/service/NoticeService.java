@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.util.ArrayList;
 
 import admin.ads.model.vo.Ads;
+import admin.member.model.vo.Member;
 import admin.notice.model.dao.NoticeDao;
 import admin.notice.model.vo.Notice;
 
@@ -32,6 +33,36 @@ public class NoticeService {
 
 			con = getConnection();
 			int result = nDao.insertNotice(con,n);
+			
+			if(result > 0) commit(con);
+			else rollback(con);
+			
+			close(con);
+			return result;
+		}
+		
+		public Notice selectOne(int nNo) {
+			
+			Connection con = getConnection();
+			
+			Notice n = nDao.selectOne(con,nNo);
+			
+			if(n !=null) {
+				
+				
+				commit(con);
+				
+			}else rollback(con);
+			
+			close(con);
+			return n;
+		}
+		
+		public int updateNotice(Notice n) {
+			Connection con = getConnection();
+
+			con = getConnection();
+			int result = nDao.updateNotice(con,n);
 			
 			if(result > 0) commit(con);
 			else rollback(con);

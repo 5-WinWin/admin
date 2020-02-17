@@ -129,7 +129,13 @@
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="alarm.jsp">
+        <a class="nav-link" href="/admin0/qnaRead.do">
+          <i class="fas fa-fw fa-comment"></i>
+          <span>Q&A</span></a>
+      </li>
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" href="/admin0/eyeRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span></a>
       </li>
@@ -357,18 +363,18 @@
             <div class="table-responsive">
             <form id="updateForm" action="/admin0/nInsert.do" method="post" >
        
-                <div class="card-body"style="margin-left:460px;">
+                <div class="card-body">
                     <div class="card-body">
                     </div>        
                             <div class="card-body" >
                                 <div class="card-body">
                                     <label class="dContent_label" for="tInput">제목</label>
-                                    <input class="title_input" id="title" name="nTitle" type="text" style="margin-left:15px;width:450px;">
+                                    <input class="title_input" id="title" name="nTitle" type="text" style="margin-left:5px;width:300px;">
                                 </div>
 
                                 <div class="card-body">
                                     <label class="dContent_label" for="tInput">작성자</label>
-                                    <input class="title_input1" id="writer" name="nWriter" type="text" style="margin-left:2px;width:450px;">
+                                    <input class="title_input1" id="writer" name="nWriter" type="text" style="margin-left:px;width:100px;">
                                 </div>
                                 
                                 <div class="card-body">
@@ -379,7 +385,7 @@
                                                     <label class="dContent_label" for="cInput">내용</label>
                                                 </td>
                                                 <td>
-                                                    <textarea class="dContent_textarea" name="nContent" rows="12" style="resize: none;margin-left:15px;width:450px;"></textarea>
+                                                    <textarea class="dContent_textarea" name="nContent" rows="12" style="resize: none;margin-left:5px;width:450px;"></textarea>
                                                 </td>
                                             </tr>
 
