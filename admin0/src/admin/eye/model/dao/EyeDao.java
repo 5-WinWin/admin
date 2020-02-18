@@ -107,10 +107,11 @@ public class EyeDao {
 	/**
 	 * 회원정보 수정
 	 * @param con
+	 * @param eNo 
 	 * @param n
 	 * @return
 	 */
-	public int updateEye(Connection con, Eye e) {
+	public int updateEye(Connection con, Eye e, String eNo) {
 	int result = 0;
 	
 	PreparedStatement pstmt = null;
@@ -120,10 +121,11 @@ public class EyeDao {
 		String sql = prop.getProperty("updateEye");
 		
 		pstmt = con.prepareStatement(sql);
-		
+		System.out.println("dao"+e.geteNo());
+		System.out.println("dao"+e.geteYn());
 		
 		pstmt.setString(1, e.geteYn());
-		pstmt.setInt(2, e.geteNo());
+		pstmt.setString(2, eNo);
 		
 		
 		result = pstmt.executeUpdate();

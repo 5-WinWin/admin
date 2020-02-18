@@ -32,9 +32,9 @@ public class EyeUpdateServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//회원정보 수정용 데이터 꺼내오기
-				int eNo = Integer.parseInt(request.getParameter("eNo"));
+				String eNo = request.getParameter("no");
 				
-				String eYn = request.getParameter("eYn").toUpperCase();
+				String eYn = request.getParameter("yn");
 				
 				System.out.println(eNo);
 				System.out.println(eYn);
@@ -45,7 +45,7 @@ public class EyeUpdateServlet extends HttpServlet {
 				
 				//기존의 회원 정보를 새로운 값으로 변경하기
 			
-				e.seteNo(eNo);
+				//e.seteNo(eNo);
 				
 				if(eYn.equals("Y")) {
 				e.seteYn("N");
@@ -56,7 +56,7 @@ public class EyeUpdateServlet extends HttpServlet {
 				EyeService es = new EyeService();
 				
 				
-				int result = es.updateEye(e);
+				int result = es.updateEye(e,eNo);
 				
 				if(result>0) {
 					

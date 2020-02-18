@@ -1,6 +1,7 @@
 <%@page import="admin.eye.model.vo.Eye"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Date"%>
+<%@page import="java.util.regex.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
@@ -29,7 +30,7 @@
 
   <!-- Custom styles for this page -->
   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-
+   <script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body id="page-top">
@@ -361,7 +362,6 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-            <form style="border:none; padding:none; margin:13px;"id="updateForm" action="/admin0/eUpdate.do" method="post">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                   <tr style="font-size:13px;">
@@ -370,6 +370,7 @@
                     <th>작성일</th>
                     <th>내용</th>
                     <th>공개여부</th>
+                    <th>감시</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -379,7 +380,7 @@
                     <th>작성자</th>
                     <th>작성일</th>
                     <th>내용</th>
-                    <th>공개여부</th>
+                    <th>감시</th>
                     <th></th>  
                   </tr>
                 </tfoot>
@@ -388,7 +389,76 @@
               
          <% for(Eye e : elist){ 
          
-         if(e.geteYn().equals("N")){%>
+        	 
+        	
+        	 String regex1 = "@[\\.a-zA-Z0-9-]+\\.[a-zA-Z]+$";
+
+
+        	 Pattern p1 = Pattern.compile(regex1,Pattern.CASE_INSENSITIVE); 
+        	 Matcher m1 = p1.matcher(e.geteContent()); 
+        	 boolean validation1 = m1.find(); 
+        	 
+        	 String regex2 = "-"; 
+        	 Pattern p2 = Pattern.compile(regex2,Pattern.CASE_INSENSITIVE); 
+        	 Matcher m2 = p2.matcher(e.geteContent()); 
+        	 boolean validation2 = m2.find(); 
+        	 
+        	 String regex3 = "\\d{3,}"; 
+        	 Pattern p3 = Pattern.compile(regex3,Pattern.CASE_INSENSITIVE); 
+        	 Matcher m3 = p3.matcher(e.geteContent()); 
+        	 boolean validation3 = m3.find(); 
+        	 
+        	 String regex4 = "^01(?:0|1|[6-9])"; 
+        	 Pattern p4 = Pattern.compile(regex4,Pattern.CASE_INSENSITIVE); 
+        	 Matcher m4 = p4.matcher(e.geteContent()); 
+        	 boolean validation4 = m4.find();
+        	 
+        	 String regex5 = "골뱅이"; 
+        	 Pattern p5 = Pattern.compile(regex5,Pattern.CASE_INSENSITIVE); 
+        	 Matcher m5 = p5.matcher(e.geteContent()); 
+        	 boolean validation5 = m5.find(); 
+
+        	 
+        	 
+        	 
+        	 if(validation1==true ||validation2==true ||validation3==true||validation4==true||validation5==true){ %>
+        	 
+    
+        	 <% if(e.geteYn().equals("N")){%>
+     
+         <tr style="font-size:13px;background:pink;">
+            <td><%= e.geteNo() %></td>
+            <td><%= e.geteWriter() %></td>
+            <td><%= e.geteDate() %></td>
+            <td><%= e.geteContent() %></td>
+            <td><%= e.geteYn() %></td>
+            <td>RED</td>
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
+            style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>공개</button></td>
+         </tr>
+            
+        
+       <%}else{ %>  
+       
+       
+         <tr style="font-size:13px;background:pink;">
+            <td><%= e.geteNo() %></td>
+            <td><%= e.geteWriter() %></td>
+            <td><%= e.geteDate() %></td>
+            <td><%= e.geteContent() %></td>
+            <td><%= e.geteYn() %></td>
+            <td>RED</td>
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
+            style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>비공개</button></td>
+         </tr>
+         
+         <%}%>
+        	 
+        	 
+        	 
+        	 
+        	 
+         <%}else if(e.geteYn().equals("N")){%>
      
          <tr style="font-size:13px;background:ivory;">
             <td><%= e.geteNo() %></td>
@@ -396,10 +466,9 @@
             <td><%= e.geteDate() %></td>
             <td><%= e.geteContent() %></td>
             <td><%= e.geteYn() %></td>
-            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit2()"
-            style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>공개</button></td>
-            <input type="hidden" value="<%= e.geteNo() %>" name="eNo">
-            <input type="hidden" value="<%= e.geteYn() %>" name="eYn">
+            <td></td>
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
+            style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>공개</button></td>
          </tr>
             
         
@@ -412,9 +481,8 @@
             <td><%= e.geteDate() %></td>
             <td><%= e.geteContent() %></td>
             <td><%= e.geteYn() %></td>
-            <input type="hidden" value="<%= e.geteNo() %>" name="eNo">
-            <input type="hidden" value="<%= e.geteYn() %>" name="eYn">
-            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit1()"
+            <td></td>
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
             style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>비공개</button></td>
          </tr>
          
@@ -422,24 +490,39 @@
        }%>
                   </tbody>
                 </table>
-            </form>
               </div>
             </div>
           </div>
 
         </div>
         
+        
+        
         <script>
+        function Submit(){
+            
+            $("#dataTable td").click(function(){
+             
+            	
+            	var no = $(this).parent().children().eq(0).text();
+            	var yn = $(this).parent().children().eq(4).text();
+                	
+           
+            	location.href="/admin0/eUpdate.do?no="+no+"&yn="+yn;          
+            	
+            }); 
+         }
+         
         
-         function Submit1(){
+       /*    function Submit1(aguments){
         	 $("#updateForm").submit();
          	location.href="/admin0/eye.jsp"
         }
-         function Submit2(){
+         function Submit2(aguments){
         	 $("#updateForm").submit();
          	location.href="/admin0/eye.jsp"
-        }
-        
+        } */
+         
         
         </script>
      <!-- /.container-fluid -->

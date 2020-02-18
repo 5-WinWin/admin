@@ -45,11 +45,11 @@ public class EyeService {
 			return e;
 		}
 		
-		public int updateEye(Eye e) {
+		public int updateEye(Eye e, String eNo) {
 			Connection con = getConnection();
 
 			con = getConnection();
-			int result = eDao.updateEye(con,e);
+			int result = eDao.updateEye(con,e,eNo);
 			
 			if(result > 0) commit(con);
 			else rollback(con);
