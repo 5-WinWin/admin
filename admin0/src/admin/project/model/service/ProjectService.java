@@ -59,6 +59,8 @@ public class ProjectService {
 		return result2;
 	}
 	
+	
+	
 public Project selectOne(int pNo) {
 		
 		Connection con = getConnection();

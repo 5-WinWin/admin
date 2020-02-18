@@ -37,6 +37,22 @@ public class CompanyService {
 		close(con);
 		return result;
 	}
+	public int insertCcount() {
+		Connection con = getConnection();
+		int result = 0;
+		
+		con = getConnection();
+		result = cDao.insertCcount(con);
+		if(result > 0) {
+			System.out.println("Ccount insertservice실행");
+			commit(con);
+		}
+		else rollback(con);
+		
+		
+		close(con);
+		return result;
+	}
 	
 public Company selectOne(int cNo) {
 		

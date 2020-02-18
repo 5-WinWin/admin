@@ -194,7 +194,7 @@ public class AdsDao {
 				as.setAssetRevenue((int)(rset.getInt("P_COST")*0.05));
 				as.setAssetAdsRevenue(rset.getInt("ADS_PRICE"));
 				total+=(rset.getInt("P_COST"));
-				RevenueTotal+=((int)(total*0.05));
+				RevenueTotal+=((int)(rset.getInt("P_COST")*0.05));
 				adsTotal+=(rset.getInt("ADS_PRICE"));
 					as.setAssetTotal(total);
 					as.setAssetAdsTotal(adsTotal);

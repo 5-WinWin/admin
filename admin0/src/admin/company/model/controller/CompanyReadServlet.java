@@ -32,12 +32,14 @@ public class CompanyReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Company> clist = new ArrayList<Company>();
 		CompanyService cs = new CompanyService();
-		
+		int result=0;
 		
 		clist = cs.readCompany();
+		result = cs.insertCcount();
+
 		String page = null;
 		
-		if(clist!=null) {
+		if(clist!=null&&result>0) {
 			System.out.println("cReadServlet:" +clist);
 			page= "company.jsp";
 			request.setAttribute("clist", clist);

@@ -73,6 +73,30 @@ public class CompanyDao {
 		return clist;
 	}
 	
+	public int insertCcount(Connection con) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+				String sql = prop.getProperty("insertCcount");
+				
+				pstmt = con.prepareStatement(sql);
+				
+				System.out.println("insertCcountDAO??");
+				
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
 	public Company selectOne(Connection con, int cNo) {
 		Company c  = null;
 	      PreparedStatement pstmt = null;
