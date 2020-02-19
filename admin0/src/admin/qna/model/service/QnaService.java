@@ -48,7 +48,6 @@ public class QnaService {
 		public int updateQna(Qna q) {
 			Connection con = getConnection();
 
-			con = getConnection();
 			int result = qDao.updateQna(con,q);
 			
 			if(result > 0) commit(con);

@@ -32,13 +32,15 @@ public class EyeReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Eye> elist = new ArrayList<Eye>();
 		EyeService es = new EyeService();
-		
+		int result =0;
 		
 		elist = es.readEye();
 		String page = null;
 		
 		
 		if(elist!=null) {
+			result=es.insertEcount();
+			if(result>0) {
 			page= "eye.jsp";
 			request.setAttribute("elist", elist);
 			
@@ -46,7 +48,7 @@ public class EyeReadServlet extends HttpServlet {
 			page = "errorPage.jsp";
 			request.setAttribute("msg", "회원 목록 불러오기 에러!");
 		}
-		
+		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

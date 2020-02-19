@@ -1,3 +1,10 @@
+<%@page import="admin.qna.model.vo.Qna"%>
+<%@page import="admin.qna.model.service.QnaService"%>
+<%@page import="admin.eye.model.service.EyeService"%>
+<%@page import="admin.eye.model.vo.Eye"%>
+<%@page import="admin.admin.model.vo.Admin"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="admin.admin.model.service.AdminService"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +18,8 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>user</title>
-
+  <title>admin</title>
+ 
   <!-- Custom fonts for this template -->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -26,6 +33,67 @@
 </head>
 
 <body id="page-top">
+
+<% AdminService ads = new AdminService();
+		  ArrayList<Eye> eelist = new ArrayList<Eye>();
+		  ArrayList<Qna> qqlist = new ArrayList<Qna>();
+		  QnaService qqs = new QnaService();
+		  EyeService ees = new EyeService();
+ArrayList<Admin> adlist = new ArrayList<Admin>();
+Admin add = new Admin();
+int result = ads.updateAdmin(add);
+adlist = ads.readAdmin();
+int adcCount =0;//알림 숫자 부분
+int aduCount =0;
+int adaCount =0;
+int adeCount =0;
+int adccCount =0;
+int aduuCount =0;
+int adaaCount =0;
+int adeeCount =0;
+int enCount = 0;
+int eenCount = 0;
+for(int i=0;i<1;i++){//갯수 담는 포문
+	  adcCount = adlist.get(i).getcCount();
+	  aduCount = adlist.get(i).getuCount();
+	  adaCount = adlist.get(i).getaCount();
+	  adeCount = adlist.get(i).geteCount();
+	  adccCount = adlist.get(i).getCcCount();
+	  aduuCount = adlist.get(i).getUuCount();
+	  adaaCount = adlist.get(i).getAaCount();
+	  adeeCount = adlist.get(i).getEeCount();
+	  enCount = adlist.get(i).getEnCount();
+	  } 
+for(int i=0;i<eelist.size();i++){
+	if(eelist.get(i).geteYn().equals("N")){
+		eenCount++;
+	}
+	
+}
+
+	
+	
+int qqCount = 0;
+
+for(int j=0;j<qqlist.size();j++){
+	if(qqlist.get(j).getqYn().equals("N")){
+		qqCount++;
+	}
+}
+	  System.out.print(qqCount);
+
+	int cTotal = adccCount-adcCount;
+	int uTotal = aduuCount-aduCount;
+	int aTotal = adaaCount-adaCount;
+	int eTotal = adeeCount-adeCount;
+	int enTotal = eenCount-enCount;
+	  
+	  
+	  %>
+
+  
+
+
  <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -66,7 +134,9 @@
      <li class="nav-item">
         <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
-          <span>회계관리</span></a>
+          <span>회계관리</span>
+          <% //if(aTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= aTotal %></span><%//} %></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin0/adsRead.do">
@@ -91,10 +161,17 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-user"></i>
           <span>회원관리</span>
+          <% //if(uTotal!=0){ %>
+          <span class="badge badge-danger badge-counter" style="background:#58b91a;"><%= uTotal %></span>
+          <%//} %>
+          </a>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/admin0/memberRead.do">회원 정보</a>
+            <a class="collapse-item" href="/admin0/memberRead.do">회원 정보
+             <% //if(uTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= uTotal %></span><%//} %>
+            </a>
             <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
           </div>
         </div>
@@ -105,10 +182,15 @@
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-briefcase"></i>
           <span>기업관리</span>
+          <% //if(cTotal!=0){ %>
+          <span class="badge badge-danger badge-counter" style="background:#58b91a;"><%= cTotal %></span>
+          <%//} %>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="/admin0/companyRead.do">기업 정보</a>
+            <a class="collapse-item" href="/admin0/companyRead.do">기업 정보
+            <% //if(cTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= cTotal %></span><%//} %></a>
             <a class="collapse-item" href="/admin0/projectRead.do">프로젝트</a>
             
           </div>
@@ -125,14 +207,22 @@
       <li class="nav-item">
         <a class="nav-link" href="/admin0/qnaRead.do">
           <i class="fas fa-fw fa-comment"></i>
-          <span>Q&A</span></a>
+          <span>Q&A</span>
+          <% //if(qqCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:crimson;"><%= qqCount %></span><%//} %>
+            </a>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
         <a class="nav-link" href="/admin0/eyeRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span>
-          <span class="badge badge-danger badge-counter">3+</span></a>
+          <% //if(eTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-right:17px;"><%= eTotal %></span><%//} %>
+            
+          <% //if(enTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:crimson;"><%= enTotal %></span><%//} %>
+          </a>
       </li>
       <hr class="sidebar-divider my-0">
 <!-- Nav Item - Tables -->

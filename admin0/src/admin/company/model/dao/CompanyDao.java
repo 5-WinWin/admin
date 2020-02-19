@@ -79,11 +79,10 @@ public class CompanyDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-				String sql = prop.getProperty("insertCcount");
+				String sql = prop.getProperty("updateCcount");
 				
 				pstmt = con.prepareStatement(sql);
 				
-				System.out.println("insertCcountDAO??");
 				
 				
 				result = pstmt.executeUpdate();

@@ -67,6 +67,29 @@ public class AdsDao {
 		return alist;
 	}
 	
+	public int insertAcount(Connection con) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+				String sql = prop.getProperty("updateAcount");
+				
+				pstmt = con.prepareStatement(sql);
+				
+				
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
 	public Ads selectOne(Connection con, int cNo) {
 		Ads a  = null;
 	      PreparedStatement pstmt = null;

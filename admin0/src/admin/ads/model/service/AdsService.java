@@ -28,7 +28,6 @@ public class AdsService {
 	public int updateAds(Ads a) {
 		Connection con = getConnection();
 
-		con = getConnection();
 		int result = aDao.updateAds(con,a);
 		
 		if(result > 0) commit(con);
@@ -37,10 +36,24 @@ public class AdsService {
 		close(con);
 		return result;
 	}
+	
+	public int insertAcount() {
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = aDao.insertAcount(con);
+		if(result > 0) {
+			commit(con);
+		}
+		else rollback(con);
+		
+		
+		close(con);
+		return result;
+	}
 	public int insertAds(Ads a) {
 		Connection con = getConnection();
 
-		con = getConnection();
 		int result = aDao.insertAds(con,a);
 		
 		if(result > 0) commit(con);

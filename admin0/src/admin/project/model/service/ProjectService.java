@@ -28,7 +28,6 @@ public class ProjectService {
 		Connection con = getConnection();
 		int result = 0;
 		
-		con = getConnection();
 		result = pDao.updateProject(con,p);
 		System.out.println("result1실행");
 		
@@ -46,7 +45,6 @@ public class ProjectService {
 		Connection con = getConnection();
 		int result2 = 0;
 		
-		con = getConnection();
 		result2 = pDao.insultAsset(con,p);
 		if(result2 > 0) {
 			System.out.println("result2실행");

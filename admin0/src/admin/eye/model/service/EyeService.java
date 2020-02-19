@@ -26,7 +26,20 @@ public class EyeService {
 			return elist;
 		}
 		
-		
+		public int insertEcount() {
+			Connection con = getConnection();
+			int result = 0;
+			
+			result = eDao.insertEcount(con);
+			if(result > 0) {
+				commit(con);
+			}
+			else rollback(con);
+			
+			
+			close(con);
+			return result;
+		}
 		
 		public Eye selectOne(int eNo) {
 			
@@ -48,7 +61,6 @@ public class EyeService {
 		public int updateEye(Eye e, String eNo) {
 			Connection con = getConnection();
 
-			con = getConnection();
 			int result = eDao.updateEye(con,e,eNo);
 			
 			if(result > 0) commit(con);

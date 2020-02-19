@@ -65,6 +65,29 @@ public class EyeDao {
 		return elist;
 	}
 	
+	public int insertEcount(Connection con) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+				String sql = prop.getProperty("updateEcount");
+				
+				pstmt = con.prepareStatement(sql);
+				
+				
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
+	
 	
 	
 	public Eye selectOne(Connection con, int eNo) {

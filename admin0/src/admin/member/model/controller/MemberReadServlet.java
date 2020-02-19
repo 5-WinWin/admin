@@ -35,10 +35,14 @@ public class MemberReadServlet extends HttpServlet {
 		
 		
 		mlist = ms.readMember();
+		int result = 0;
 		String page = null;
 		
 		
 		if(mlist!=null) {
+			result = ms.insertUcount();
+			
+			if(result>0) {
 			page= "user.jsp";
 			request.setAttribute("mlist", mlist);
 			
@@ -46,7 +50,7 @@ public class MemberReadServlet extends HttpServlet {
 			page = "errorPage.jsp";
 			request.setAttribute("msg", "회원 목록 불러오기 에러!");
 		}
-		
+		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

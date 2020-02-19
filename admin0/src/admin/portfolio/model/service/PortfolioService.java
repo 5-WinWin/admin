@@ -27,7 +27,6 @@ public class PortfolioService {
 	public int updatePortfolio(Portfolio f) {
 		Connection con = getConnection();
 
-		con = getConnection();
 		int result = fDao.updatePortfolio(con,f);
 		
 		if(result > 0) commit(con);

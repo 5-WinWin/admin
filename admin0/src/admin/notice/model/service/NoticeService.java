@@ -31,7 +31,6 @@ public class NoticeService {
 		public int insertNotice(Notice n) {
 			Connection con = getConnection();
 
-			con = getConnection();
 			int result = nDao.insertNotice(con,n);
 			
 			if(result > 0) commit(con);
@@ -61,7 +60,6 @@ public class NoticeService {
 		public int updateNotice(Notice n) {
 			Connection con = getConnection();
 
-			con = getConnection();
 			int result = nDao.updateNotice(con,n);
 			
 			if(result > 0) commit(con);

@@ -28,7 +28,6 @@ public class CompanyService {
 	public int updateCompany(Company c) {
 		Connection con = getConnection();
 
-		con = getConnection();
 		int result = cDao.updateCompany(con,c);
 		
 		if(result > 0) commit(con);
@@ -41,10 +40,8 @@ public class CompanyService {
 		Connection con = getConnection();
 		int result = 0;
 		
-		con = getConnection();
 		result = cDao.insertCcount(con);
 		if(result > 0) {
-			System.out.println("Ccount insertservice실행");
 			commit(con);
 		}
 		else rollback(con);

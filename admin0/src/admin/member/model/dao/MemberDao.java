@@ -70,6 +70,29 @@ public class MemberDao {
 		}
 		return mlist;
 	}
+	
+	public int insertUcount(Connection con) {
+		int result = 0;
+		
+		PreparedStatement pstmt = null;
+		
+		try {
+				String sql = prop.getProperty("updateUcount");
+				
+				pstmt = con.prepareStatement(sql);
+				
+				
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 	public Member selectOne(Connection con, int uNo) {
 		Member m  = null;
 	      PreparedStatement pstmt = null;

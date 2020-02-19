@@ -33,19 +33,22 @@ public class AsReadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		ArrayList<Asset> aslist = new ArrayList<Asset>();
 		AdsService as = new AdsService();
-		
+		int result = 0;
 		
 		aslist = as.readAs();
 		String page = null;
 		
 		if(aslist!=null) {
+			
+			result=as.insertAcount();
+			if(result>0) {
 			page= "asset.jsp";
 			request.setAttribute("aslist", aslist);
 		}else {
 			page = "errorPage.jsp";
 			request.setAttribute("msg", "회계정보 불러오기 에러!");
 		}
-		
+		}
 		request.getRequestDispatcher(page).forward(request, response);
 	}
 

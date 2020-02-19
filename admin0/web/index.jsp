@@ -1,3 +1,5 @@
+<%@page import="admin.admin.model.vo.Admin"%>
+<%@page import="admin.admin.model.service.AdminService"%>
 <%@page import="admin.portfolio.model.vo.Portfolio"%>
 <%@page import="admin.portfolio.model.service.PortfolioService"%>
 <%@page import="admin.project.model.vo.Project"%>
@@ -61,10 +63,12 @@
   String to = formatter.format(revenueTotal);
   String ra = formatter.format(adsTotal);
    
+ 
    
 %>    
 <!DOCTYPE html>
 <html lang="en">
+<script src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <head>
   <meta charset="utf-8">
