@@ -89,4 +89,27 @@ public class AdminDao {
 			return result;
 			
 	}
+	
+	public int insertAdmin(Connection con,String aMemo) {
+		int result = 0;
+		PreparedStatement pstmt = null;
+	      
+	      String sql = prop.getProperty("insertAdmin");
+		try {
+				
+				pstmt = con.prepareStatement(sql);
+				
+				pstmt.setString(1, aMemo);
+		         
+				
+				result = pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+		
+	}
 }

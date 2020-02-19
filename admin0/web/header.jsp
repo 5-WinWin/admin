@@ -1,3 +1,7 @@
+<%@page import="admin.project.model.service.ProjectService"%>
+<%@page import="admin.project.model.vo.Project"%>
+<%@page import="admin.portfolio.model.vo.Portfolio"%>
+<%@page import="admin.portfolio.model.service.PortfolioService"%>
 <%@page import="admin.qna.model.vo.Qna"%>
 <%@page import="admin.qna.model.service.QnaService"%>
 <%@page import="admin.eye.model.service.EyeService"%>
@@ -34,15 +38,27 @@
 
 <body id="page-top">
 
-<% AdminService ads = new AdminService();
+<% AdminService ads = new AdminService();//사용 서블렛 선언부
 		  ArrayList<Eye> eelist = new ArrayList<Eye>();
 		  ArrayList<Qna> qqlist = new ArrayList<Qna>();
+		ArrayList<Admin> adlist = new ArrayList<Admin>();
+		ArrayList<Portfolio> ppflist = new ArrayList<Portfolio>();
+		ArrayList<Project> pjlist = new ArrayList<Project>();
+		
+		
 		  QnaService qqs = new QnaService();
 		  EyeService ees = new EyeService();
-ArrayList<Admin> adlist = new ArrayList<Admin>();
+		  PortfolioService ppf = new PortfolioService();
+		  ProjectService pjs = new ProjectService();
+		  
 Admin add = new Admin();
-int result = ads.updateAdmin(add);
+int result = ads.updateAdmin(add);//서블렛 실행부분
+
 adlist = ads.readAdmin();
+qqlist = qqs.readQna();
+ppflist = ppf.readPortfolio();
+pjlist = pjs.readProject();
+
 int adcCount =0;//알림 숫자 부분
 int aduCount =0;
 int adaCount =0;
@@ -53,6 +69,7 @@ int adaaCount =0;
 int adeeCount =0;
 int enCount = 0;
 int eenCount = 0;
+String aMemo="";
 for(int i=0;i<1;i++){//갯수 담는 포문
 	  adcCount = adlist.get(i).getcCount();
 	  aduCount = adlist.get(i).getuCount();
@@ -63,8 +80,9 @@ for(int i=0;i<1;i++){//갯수 담는 포문
 	  adaaCount = adlist.get(i).getAaCount();
 	  adeeCount = adlist.get(i).getEeCount();
 	  enCount = adlist.get(i).getEnCount();
+	  aMemo = adlist.get(i).getaMemo();
 	  } 
-for(int i=0;i<eelist.size();i++){
+for(int i=0;i<eelist.size();i++){//감시n카운트
 	if(eelist.get(i).geteYn().equals("N")){
 		eenCount++;
 	}
@@ -75,12 +93,25 @@ for(int i=0;i<eelist.size();i++){
 	
 int qqCount = 0;
 
-for(int j=0;j<qqlist.size();j++){
+for(int j=0;j<qqlist.size();j++){//qna n카운트
 	if(qqlist.get(j).getqYn().equals("N")){
 		qqCount++;
 	}
 }
-	  System.out.print(qqCount);
+int ppfCount = 0;
+
+for(int i=0;i<ppflist.size();i++){//portfolio n카운트
+	if(ppflist.get(i).getPoYn().equals("N")){
+		ppfCount++;
+	}
+}
+int pjCount = 0;
+
+for(int i=0;i<pjlist.size();i++){//project n카운트
+	if(pjlist.get(i).getStatus().equals("N")){
+		pjCount++;
+	}
+}
 
 	int cTotal = adccCount-adcCount;
 	int uTotal = aduuCount-aduCount;
@@ -88,6 +119,7 @@ for(int j=0;j<qqlist.size();j++){
 	int eTotal = adeeCount-adeCount;
 	int enTotal = eenCount-enCount;
 	  
+	int lastTotal = enTotal+pjCount+ppfCount+qqCount;
 	  
 	  %>
 
@@ -136,7 +168,7 @@ for(int j=0;j<qqlist.size();j++){
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span>
           <% //if(aTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= aTotal %></span><%//} %></a>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:5px;"><%= aTotal %></span><%//} %></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin0/adsRead.do">
@@ -162,8 +194,10 @@ for(int j=0;j<qqlist.size();j++){
           <i class="fas fa-fw fa-user"></i>
           <span>회원관리</span>
           <% //if(uTotal!=0){ %>
-          <span class="badge badge-danger badge-counter" style="background:#58b91a;"><%= uTotal %></span>
+          <span class="badge badge-danger badge-counter" style="background:#58b91a;margin-top:15px;"><%= uTotal %></span>
           <%//} %>
+          <% //if(ppfCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%//} %>
           </a>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
@@ -172,7 +206,9 @@ for(int j=0;j<qqlist.size();j++){
              <% //if(uTotal!=0){ %>
             <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= uTotal %></span><%//} %>
             </a>
-            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오</a>
+            <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오
+            <% //if(ppfCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%//} %></a>
           </div>
         </div>
       </li>
@@ -183,15 +219,19 @@ for(int j=0;j<qqlist.size();j++){
           <i class="fas fa-fw fa-briefcase"></i>
           <span>기업관리</span>
           <% //if(cTotal!=0){ %>
-          <span class="badge badge-danger badge-counter" style="background:#58b91a;"><%= cTotal %></span>
+          <span class="badge badge-danger badge-counter" style="background:#58b91a;margin-top:15px;"><%= cTotal %></span>
           <%//} %>
+          <% //if(pjCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%//} %>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/companyRead.do">기업 정보
             <% //if(cTotal!=0){ %>
             <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= cTotal %></span><%//} %></a>
-            <a class="collapse-item" href="/admin0/projectRead.do">프로젝트</a>
+            <a class="collapse-item" href="/admin0/projectRead.do">프로젝트
+            <% //if(pjCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%//} %></a>
             
           </div>
         </div>
@@ -209,7 +249,7 @@ for(int j=0;j<qqlist.size();j++){
           <i class="fas fa-fw fa-comment"></i>
           <span>Q&A</span>
           <% //if(qqCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:crimson;"><%= qqCount %></span><%//} %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;margin-top:5px;"><%= qqCount %></span><%//} %>
             </a>
       </li>
       <!-- Nav Item - Tables -->
@@ -218,10 +258,10 @@ for(int j=0;j<qqlist.size();j++){
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span>
           <% //if(eTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-right:17px;"><%= eTotal %></span><%//} %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:15px;"><%= eTotal %></span><%//} %>
             
           <% //if(enTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:crimson;"><%= enTotal %></span><%//} %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %></span><%//} %>
           </a>
       </li>
       <hr class="sidebar-divider my-0">
@@ -255,18 +295,37 @@ for(int j=0;j<qqlist.size();j++){
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
+	<% if(aMemo==null){
+       	  aMemo="메모를 입력하세요.";} %>
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+              <input type="text" id="noticeText" class="form-control bg-light border-0 small" aria-label="Search" aria-describedby="basic-addon2" value="<%= aMemo %>">
               <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
+                <button class="btn btn-primary" type="button" onclick="noti()">
+                  <i class="fas fa-exclamation"></i>
                 </button>
               </div>
             </div>
           </form>
+          <script>
+          function noti(){
+        	  $.ajax({
+      			url:"/admin0/adInsert.do",
+      			type:"get",
+      			data:{
+      				aMemo : $('#noticeText').val()
+      			},
+      			success:function(data){
+      				alert("메모되었습니다.");				
+      			},
+      			error:function(){
+      			},
+      			complete:function(){
+      			}
+      		});
+          };
+          </script>
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -296,56 +355,76 @@ for(int j=0;j<qqlist.size();j++){
               <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= lastTotal %></span>
               </a>
               <!-- Dropdown - Alerts -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                   Alerts Center
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                
+                    <% //if(ppfCount!=0){ %>
+                <a class="dropdown-item d-flex align-items-center" href="/admin0/portfolioRead.do">
                   <div class="mr-3">
-                    <div class="icon-circle bg-primary">
+                    <div class="icon-circle bg-warning">
                       <i class="fas fa-file-alt text-white"></i>
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
+                    <div class="small text-gray-500">포트폴리오</div>
+                    <span class="font-weight-bold">확인<Small>을 기다리는 포트폴리오</Small></span>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %>+</span>
                   </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                </a><%//} %>
+                
+                <% //if(pjCount!=0){ %>
+                <a class="dropdown-item d-flex align-items-center" href="/admin0/projectRead.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
+                      <i class="fas fa-fw fa-briefcase"style="color:white;"></i>
                     </div>
                   </div>
                   <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
+                    <div class="small text-gray-500">프로젝트</div>
+                    <span class="font-weight-bold">확인<Small>을 기다리는 프로젝트</Small></span>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %>+</span>
                   </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
+                </a><%//} %>
+                
+                <% //if(qqCount!=0){ %>
+                <a class="dropdown-item d-flex align-items-center" href="/admin0/qnaRead.do">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning"style="color:lightpink;">
+                      <i class="fas fa-fw fa-comment"style="color:white;"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">Q&A</div>
+                    <span class="font-weight-bold">답변<Small>을 기다리는 Q&A</Small></span>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= qqCount %>+</span>
+                  </div>
+                </a><%//} %>
+                
+                <% //if(enTotal!=0){ %>
+                <a class="dropdown-item d-flex align-items-center" href="/admin0/eyeRead.do">
+                  <div class="mr-3">
+                    <div class="icon-circle bg-warning">
+                      <i class="fas fa-file-alt text-white"></i>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="small text-gray-500">감시</div>
+                    <span class="font-weight-bold">확인<Small>을 기다리는 댓글</Small></span>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %>+</span>
+                  </div>
+                </a><%//} %>
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
               <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
+                <span class="badge badge-danger badge-counter"style="background:#58b91a">1</span>
               </a>
               <!-- Dropdown - Messages -->
               <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -358,38 +437,32 @@ for(int j=0;j<qqlist.size();j++){
                     <div class="status-indicator bg-success"></div>
                   </div>
                   <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
+                    <div class="text-truncate">안녕하세요 메인프로젝트 광고 건으로 연락드립니다.</div>
+                    <div class="small text-gray-500">KH정보 · 58m</div>
                   </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
+                  
+                  
+               
+                
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
                     <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
+                    
                   </div>
                   <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
+                    <div class="text-truncate">ok, bye!</div>
+                    <div class="small text-gray-500">eric jhon · 2d</div>
                   </div>
                 </a>
+                
+                
                 <a class="dropdown-item d-flex align-items-center" href="#">
                   <div class="dropdown-list-image mr-3">
                     <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
                   </div>
                   <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
+                    <div class="text-truncate">네 감사합니다~</div>
+                    <div class="small text-gray-500">(주)DogIT · 1w</div>
                   </div>
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
@@ -410,16 +483,9 @@ for(int j=0;j<qqlist.size();j++){
                   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                   Profile
                 </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
+              
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                <a class="dropdown-item" href="/admin0/login.me" data-toggle="modal" data-target="#logoutModal">
                   <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                   Logout
                 </a>

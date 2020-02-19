@@ -36,4 +36,18 @@ private AdminDao adDao = new AdminDao();
 		return result;
 	}
 
+	public int insertAdmin(String aMemo) {
+		Connection con = getConnection();
+		int result = 0;
+		
+		result = adDao.insertAdmin(con,aMemo);
+		if(result > 0) {
+			commit(con);
+		}
+		else rollback(con);
+		
+		
+		close(con);
+		return result;
+	}
 }

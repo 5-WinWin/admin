@@ -8,6 +8,7 @@ import static admin.member.common.JDBCTemplate.rollback;
 import java.sql.Connection;
 import java.util.ArrayList;
 
+import admin.admin.model.vo.Admin;
 import admin.ads.model.dao.AdsDao;
 import admin.ads.model.vo.Ads;
 import admin.ads.model.vo.Asset;
@@ -51,6 +52,9 @@ public class AdsService {
 		close(con);
 		return result;
 	}
+	
+	
+	
 	public int insertAds(Ads a) {
 		Connection con = getConnection();
 
