@@ -160,7 +160,7 @@
             <td><%= e.geteContent() %></td>
             <td><%= e.geteYn() %></td>
             <td></td>
-            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="yn()"
             style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>공개</button></td>
          </tr>
             
@@ -175,7 +175,7 @@
             <td><%= e.geteContent() %></td>
             <td><%= e.geteYn() %></td>
             <td></td>
-            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="Submit()"
+            <td><button class="btn btn-primary" id=<%= e.geteNo() %> onclick="yn()"
             style=width:50px;height:25px;font-size:1em;margin:0px;padding:0px;>비공개</button></td>
          </tr>
          
@@ -202,17 +202,38 @@
         	}) */
         	 
         	
-        function Submit(){
+        function yn(){
             
         	
             $("#dataTable td").click(function(){
              
-            	
+            	/* 
             	var no = $(this).parent().children().eq(0).text();
             	var yn = $(this).parent().children().eq(4).text();
                 	
            
             	location.href="/admin0/eUpdate.do?no="+no+"&yn="+yn;          
+            	 */
+            	$.ajax({
+          			url:"/admin0/eUpdate.do",
+          			type:"get",
+          			data:{
+          				/* aMemo : $('#noticeText').val() */
+          				no : $(this).parent().children().eq(0).text(),
+          				yn : $(this).parent().children().eq(4).text()
+          			},
+          			success:function(data){
+          				location.href="/admin0/eyeRead.do" 
+          				
+          			},
+          			error:function(){
+          			},
+          			complete:function(){
+          					
+          				
+          			}
+          		});
+            	
             	
             }); 
          }

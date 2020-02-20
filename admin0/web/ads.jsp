@@ -120,7 +120,7 @@
              <td><a href="/admin0/cConnect.do?cNo=<%= a.getcNo() %>";><%= a.getcNo() %></a></td>
              <td><a href="/admin0/pConnect.do?pNo=<%= a.getpNo() %>";><%=a.getpNo() %></a></td>
              <td><%= a.getAdsStart() %></td>
-             <td><%= a.getAdsEnd() %></td>
+             <td><%= a.getAdsEnd() %>(광고마감)</td>
              <td><%= ap %>원</td>
              <td><%= a.getAdsModifyDate() %></td>
              <td><%= a.getAdsModifyWriter() %></td>

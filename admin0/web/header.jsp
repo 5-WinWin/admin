@@ -167,8 +167,8 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
         <a class="nav-link" href="/admin0/asRead.do">
           <i class="fas fa-fw fa-dollar-sign"></i>
           <span>회계관리</span>
-          <% //if(aTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:5px;"><%= aTotal %></span><%//} %></a>
+          <% if(aTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:5px;"><%= aTotal %></span><%} %></a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="/admin0/adsRead.do">
@@ -193,22 +193,22 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-user"></i>
           <span>회원관리</span>
-          <% //if(uTotal!=0){ %>
+          <% if(uTotal!=0){ %>
           <span class="badge badge-danger badge-counter" style="background:#58b91a;margin-top:15px;"><%= uTotal %></span>
-          <%//} %>
-          <% //if(ppfCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%//} %>
+          <%} %>
+          <% if(ppfCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%} %>
           </a>
-        </a>
+       
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/memberRead.do">회원 정보
-             <% //if(uTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= uTotal %></span><%//} %>
+             <% if(uTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= uTotal %></span><%} %>
             </a>
             <a class="collapse-item" href="/admin0/portfolioRead.do">포트폴리오
-            <% //if(ppfCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%//} %></a>
+            <% if(ppfCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %></span><%} %></a>
           </div>
         </div>
       </li>
@@ -218,20 +218,20 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-briefcase"></i>
           <span>기업관리</span>
-          <% //if(cTotal!=0){ %>
+          <% if(cTotal!=0){ %>
           <span class="badge badge-danger badge-counter" style="background:#58b91a;margin-top:15px;"><%= cTotal %></span>
-          <%//} %>
-          <% //if(pjCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%//} %>
+          <%} %>
+          <% if(pjCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%} %>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <a class="collapse-item" href="/admin0/companyRead.do">기업 정보
-            <% //if(cTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= cTotal %></span><%//} %></a>
+            <% if(cTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;"><%= cTotal %></span><%} %></a>
             <a class="collapse-item" href="/admin0/projectRead.do">프로젝트
-            <% //if(pjCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%//} %></a>
+            <% if(pjCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %></span><%} %></a>
             
           </div>
         </div>
@@ -248,8 +248,8 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
         <a class="nav-link" href="/admin0/qnaRead.do">
           <i class="fas fa-fw fa-comment"></i>
           <span>Q&A</span>
-          <% //if(qqCount!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;margin-top:5px;"><%= qqCount %></span><%//} %>
+          <% if(qqCount!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;margin-top:5px;"><%= qqCount %></span><%} %>
             </a>
       </li>
       <!-- Nav Item - Tables -->
@@ -257,11 +257,11 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
         <a class="nav-link" href="/admin0/eyeRead.do">
           <i class="fas fa-fw fa-eye"></i>
           <span>감시</span>
-          <% //if(eTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:15px;"><%= eTotal %></span><%//} %>
+          <% if(eTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:15px;"><%= eTotal %></span><%} %>
             
-          <% //if(enTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %></span><%//} %>
+          <% if(enTotal!=0){ %>
+            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %></span><%} %>
           </a>
       </li>
       <hr class="sidebar-divider my-0">
@@ -363,7 +363,7 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
                   Alerts Center
                 </h6>
                 
-                    <% //if(ppfCount!=0){ %>
+                    <% if(ppfCount!=0){ %>
                 <a class="dropdown-item d-flex align-items-center" href="/admin0/portfolioRead.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning">
@@ -375,9 +375,9 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
                     <span class="font-weight-bold">확인<Small>을 기다리는 포트폴리오</Small></span>
             <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= ppfCount %>+</span>
                   </div>
-                </a><%//} %>
+                </a><%} %>
                 
-                <% //if(pjCount!=0){ %>
+                <% if(pjCount!=0){ %>
                 <a class="dropdown-item d-flex align-items-center" href="/admin0/projectRead.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning">
@@ -389,9 +389,9 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
                     <span class="font-weight-bold">확인<Small>을 기다리는 프로젝트</Small></span>
             <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= pjCount %>+</span>
                   </div>
-                </a><%//} %>
+                </a><%} %>
                 
-                <% //if(qqCount!=0){ %>
+                <% if(qqCount!=0){ %>
                 <a class="dropdown-item d-flex align-items-center" href="/admin0/qnaRead.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning"style="color:lightpink;">
@@ -403,9 +403,9 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
                     <span class="font-weight-bold">답변<Small>을 기다리는 Q&A</Small></span>
             <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= qqCount %>+</span>
                   </div>
-                </a><%//} %>
+                </a><%} %>
                 
-                <% //if(enTotal!=0){ %>
+                <% if(enTotal!=0){ %>
                 <a class="dropdown-item d-flex align-items-center" href="/admin0/eyeRead.do">
                   <div class="mr-3">
                     <div class="icon-circle bg-warning">
@@ -417,7 +417,7 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
                     <span class="font-weight-bold">확인<Small>을 기다리는 댓글</Small></span>
             <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %>+</span>
                   </div>
-                </a><%//} %>
+                </a><%} %>
 
             <!-- Nav Item - Messages -->
             <li class="nav-item dropdown no-arrow mx-1">
