@@ -58,6 +58,7 @@ adlist = ads.readAdmin();
 qqlist = qqs.readQna();
 ppflist = ppf.readPortfolio();
 pjlist = pjs.readProject();
+eelist = ees.readEye();
 
 int adcCount =0;//알림 숫자 부분
 int aduCount =0;
@@ -119,7 +120,7 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
 	int eTotal = adeeCount-adeCount;
 	int enTotal = eenCount-enCount;
 	  
-	int lastTotal = enTotal+pjCount+ppfCount+qqCount;
+	int lastTotal = pjCount+ppfCount+qqCount;
 	  
 	  %>
 
@@ -260,8 +261,7 @@ for(int i=0;i<pjlist.size();i++){//project n카운트
           <% if(eTotal!=0){ %>
             <span class="badge badge-danger badge-counter"style="background:#58b91a;margin-top:15px;"><%= eTotal %></span><%} %>
             
-          <% if(enTotal!=0){ %>
-            <span class="badge badge-danger badge-counter"style="background:deeppink;"><%= enTotal %></span><%} %>
+         
           </a>
       </li>
       <hr class="sidebar-divider my-0">

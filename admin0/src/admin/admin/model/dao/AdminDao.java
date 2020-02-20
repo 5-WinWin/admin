@@ -54,6 +54,7 @@ public class AdminDao {
 				ad.setAaCount(rset.getInt("AA_COUNT"));
 				ad.setUuCount(rset.getInt("UU_COUNT"));
 				ad.setEeCount(rset.getInt("EE_COUNT"));
+				ad.setEnCount(rset.getInt("E_N_COUNT"));
 				
 				ad.setaMemo(rset.getString("A_MEMO"));
 				
