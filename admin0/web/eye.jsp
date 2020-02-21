@@ -207,18 +207,11 @@
         	
             $("#dataTable td").click(function(){
              
-            	/* 
-            	var no = $(this).parent().children().eq(0).text();
-            	var yn = $(this).parent().children().eq(4).text();
-                	
-           
-            	location.href="/admin0/eUpdate.do?no="+no+"&yn="+yn;          
-            	 */
+            	
             	$.ajax({
           			url:"/admin0/eUpdate.do",
           			type:"get",
           			data:{
-          				/* aMemo : $('#noticeText').val() */
           				no : $(this).parent().children().eq(0).text(),
           				yn : $(this).parent().children().eq(4).text()
           			},

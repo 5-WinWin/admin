@@ -112,7 +112,6 @@
             <td><button class="btn btn-primary" id=<%= a.getcNo() %> onclick="Update(this.id)"
             style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button>
             
-            
          </tr>
          <% }else{%>
         	 <tr style="font-size:13px; background:ivory;" >
@@ -127,10 +126,7 @@
             
              <td><button class="btn btn-primary" id=<%= a.getcNo() %> onclick="Update(this.id)"
              style=width:35px;height:25px;font-size:1em;margin:0px;padding:0px;>수정</button>
-             
-             
           </tr>
-        	 
        <% }
         	 }%>  
                   </tbody>
